@@ -7,8 +7,16 @@ import { navLinks, site } from "@/lib/site-content";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const close = () => setOpen(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -28,7 +36,8 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="nav-wrap">
+      <header className={`nav-wrap${scrolled ? " nav-wrap--scrolled" : ""}`}>
+        <div className="nav-wrap-glow" aria-hidden />
         <div className="site-container">
           <div className="nav-inner">
             <Link href="/" aria-label="Atlas Global Finance home" className="nav-brand shrink-0">

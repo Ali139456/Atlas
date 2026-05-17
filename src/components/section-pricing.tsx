@@ -80,12 +80,17 @@ export function PricingSection() {
     return i >= 0 ? i : 0;
   });
 
-  const scrollToIndex = useCallback((index: number) => {
+  const scrollToIndex = useCallback((index: number, smooth = true) => {
     const track = trackRef.current;
     if (!track) return;
     const next = Math.max(0, Math.min(index, pricingPlans.length - 1));
     const slide = track.children[next] as HTMLElement | undefined;
-    slide?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    if (slide) {
+      track.scrollTo({
+        left: slide.offsetLeft,
+        behavior: smooth ? "smooth" : "instant",
+      });
+    }
     setActive(next);
   }, []);
 
@@ -119,7 +124,7 @@ export function PricingSection() {
   useEffect(() => {
     const highlighted = pricingPlans.findIndex((p) => p.highlighted);
     if (highlighted >= 0) {
-      requestAnimationFrame(() => scrollToIndex(highlighted));
+      requestAnimationFrame(() => scrollToIndex(highlighted, false));
     }
   }, [scrollToIndex]);
 

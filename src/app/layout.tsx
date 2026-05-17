@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import "./globals.css";
 
 const inter = Inter({
@@ -33,7 +34,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full overflow-x-clip`}>
-      <body className="site-body flex min-h-full max-w-[100vw] flex-col overflow-x-hidden antialiased">
+      <body className="site-body flex min-h-full max-w-[100vw] flex-col antialiased">
+        <ScrollToTop />
         {children}
       </body>
     </html>

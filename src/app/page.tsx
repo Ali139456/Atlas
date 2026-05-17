@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main>
+      <main className="site-main">
         <Hero />
         <MissionSection />
         <FeaturesSection />

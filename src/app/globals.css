@@ -25,6 +25,7 @@
   --nav-logo-h: 5.5rem;
   --nav-logo-max-w: min(58vw, 260px);
   --nav-bar-min-h: clamp(5.5rem, 14vw, 7rem);
+  --nav-offset: var(--nav-bar-min-h);
   --radius: 1rem;
   --radius-xl: 1.5rem;
 }
@@ -45,7 +46,11 @@ html {
   background: var(--bg);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
-  overflow-x: hidden;
+}
+
+.site-main {
+  flex: 1;
+  padding-top: var(--nav-offset);
 }
 
 ::selection {
@@ -291,16 +296,37 @@ html {
 
 /* Navbar */
 .nav-wrap {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 150;
-  background: rgba(0, 0, 0, 0.92);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  transition: border-color 0.35s ease;
+}
+
+.nav-wrap-glow {
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 5%,
+    rgba(0, 240, 255, 0.65) 35%,
+    rgba(167, 139, 250, 0.5) 65%,
+    transparent 95%
+  );
+  pointer-events: none;
+}
+
+.nav-wrap--scrolled {
+  background: var(--bg);
+  border-bottom-color: var(--border-strong);
 }
 
 .nav-inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -325,26 +351,39 @@ html {
 .nav-menu {
   display: none;
   align-items: center;
-  gap: 0.15rem;
-  padding: 0.35rem;
+  gap: 0.2rem;
+  padding: 0.35rem 0.4rem;
   border-radius: 9999px;
-  border: 1px solid var(--border);
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 240, 255, 0.22);
+  background: linear-gradient(
+    145deg,
+    rgba(10, 18, 36, 0.92),
+    rgba(4, 8, 16, 0.88)
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 28px rgba(0, 240, 255, 0.08);
+  backdrop-filter: blur(14px);
 }
 
 .nav-menu a {
-  padding: 0.5rem 0.9rem;
+  position: relative;
+  padding: 0.55rem 1rem;
   font-size: 0.8125rem;
   font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--muted);
   border-radius: 9999px;
-  transition: color 0.2s, background 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
 }
 
 .nav-menu a:hover {
   color: var(--neon-bright);
-  background: rgba(0, 240, 255, 0.08);
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.12);
 }
 
 .nav-actions {
@@ -355,14 +394,31 @@ html {
 
 .nav-toggle {
   display: flex;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.85rem;
+  height: 2.85rem;
   align-items: center;
   justify-content: center;
   color: var(--neon);
-  border: 1px solid var(--border-strong);
-  border-radius: 0.75rem;
-  background: rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 50%;
+  background: linear-gradient(
+    145deg,
+    rgba(0, 240, 255, 0.12),
+    rgba(0, 0, 0, 0.5)
+  );
+  box-shadow:
+    0 0 20px rgba(0, 240, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+
+.nav-toggle:hover {
+  border-color: var(--neon);
+  box-shadow: 0 0 28px rgba(0, 240, 255, 0.25);
+  transform: scale(1.04);
 }
 
 /* Mobile nav — full-screen overlay */
@@ -1676,6 +1732,7 @@ html {
     --nav-logo-h: 6.25rem;
     --nav-logo-max-w: 300px;
     --nav-bar-min-h: clamp(6rem, 12vw, 7.5rem);
+    --nav-offset: var(--nav-bar-min-h);
   }
 
   .process-row {
@@ -1729,6 +1786,7 @@ html {
     --nav-logo-h: 6.75rem;
     --nav-logo-max-w: 280px;
     --nav-bar-min-h: 7.25rem;
+    --nav-offset: 7.25rem;
   }
 }
 
@@ -1737,6 +1795,7 @@ html {
     --nav-logo-h: 7.5rem;
     --nav-logo-max-w: 320px;
     --nav-bar-min-h: 7.75rem;
+    --nav-offset: 7.75rem;
   }
 }
 
