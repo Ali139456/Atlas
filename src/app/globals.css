@@ -22,8 +22,9 @@
   --section-y: clamp(3.25rem, 7vw, 5.5rem);
   --section-gap: clamp(1.75rem, 3.5vw, 2.75rem);
   --container-max: 82rem;
-  --nav-logo-h: 4.25rem;
-  --nav-logo-max-w: min(50vw, 200px);
+  --nav-logo-h: 5.5rem;
+  --nav-logo-max-w: min(58vw, 260px);
+  --nav-bar-min-h: clamp(5.5rem, 14vw, 7rem);
   --radius: 1rem;
   --radius-xl: 1.5rem;
 }
@@ -292,8 +293,11 @@ html {
 .nav-wrap {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: transparent;
+  z-index: 150;
+  background: rgba(0, 0, 0, 0.92);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .nav-inner {
@@ -301,8 +305,8 @@ html {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  min-height: clamp(4rem, 10vw, 5.5rem);
-  padding-block: 0.5rem;
+  min-height: var(--nav-bar-min-h);
+  padding-block: 0.75rem;
 }
 
 .nav-brand {
@@ -1669,8 +1673,9 @@ html {
 
 @media (min-width: 48rem) {
   :root {
-    --nav-logo-h: 5.25rem;
-    --nav-logo-max-w: 260px;
+    --nav-logo-h: 6.25rem;
+    --nav-logo-max-w: 300px;
+    --nav-bar-min-h: clamp(6rem, 12vw, 7.5rem);
   }
 
   .process-row {
@@ -1721,15 +1726,17 @@ html {
   }
 
   :root {
-    --nav-logo-h: 5.5rem;
-    --nav-logo-max-w: 220px;
+    --nav-logo-h: 6.75rem;
+    --nav-logo-max-w: 280px;
+    --nav-bar-min-h: 7.25rem;
   }
 }
 
 @media (min-width: 80rem) {
   :root {
-    --nav-logo-h: 6rem;
-    --nav-logo-max-w: 260px;
+    --nav-logo-h: 7.5rem;
+    --nav-logo-max-w: 320px;
+    --nav-bar-min-h: 7.75rem;
   }
 }
 
