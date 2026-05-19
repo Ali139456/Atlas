@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { mission, stats } from "@/lib/site-content";
+import { AnimatedStats } from "@/components/animated-stats";
+import { mission } from "@/lib/site-content";
 
 export function MissionSection() {
   return (
@@ -26,19 +27,7 @@ export function MissionSection() {
           </div>
         </div>
 
-        <div className="stats-row section-body">
-          {stats.map((s) => (
-            <div key={s.label} className="glass-strong glass-hover stat-block">
-              <p className="num text-gradient-neon">
-                {s.value}
-                <span className="text-2xl sm:text-3xl">{s.suffix}</span>
-              </p>
-              <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
-                {s.label}
-              </p>
-            </div>
-          ))}
-        </div>
+        <AnimatedStats />
       </div>
     </section>
   );

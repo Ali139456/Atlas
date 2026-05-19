@@ -16,14 +16,17 @@ export const metadata: Metadata = {
     template: "%s | Atlas Global Finance",
   },
   description:
-    "Virtual bookkeeping, financial reporting, and CFO advisory. GAAP-compliant, 100% remote — financial clarity wherever you are.",
+    "Accounting outsourcing for AP, AR, bookkeeping, payroll, reconciliations, and financial reporting. QuickBooks, Xero, and NetSuite for US businesses.",
   keywords: [
-    "virtual bookkeeping",
+    "accounting outsourcing",
+    "accounts payable",
+    "accounts receivable",
+    "bookkeeping services",
+    "payroll processing",
     "financial reporting",
     "QuickBooks",
     "Xero",
-    "CFO advisory",
-    "GAAP",
+    "NetSuite",
   ],
 };
 
@@ -34,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full overflow-x-clip`}>
-      <body className="site-body flex min-h-full max-w-[100vw] flex-col antialiased">
+      <body id="top" className="site-body flex min-h-full max-w-[100vw] flex-col antialiased">
         <ScrollToTop />
         {children}
       </body>

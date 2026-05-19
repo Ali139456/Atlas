@@ -1,42 +1,39 @@
 import Image from "next/image";
 import Link from "next/link";
-import { navLinks, site } from "@/lib/site-content";
+import { homeAnchors, navLinks, site } from "@/lib/site-content";
 
 const linkGroups = [
   {
     title: "Services",
     links: [
-      { href: "#services", label: "Bookkeeping" },
-      { href: "#services", label: "Reporting" },
-      { href: "#pricing", label: "Pricing" },
+      { href: "/services/owners-developers", label: "Owners & Developers" },
+      { href: "/services/property-management", label: "Property Management" },
+      { href: "/services/asset-management", label: "Asset Management" },
+      { href: "/services/investors", label: "Investors" },
+      { href: "/pricing", label: "Pricing" },
     ],
   },
   {
     title: "Company",
     links: [
-      { href: "#mission", label: "About" },
-      { href: "#process", label: "Process" },
-      { href: "#faq", label: "FAQ" },
+      { href: homeAnchors.mission, label: "About" },
+      { href: homeAnchors.process, label: "Process" },
+      { href: homeAnchors.faq, label: "FAQ" },
     ],
   },
-  {
-    title: "Legal",
-    links: [
-      { href: "#", label: "Privacy" },
-      { href: "#", label: "Terms" },
-    ],
-  },
-];
+] as const;
 
 export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="site-container footer-inner">
         <div className="footer-main">
-          <div className="footer-brand">
-            <Link href="/" aria-label={`${site.brand} — home`} className="footer-logo-link">
+          <div
+            className="footer-brand"
+          >
+            <Link href="/" aria-label={`${site.brand} home`} className="footer-logo-link">
               <Image
-                src="/atlas-logo.png"
+                src={site.logo}
                 alt=""
                 width={400}
                 height={500}
@@ -44,10 +41,10 @@ export function SiteFooter() {
               />
             </Link>
             <p className="footer-tagline">
-              Precision virtual bookkeeping and financial reporting for businesses that
-              demand excellence.
+              Accounting and finance outsourcing: AP, AR, bookkeeping, payroll, reconciliations,
+              and reporting for growing businesses.
             </p>
-            <Link href="#contact" className="footer-cta">
+            <Link href={homeAnchors.contact} className="footer-cta">
               Schedule a consultation →
             </Link>
           </div>
@@ -66,15 +63,38 @@ export function SiteFooter() {
               </div>
             ))}
 
-            <div className="footer-col">
+            <div className="footer-col footer-col--contact">
               <p className="footer-col-title">Contact</p>
               <ul className="footer-contact-list">
-                <li>{site.address}</li>
-                <li>
-                  <a href={`tel:${site.phone.replace(/\D/g, "")}`}>{site.phone}</a>
+                <li className="footer-contact-item">
+                  <span className="footer-contact-icon" aria-hidden>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z" />
+                      <circle cx="12" cy="10" r="2.5" />
+                    </svg>
+                  </span>
+                  <span className="footer-contact-value">{site.address}</span>
                 </li>
-                <li>
-                  <a href={`mailto:${site.email}`}>{site.email}</a>
+                <li className="footer-contact-item">
+                  <span className="footer-contact-icon" aria-hidden>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M5 4h4l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v4c0 1-1 2-2 2-2.8A16 16 0 0 1 3.8 6C3 6 2 5 2 4V4z" />
+                    </svg>
+                  </span>
+                  <a href={`tel:${site.phone.replace(/\D/g, "")}`} className="footer-contact-value">
+                    {site.phone}
+                  </a>
+                </li>
+                <li className="footer-contact-item">
+                  <span className="footer-contact-icon" aria-hidden>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <path d="M3 7l9 6 9-6" />
+                    </svg>
+                  </span>
+                  <a href={`mailto:${site.email}`} className="footer-contact-value">
+                    {site.email}
+                  </a>
                 </li>
               </ul>
             </div>
@@ -92,7 +112,10 @@ export function SiteFooter() {
               </Link>
             ))}
           </nav>
-          <a href="#" className="footer-top-link">
+          <a href="#top" className="footer-top-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+              <path d="M12 19V5M5 12l7-7 7 7" />
+            </svg>
             Back to top
           </a>
         </div>

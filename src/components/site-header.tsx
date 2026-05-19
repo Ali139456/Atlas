@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { NavServicesMenu } from "@/components/nav-services-menu";
 import { navLinks, site } from "@/lib/site-content";
 
 export function SiteHeader() {
@@ -42,7 +43,7 @@ export function SiteHeader() {
           <div className="nav-inner">
             <Link href="/" aria-label="Atlas Global Finance home" className="nav-brand shrink-0">
               <Image
-                src="/atlas-logo.png"
+                src={site.logo}
                 alt=""
                 width={400}
                 height={500}
@@ -52,6 +53,7 @@ export function SiteHeader() {
             </Link>
 
             <nav className="nav-menu" aria-label="Main">
+              <NavServicesMenu />
               {navLinks.map((l) => (
                 <Link key={l.href} href={l.href}>
                   {l.label}
@@ -60,10 +62,10 @@ export function SiteHeader() {
             </nav>
 
             <div className="nav-actions">
-              <Link href="#contact" className="btn-outline !py-2.5 !px-5 !text-[0.65rem]">
+              <Link href="/#contact" className="btn-outline !py-2.5 !px-5 !text-[0.65rem]">
                 Get started
               </Link>
-              <Link href="#contact" className="btn-neon !py-2.5 !px-5 !text-[0.65rem]">
+              <Link href="/#contact" className="btn-neon !py-2.5 !px-5 !text-[0.65rem]">
                 Join today
               </Link>
             </div>
@@ -99,7 +101,7 @@ export function SiteHeader() {
             <div className="nav-overlay-top">
               <Link href="/" aria-label="Atlas Global Finance home" className="nav-brand" onClick={close}>
                 <Image
-                  src="/atlas-logo.png"
+                  src={site.logo}
                   alt=""
                   width={400}
                   height={500}
@@ -124,12 +126,13 @@ export function SiteHeader() {
             </div>
 
             <nav className="nav-overlay-nav" aria-label="Mobile">
+              <NavServicesMenu variant="mobile" onNavigate={close} />
               {navLinks.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
                   className={`nav-overlay-link ${
-                    l.href === "#contact" ? "nav-overlay-link--highlight" : ""
+                    l.href === "/#contact" ? "nav-overlay-link--highlight" : ""
                   }`}
                   onClick={close}
                 >
@@ -144,10 +147,10 @@ export function SiteHeader() {
             </nav>
 
             <div className="nav-overlay-actions">
-              <Link href="#contact" className="nav-overlay-btn btn-outline" onClick={close}>
+              <Link href="/#contact" className="nav-overlay-btn btn-outline" onClick={close}>
                 Get started
               </Link>
-              <Link href="#contact" className="nav-overlay-btn btn-neon" onClick={close}>
+              <Link href="/#contact" className="nav-overlay-btn btn-neon" onClick={close}>
                 Join today
               </Link>
             </div>

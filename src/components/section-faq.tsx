@@ -10,8 +10,8 @@ export function FaqSection() {
     <section id="faq" className="relative bg-black section-pad overflow-hidden">
       <div className="blob w-[450px] h-[350px] left-1/2 -translate-x-1/2 bottom-0 bg-cyan-500/8" aria-hidden />
       <div className="site-container relative z-10">
-        <div className="section-intro-center">
-          <p className="eyebrow-pill mx-auto">Query section</p>
+        <div className="section-intro">
+          <p className="eyebrow-pill">Query section</p>
           <h2 className="display-lg section-title text-white">
             Commonly asked <span className="text-gradient-neon">questions</span>
           </h2>

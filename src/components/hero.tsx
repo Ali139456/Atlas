@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HeroHeadline } from "@/components/hero-headline";
 import { hero, images } from "@/lib/site-content";
 import { MarqueeBand } from "@/components/marquee-band";
 
@@ -8,26 +9,26 @@ export function Hero() {
     <>
       <section className="hero-wrap bg-mesh bg-grid relative">
         <div
-          className="blob w-[600px] h-[500px] left-1/2 -translate-x-1/2 -top-32 bg-cyan-400/15"
+          className="blob w-[600px] h-[500px] left-1/2 -translate-x-1/2 -top-32 bg-cyan-400/8"
           aria-hidden
         />
         <div className="site-container relative z-10">
           <div className="hero-grid">
             <div className="hero-content">
               <p className="eyebrow-pill hero-eyebrow">{hero.eyebrow}</p>
-              <h1 className="display-xl mt-5 text-white">
-                {hero.title}
-                <br />
-                <span className="text-gradient-neon">{hero.titleAccent}</span>
-              </h1>
+              <HeroHeadline
+                title={hero.title}
+                titleAccent={hero.titleAccent}
+                titleSuffix={hero.titleSuffix}
+              />
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-[var(--muted)]">
                 {hero.description}
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Link href="#contact" className="btn-neon">
+                <Link href="/#contact" className="btn-neon">
                   {hero.primaryCta}
                 </Link>
-                <Link href="#services" className="btn-outline">
+                <Link href="/#services" className="btn-outline">
                   {hero.secondaryCta}
                 </Link>
               </div>
@@ -63,12 +64,12 @@ export function Hero() {
                       Atlas Global Finance
                     </p>
                     <p className="mt-1 text-sm text-zinc-300">
-                      Virtual · GAAP-ready · Secure
+                      AP · AR · Payroll · Reporting
                     </p>
                   </div>
                 </div>
                 <div className="hero-float-card hero-float-badge glass absolute -top-2 right-0 z-20 sm:-right-4">
-                  Connect your experts
+                  Outsourced finance team
                 </div>
                 <div className="hero-float-card hero-float-stat glass absolute -bottom-4 -left-2 z-20 sm:-left-6">
                   <p className="text-2xl font-bold text-gradient-neon">48h</p>

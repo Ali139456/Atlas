@@ -15,7 +15,7 @@ export function ProcessSection() {
             </h2>
             <p className="mt-4 text-[var(--muted)]">{process.description}</p>
           </div>
-          <Link href="#contact" className="btn-outline shrink-0">
+          <Link href="/#contact" className="btn-outline shrink-0">
             Work with us
           </Link>
         </div>
@@ -29,9 +29,6 @@ export function ProcessSection() {
                 </span>
                 <h3 className="mt-4 text-xl font-semibold text-white">{step.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">{step.body}</p>
-                <Link href="#contact" className="btn-link mt-6">
-                  Click here →
-                </Link>
               </article>
             </li>
           ))}

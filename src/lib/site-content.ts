@@ -1,20 +1,33 @@
 export const site = {
   brand: "Atlas Global Finance",
+  logo: "/atlas-logo.png",
   email: "hello@atlasglobalfinance.com",
-  tagline: "Virtual Bookkeeping & Financial Reporting",
+  tagline: "Accounting & Finance Outsourcing",
   phone: "+1 (555) 000-0000",
-  address: "Remote-first · Serving US businesses nationwide",
+  address: "Remote-first · US, Canada & worldwide",
 } as const;
 
 export const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#mission", label: "About" },
-  { href: "#features", label: "Features" },
-  { href: "#process", label: "Process" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#mission", label: "About" },
+  { href: "/#features", label: "Why us" },
+  { href: "/#process", label: "Process" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#contact", label: "Contact" },
 ] as const;
+
+/** Hash links that must include `/` so they work from any page. */
+export const homeAnchors = {
+  contact: "/#contact",
+  services: "/#services",
+  mission: "/#mission",
+  features: "/#features",
+  process: "/#process",
+  faq: "/#faq",
+  industries: "/#industries",
+  roles: "/#roles",
+  standards: "/#standards",
+} as const;
 
 export const images = {
   hero: "/images/hero-banner.png",
@@ -25,77 +38,91 @@ export const images = {
 } as const;
 
 export const hero = {
-  eyebrow: "Business Goals",
-  title: "Reach the next",
-  titleAccent: "level of clarity.",
+  eyebrow: "Accounting outsourcing",
+  title: "Finance &",
+  titleAccent: "bookkeeping",
+  titleSuffix: "done for you.",
   description:
-    "Precision virtual bookkeeping and GAAP-ready reporting — built for founders who refuse to fly blind on their numbers.",
-  primaryCta: "Get started now",
-  secondaryCta: "Explore services",
-  trustLine: "Trusted by growth-minded businesses across the US",
+    "Outsource accounts payable, receivable, payroll, reconciliations, and reporting on major ERP platforms with delivery built for growing businesses.",
+  primaryCta: "Free consultation",
+  secondaryCta: "View services",
+  trustLine: "Trusted outsourcing partner for businesses from $1M–$500M in revenue",
   image: images.hero,
-  imageAlt: "Finance team reviewing dashboards in a modern office",
+  imageAlt: "Accounting team managing financial reports and dashboards",
 } as const;
 
 export const marqueeItems = [
-  "Strategic Reporting",
-  "Cash Flow Visibility",
-  "GAAP Compliance",
-  "Virtual Bookkeeping",
-  "CFO Advisory",
-  "Tax-Ready Books",
-  "QuickBooks & Xero",
-  "Monthly Close",
+  "Accounts Payable",
+  "Accounts Receivable",
+  "Bookkeeping",
+  "Payroll Processing",
+  "Bank Reconciliations",
+  "Financial Reporting",
+  "Management Dashboards",
+  "QuickBooks · Xero",
+  "NetSuite · SAP",
+  "Year-End Close",
 ] as const;
 
 export const stats = [
-  { value: "100", suffix: "%", label: "Virtual & remote delivery" },
-  { value: "48", suffix: "h", label: "Average report turnaround" },
-  { value: "6", suffix: "+", label: "Core service pillars" },
-  { value: "99", suffix: "%", label: "Client retention focus" },
+  { value: "40", suffix: "–60%", label: "Typical cost savings vs in-house" },
+  { value: "8", suffix: "+", label: "Core finance processes covered" },
+  { value: "48", suffix: "h", label: "Report turnaround on Growth plans" },
+  { value: "100", suffix: "%", label: "Remote delivery & secure portals" },
 ] as const;
 
 export const mission = {
-  eyebrow: "Our Mission",
-  lead: "Our experienced team provides tailored",
-  highlight1: "bookkeeping support",
-  mid: "and",
-  highlight2: "smart reporting",
-  end: "to help businesses operate with total financial confidence.",
+  eyebrow: "About Atlas",
+  lead: "We provide end-to-end",
+  highlight1: "accounting outsourcing",
+  mid: ", from daily bookkeeping and AP/AR to",
+  highlight2: "financial reporting & budgeting",
+  end: ", so you scale finance without scaling overhead.",
   image: images.mission,
-  imageAlt: "Professional finance team collaborating",
+  imageAlt: "Finance professionals reviewing accounts and reports",
 } as const;
 
+export const industries = [
+  "CPA & accounting firms",
+  "Real estate",
+  "Logistics",
+  "Retail & eCommerce",
+  "IT & professional services",
+  "Healthcare",
+  "Manufacturing",
+  "Startups & SMBs",
+] as const;
+
 export const features = {
-  eyebrow: "Our Features",
-  title: "Creating",
-  titleAccent: "Financial Futures",
+  eyebrow: "Why outsource",
+  title: "Benefits of",
+  titleAccent: "outsourced finance",
   items: [
     {
-      title: "Expert Skills",
+      title: "40–60% cost savings",
       description:
-        "Dedicated specialists — not bots — who understand your industry, chart of accounts, and growth stage.",
+        "Reduce in-house headcount and overhead while maintaining accuracy. Pay for the hours and scope you actually need.",
       icon: "expert",
       image: "/images/feature-expert.png",
     },
     {
-      title: "Our Process",
+      title: "Scalable engagements",
       description:
-        "Structured onboarding, secure portal access, and a repeatable monthly close you can count on.",
+        "Full-time, part-time, or as-needed support. Scale up for month-end, year-end, or busy seasons without long hiring cycles.",
       icon: "process",
       image: "/images/feature-process.png",
     },
     {
-      title: "Main Focus",
+      title: "Dedicated team",
       description:
-        "Clean books, reconciled accounts, and reports that tell the real story behind your business.",
+        "Bookkeepers and accountants who live in AP, AR, payroll, and close, not generic ticket queues or one-size automation.",
       icon: "focus",
       image: "/images/feature-focus.png",
     },
     {
-      title: "Our Network",
+      title: "Multi-ERP expertise",
       description:
-        "QuickBooks Online, Xero, and secure cloud workflows that keep your data protected and accessible.",
+        "QuickBooks Online, Xero, NetSuite, SAP, and secure cloud workflows. We work inside the tools your business already uses.",
       icon: "network",
       image: "/images/feature-network.png",
     },
@@ -103,48 +130,72 @@ export const features = {
 } as const;
 
 export const services = {
-  eyebrow: "Professional Guidance",
-  title: "Precision",
-  titleAccent: "Tailored Services",
+  eyebrow: "Our services",
+  title: "Finance processes",
+  titleAccent: "we run for you",
   description:
-    "From monthly books to CFO-level insight — every engagement is scoped to how you actually run your business.",
+    "The same core accounting and finance workflows trusted by outsourcing firms worldwide, delivered remotely with documented processes and CPA-ready outputs.",
   image: images.services,
-  imageAlt: "Virtual bookkeeping workstation with financial dashboards",
+  imageAlt: "Outsourced accounting and bookkeeping workspace",
   items: [
     {
-      title: "Virtual Bookkeeping",
+      title: "Accounts Payable",
       description:
-        "Full-service monthly bookkeeping including categorization, reconciliation, AP/AR, and payroll support.",
+        "Invoice entry, PO matching, vendor reconciliations, disbursement processing, and timely payments without late penalties.",
+      icon: "payable",
+    },
+    {
+      title: "Accounts Receivable",
+      description:
+        "Customer billing, cash application, aging reports, and collections support to keep cash flow predictable.",
+      icon: "receivable",
+    },
+    {
+      title: "Bookkeeping & general accounting",
+      description:
+        "Daily transaction recording, categorization, journal entries, and clean ledgers maintained to GAAP standards.",
       icon: "book",
     },
     {
-      title: "Financial Reporting",
+      title: "Payroll processing",
       description:
-        "P&L, balance sheets, and cash flow statements — GAAP-aligned and delivered on schedule.",
+        "Gross-to-net calculations, tax withholdings, compliance updates, and electronic filing of payroll returns.",
+      icon: "payroll",
+    },
+    {
+      title: "Bank & account reconciliations",
+      description:
+        "Monthly bank, credit card, and balance-sheet reconciliations with variance research and documentation.",
+      icon: "reconcile",
+    },
+    {
+      title: "Financial reporting",
+      description:
+        "P&L, balance sheet, cash flow, and custom management reports delivered on your close calendar.",
       icon: "chart",
     },
     {
-      title: "Management Dashboards",
+      title: "Dashboards & budgeting",
       description:
-        "Real-time KPIs, cash position, and trend visibility so leadership can decide with confidence.",
+        "KPI dashboards, variance analysis, forecasts, and budget models leadership can act on.",
       icon: "dashboard",
     },
     {
-      title: "Catch-Up Bookkeeping",
+      title: "Inventory & fixed assets",
       description:
-        "Months or years behind? We restore order fast with documented, audit-ready records.",
+        "Inventory tracking support, travel & expense processing, and fixed-asset register maintenance.",
       icon: "folder",
     },
     {
-      title: "Tax-Ready Financials",
+      title: "Catch-up & year-end close",
       description:
-        "Organized, reconciled books your CPA will love — less stress, fewer surprises at filing time.",
+        "Backlog cleanup, audit-ready year-end close, and controller-level review before filing season.",
       icon: "tax",
     },
     {
-      title: "CFO Advisory",
+      title: "CFO & controller advisory",
       description:
-        "Forecasting, budgeting, and strategic guidance without the full-time executive price tag.",
+        "Financial modeling, strategic analysis, and part-time controller oversight without a full-time hire.",
       icon: "advisory",
     },
   ],
@@ -152,53 +203,125 @@ export const services = {
 
 export const standards = {
   eyebrow: "Why Atlas",
-  title: "The Standard",
-  titleAccent: "Others Aspire To",
+  title: "Built like a leading",
+  titleAccent: "outsourcing firm",
+  description:
+    "Enterprise-grade delivery, secure systems, and clear engagement models without the overhead of building an in-house finance team.",
   items: [
     {
       num: "01",
-      title: "Dedicated Financial Professionals",
-      body: "Real bookkeepers who know your business — not offshore ticket queues or generic automation.",
+      title: "Process-driven delivery",
+      body: "Documented workflows for AP, AR, payroll, reconciliations, and close with consistent quality every month.",
     },
     {
       num: "02",
-      title: "Secure Cloud Infrastructure",
-      body: "Bank-level encryption, role-based access, and industry-leading platforms for every engagement.",
+      title: "Secure cloud operations",
+      body: "Role-based access, encrypted portals, and industry-standard platforms to protect your financial data.",
     },
     {
       num: "03",
-      title: "Transparent Flat-Rate Pricing",
-      body: "Clear tiers, no surprise invoices — you always know what you pay and what you get.",
+      title: "Transparent engagement models",
+      body: "Clear scope, flat-rate tiers, and FTE or hourly options with no surprise invoices.",
     },
     {
       num: "04",
-      title: "Responsive Communication",
-      body: "Questions answered within 24 hours with monthly reviews and proactive updates.",
+      title: "US-friendly communication",
+      body: "Responsive support, scheduled reviews, and month-end status updates your team and CPA can rely on.",
+    },
+  ],
+} as const;
+
+export const popularRoles = {
+  eyebrow: "Outsourced talent",
+  title: "Popular",
+  titleAccent: "roles",
+  description:
+    "Dedicated finance professionals placed in your workflows, from AP/AR through property accounting and lease administration.",
+  items: [
+    {
+      title: "Accounts Payable Specialist",
+      description:
+        "2- and 3-way invoice matching with POs and GRs, utility and vendor bill entry, expense coding, and vendor reconciliations.",
+    },
+    {
+      title: "Accounts Receivable Specialist",
+      description:
+        "Invoicing, rent runs, tenant and customer setup, late-fee processing, and collection support aligned to your PM or ERP.",
+    },
+    {
+      title: "Property Accountant",
+      description:
+        "General ledger accounting, payroll support, bank reconciliations, month-end close, and reporting with variance analysis.",
+    },
+    {
+      title: "Sr. Property Accountant",
+      description:
+        "Cash flow projections, budget prep, expense variance analysis, balance sheet review, and controller support.",
+    },
+    {
+      title: "Financial Analyst",
+      description:
+        "Financial modeling, business plans, market research, and analysis of statements for owners and asset managers.",
+    },
+    {
+      title: "Lease Administrator",
+      description:
+        "Lease abstraction, residential and commercial real estate accounting, including CAM reconciliation support.",
+    },
+  ],
+} as const;
+
+export const industriesServed = {
+  eyebrow: "Who we serve",
+  title: "Other industries",
+  titleAccent: "served",
+  description:
+    "Outsourced accounting and finance support tailored to how your industry books, bills, and reports.",
+  items: [
+    {
+      title: "Construction",
+      image:
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
+    },
+    {
+      title: "Logistics & transportation",
+      image:
+        "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80",
+    },
+    {
+      title: "Retail",
+      image:
+        "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
+    },
+    {
+      title: "CPA firms",
+      image:
+        "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80",
     },
   ],
 } as const;
 
 export const process = {
   eyebrow: "How it works",
-  title: "Your growth journey",
-  titleAccent: "starts here",
+  title: "Simple onboarding,",
+  titleAccent: "steady execution",
   description:
-    "Simple onboarding, secure handoff, and reliable monthly execution — so you stay focused on running the business.",
+    "We mirror proven outsourcing playbooks: discovery, secure handoff, then recurring delivery on your calendar.",
   steps: [
     {
       num: "01",
-      title: "Free Consultation",
-      body: "We map your books, tools, and goals in a no-obligation discovery call.",
+      title: "Discovery & scoping",
+      body: "We map your ERP, chart of accounts, AP/AR volume, payroll needs, and reporting deadlines on a free call.",
     },
     {
       num: "02",
-      title: "Secure Onboarding",
-      body: "Portal setup, access controls, and a clean starting baseline for your accounts.",
+      title: "Secure transition",
+      body: "Portal setup, access controls, process documentation, and a reconciled opening baseline.",
     },
     {
       num: "03",
-      title: "Ongoing Execution",
-      body: "Monthly close, reporting, and advisory touchpoints — delivered on rhythm.",
+      title: "Ongoing outsourcing",
+      body: "Daily/weekly processing plus month-end close, reports, and advisory touchpoints on rhythm.",
     },
   ],
 } as const;
@@ -208,11 +331,11 @@ export const pricingPlans = [
     name: "Starter",
     price: "$499",
     period: "/month",
-    billing: "Monthly billing",
-    description: "For solopreneurs and early-stage businesses.",
+    billing: "Monthly · part-time support",
+    description: "Bookkeeping & reconciliations for smaller volumes.",
     features: [
-      "Monthly bookkeeping",
-      "Bank reconciliation",
+      "Bookkeeping & categorization",
+      "Bank reconciliations",
       "P&L & balance sheet",
       "Email support",
       "Secure client portal",
@@ -224,14 +347,14 @@ export const pricingPlans = [
     name: "Growth",
     price: "$899",
     period: "/month",
-    billing: "Monthly billing",
-    description: "For growing teams that need deeper reporting.",
+    billing: "Monthly · dedicated bookkeeper",
+    description: "AP/AR, payroll support, and management reporting.",
     features: [
       "Everything in Starter",
-      "Cash flow statements",
-      "Management dashboard",
+      "Accounts payable & receivable",
+      "Payroll processing support",
+      "Cash flow & dashboards",
       "48h report turnaround",
-      "Dedicated bookkeeper",
       "Priority support",
     ],
     highlighted: true,
@@ -241,14 +364,14 @@ export const pricingPlans = [
     name: "Enterprise",
     price: "Custom",
     period: "",
-    billing: "Tailored engagement",
-    description: "Multi-entity, catch-up, and CFO advisory.",
+    billing: "FTE / multi-entity engagements",
+    description: "Controller services, catch-up, and multi-ERP teams.",
     features: [
-      "Catch-up bookkeeping",
-      "Tax-ready financials",
-      "CFO advisory hours",
-      "Custom integrations",
-      "Multi-entity support",
+      "Catch-up & year-end close",
+      "Financial modeling & budgeting",
+      "CFO / controller hours",
+      "NetSuite · SAP · multi-entity",
+      "Inventory & fixed assets",
       "Dedicated account lead",
     ],
     highlighted: false,
@@ -257,41 +380,41 @@ export const pricingPlans = [
 ] as const;
 
 export const pricingPerks = [
-  "No hidden fees",
-  "Cancel anytime",
+  "40–60% savings vs in-house",
+  "FTE or hourly models",
   "Free consultation call",
 ] as const;
 
 export const paymentMethods = [
   { name: "Credit & debit cards", detail: "Visa, Mastercard, Amex" },
   { name: "ACH bank transfer", detail: "US business checking" },
-  { name: "Wire transfer", detail: "For annual plans" },
+  { name: "Wire transfer", detail: "For annual engagements" },
   { name: "Invoicing", detail: "Net-15 for approved accounts" },
 ] as const;
 
 export const faqs = [
   {
-    q: "What services do your financial consultants provide?",
-    a: "We deliver virtual bookkeeping, GAAP-aligned financial reporting, management dashboards, catch-up work, tax-ready financials, and CFO advisory — all scoped to your business size and tools.",
+    q: "What accounting processes can you outsource?",
+    a: "We handle accounts payable, accounts receivable, bookkeeping, payroll, reconciliations, financial reporting, dashboards, budgeting, inventory support, fixed assets, catch-up work, and controller-level advisory.",
   },
   {
-    q: "Do you offer custom financial planning?",
-    a: "Yes. Growth and Enterprise plans include forecasting, budget models, and strategic reviews tailored to your revenue model and operating cadence.",
+    q: "Which software platforms do you support?",
+    a: "QuickBooks Online, Xero, NetSuite, SAP, and other cloud ERPs. We work inside your existing stack with documented, secure access.",
   },
   {
-    q: "Which accounting platforms do you support?",
-    a: "We primarily work in QuickBooks Online and Xero, with secure portal access and documented workflows for your team and CPA.",
+    q: "Can you work with my CPA or accounting firm?",
+    a: "Yes. We deliver tax-ready books, reconciliations, and schedules your CPA needs. Many of our clients are businesses and firms that white-label or supplement outsourced capacity.",
   },
   {
-    q: "How quickly can you deliver monthly reports?",
-    a: "Most Growth clients receive reports within 48 hours of month-end close. Timelines are confirmed during onboarding.",
+    q: "Do you offer full-time and part-time outsourcing?",
+    a: "Absolutely. Engagements can be full-time equivalent, part-time monthly, or project-based for catch-up, year-end, or seasonal spikes.",
   },
   {
-    q: "Can you help if my books are behind?",
-    a: "Absolutely. Catch-up engagements are a core specialty — we restore order with reconciled, documented records.",
+    q: "What industries do you serve?",
+    a: "CPA firms, real estate, logistics, retail, IT, healthcare, manufacturing, and growth-stage businesses typically between $1M and $500M in annual revenue.",
   },
   {
-    q: "How do I get started?",
-    a: "Book a free consultation via the form below. We'll review your stack, timeline, and recommend the right plan.",
+    q: "How do we get started?",
+    a: "Book a free consultation below. We'll review your volumes, tools, and timeline, then recommend the right plan or custom FTE model.",
   },
 ] as const;

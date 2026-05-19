@@ -63,7 +63,7 @@ function PricingCard({
 
       <div className="pricing-card-foot">
         <Link
-          href="#contact"
+          href="/#contact"
           className={`pricing-card-cta w-full text-center ${plan.highlighted ? "btn-neon" : "btn-outline"}`}
         >
           {plan.cta}
@@ -132,14 +132,14 @@ export function PricingSection() {
     <section id="pricing" className="relative bg-black section-pad overflow-hidden">
       <div className="blob w-[550px] h-[400px] right-0 top-1/2 -translate-y-1/2 bg-cyan-500/10" aria-hidden />
       <div className="site-container relative z-10">
-        <div className="section-intro-center">
-          <p className="eyebrow-pill mx-auto">Select your plan</p>
-          <h2 className="display-lg section-title text-white">
+        <div className="section-intro">
+          <p className="eyebrow-pill">Select your plan</p>
+          <h2 className="display-lg section-title pricing-page-title text-white">
             Flexible pricing{" "}
             <span className="text-gradient-neon">that fits you</span>
           </h2>
           <p className="mt-4 text-[var(--muted)]">
-            Flat-rate monthly packages — transparent, scalable, no surprise invoices.
+            Flat-rate monthly packages: transparent, scalable, no surprise invoices.
           </p>
         </div>
 
@@ -201,16 +201,16 @@ export function PricingSection() {
           ))}
         </ul>
 
-        <div className="glass-strong section-body p-5 sm:p-6">
-          <h3 className="text-lg font-semibold text-white">Payment options</h3>
-          <div className="mt-6 grid grid-cols-2 gap-3">
+        <div className="pricing-payments section-body">
+          <p className="pricing-payments-label">Payment options</p>
+          <ul className="pricing-payments-row">
             {paymentMethods.map((m) => (
-              <div key={m.name} className="payment-tile rounded-xl border border-[var(--border)] p-4">
-                <p className="font-medium text-white">{m.name}</p>
-                <p className="mt-1 text-xs text-[var(--muted)]">{m.detail}</p>
-              </div>
+              <li key={m.name} className="pricing-payment-chip">
+                <span className="pricing-payment-name">{m.name}</span>
+                <span className="pricing-payment-detail">{m.detail}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>

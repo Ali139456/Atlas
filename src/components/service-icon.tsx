@@ -4,7 +4,11 @@ type IconKey =
   | "dashboard"
   | "folder"
   | "tax"
-  | "advisory";
+  | "advisory"
+  | "payable"
+  | "receivable"
+  | "payroll"
+  | "reconcile";
 
 export function ServiceIcon({
   name,
@@ -23,6 +27,33 @@ export function ServiceIcon({
   };
 
   switch (name) {
+    case "payable":
+      return (
+        <svg {...props}>
+          <path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9l-6-6z" />
+          <path d="M14 3v6h6M8 13h8M8 17h5" />
+        </svg>
+      );
+    case "receivable":
+      return (
+        <svg {...props}>
+          <path d="M12 3v18M7 8l5-5 5 5M7 16l5 5 5-5" />
+        </svg>
+      );
+    case "payroll":
+      return (
+        <svg {...props}>
+          <path d="M16 11c1.66 0 3-1.34 3-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zM8 11c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3z" />
+          <path d="M8 13c-2.67 0-8 1.34-8 4v2h8M16 13c-.67 0-1.4.05-2.17.15C18.6 14.34 23 15.68 23 18v2h-7" />
+        </svg>
+      );
+    case "reconcile":
+      return (
+        <svg {...props}>
+          <path d="M4 7h16M4 12h10M4 17h6" />
+          <path d="M18 12l2 2 4-4" />
+        </svg>
+      );
     case "book":
       return (
         <svg {...props}>

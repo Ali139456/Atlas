@@ -1,32 +1,26 @@
+import { AnimatedStandardsList } from "@/components/animated-standards-num";
 import { standards } from "@/lib/site-content";
-import { SectionShell } from "@/components/section-shell";
 
 export function StandardsSection() {
   return (
-    <SectionShell id="standards" glow="right">
-      <div className="section-header-left">
-        <p className="section-eyebrow">{standards.eyebrow}</p>
-        <h2 className="section-heading mt-6 text-white">
-          {standards.title}{" "}
-          <span className="gradient-neon-purple">{standards.titleAccent}</span>
-        </h2>
-      </div>
+    <section id="standards" className="standards-section relative bg-mesh bg-grid section-pad overflow-hidden">
+      <div
+        className="blob w-[520px] h-[400px] -right-1/4 top-1/3 -translate-y-1/2 bg-cyan-500/8"
+        aria-hidden
+      />
+      <div className="blob w-[380px] h-[320px] -left-1/4 bottom-0 bg-purple-500/10" aria-hidden />
+      <div className="site-container relative z-10">
+        <div className="standards-intro section-intro">
+          <p className="eyebrow-pill">{standards.eyebrow}</p>
+          <h2 className="display-lg section-title text-white">
+            {standards.title}{" "}
+            <span className="text-gradient-neon">{standards.titleAccent}</span>
+          </h2>
+          <p className="standards-lead">{standards.description}</p>
+        </div>
 
-      <ol className="standards-grid mt-12 sm:mt-16">
-        {standards.items.map((item) => (
-          <li key={item.num}>
-            <article className="glass-card h-full p-5 sm:p-6">
-              <span className="standard-num gradient-neon">{item.num}</span>
-              <h3 className="mt-4 text-lg font-semibold text-white sm:text-xl">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--muted)] sm:mt-3 sm:text-base">
-                {item.body}
-              </p>
-            </article>
-          </li>
-        ))}
-      </ol>
-    </SectionShell>
+        <AnimatedStandardsList items={standards.items} />
+      </div>
+    </section>
   );
 }
