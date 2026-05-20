@@ -33,7 +33,7 @@ export function ServiceCategoriesSection() {
                 {category.summary}
               </p>
               <span className="service-category-card-link btn-link mt-4">
-                View sub-services →
+                View more →
               </span>
               <span className="service-category-card-count">
                 {category.subServices.length} services

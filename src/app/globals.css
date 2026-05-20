@@ -812,6 +812,17 @@ html {
   align-items: center;
 }
 
+@media (min-width: 48rem) and (max-width: 63.9375rem) {
+  .mission-text {
+    font-size: clamp(1.0625rem, 2.2vw, 1.25rem);
+    line-height: 1.75;
+  }
+
+  .mission-highlight {
+    font-size: inherit;
+  }
+}
+
 @media (min-width: 64rem) {
   .mission-layout {
     grid-template-columns: 1.1fr 1fr;
@@ -1033,19 +1044,21 @@ html {
 /* Mission */
 .mission-text {
   font-size: clamp(1.75rem, 4vw, 3rem);
-  line-height: 1.35;
+  line-height: 1.5;
   font-weight: 500;
   color: var(--muted);
 }
 
 .mission-highlight {
   display: inline;
-  padding: 0.1em 0.35em;
+  padding: 0.1em 0.3em;
   color: var(--foreground);
   background: rgba(0, 240, 255, 0.12);
   border: 1px solid var(--border-strong);
-  border-radius: 0.35em;
+  border-radius: 0.3em;
   box-shadow: none;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 /* Features grid — balanced 2×2 */
@@ -2784,6 +2797,33 @@ a.footer-contact-value:hover {
 @media (max-width: 47.9375rem) {
   .contact-meta-value {
     white-space: normal;
+  }
+
+  .mission-text {
+    font-size: 0.9375rem;
+    line-height: 1.85;
+    letter-spacing: -0.01em;
+  }
+
+  .mission-highlight {
+    padding: 0.08em 0.25em;
+    font-size: 0.9375rem;
+    font-weight: 600;
+  }
+
+  #services .service-categories-heading,
+  #features .section-title {
+    white-space: normal;
+  }
+
+  .stats-row {
+    gap: 1rem;
+  }
+}
+
+@media (hover: none) {
+  .glass-hover:hover {
+    transform: none;
   }
 }
 
