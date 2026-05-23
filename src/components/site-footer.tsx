@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { homeAnchors, navLinks, site } from "@/lib/site-content";
+import { footerBarLinks } from "@/lib/nav-menu";
+import { homeAnchors, site } from "@/lib/site-content";
 
 const linkGroups = [
   {
@@ -106,7 +107,7 @@ export function SiteFooter() {
             © {new Date().getFullYear()} {site.brand}. All rights reserved.
           </p>
           <nav className="footer-bar-nav" aria-label="Footer">
-            {navLinks.map((l) => (
+            {footerBarLinks.map((l) => (
               <Link key={l.href} href={l.href}>
                 {l.label}
               </Link>

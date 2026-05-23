@@ -10,15 +10,6 @@ export const site = {
   addressLine2: "Remote delivery US, Canada, UK & Australia",
 } as const;
 
-export const navLinks = [
-  { href: "/#features", label: "Benefits" },
-  { href: "/#services", label: "Services" },
-  { href: "/#why-us", label: "Why us" },
-  { href: "/#roles", label: "Roles" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/#contact", label: "Contact" },
-] as const;
-
 /** Hash links that must include `/` so they work from any page. */
 export const homeAnchors = {
   contact: "/#contact",

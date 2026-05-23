@@ -23,6 +23,15 @@ export const navPrimaryLinks = [
   { label: "Contact Us", href: homeAnchors.contact },
 ] as const;
 
+export const footerBarLinks: readonly NavLink[] = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: homeAnchors.whyUs },
+  { label: "Services", href: homeAnchors.services },
+  { label: "Industry", href: homeAnchors.industries },
+  { label: "Resources", href: homeAnchors.resources },
+  { label: "Contact Us", href: homeAnchors.contact },
+];
+
 export const navServicesLinks: readonly NavLink[] = serviceCategories.map((category) => ({
   label: category.shortTitle,
   href: `/services/${category.slug}`,
