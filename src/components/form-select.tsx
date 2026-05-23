@@ -64,14 +64,6 @@ export function FormSelect({ value, onChange, options, placeholder, id }: FormSe
       </button>
       {open ? (
         <ul className="form-select-menu" role="listbox" aria-labelledby={selectId}>
-          <li
-            role="option"
-            aria-selected={!value}
-            className={`form-select-option${!value ? " is-selected" : ""}`}
-            onClick={() => selectOption("")}
-          >
-            {placeholder}
-          </li>
           {options.map((option) => (
             <li
               key={option}

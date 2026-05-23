@@ -45,6 +45,27 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  color-scheme: dark;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 240, 255, 0.28) rgba(5, 8, 16, 0.95);
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background: rgba(5, 8, 16, 0.95);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.22);
+  border: 2px solid rgba(5, 8, 16, 0.95);
+  border-radius: 9999px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.38);
 }
 
 .site-body {
@@ -3112,10 +3133,11 @@ select.input-neon {
   justify-content: space-between;
   gap: 0.75rem;
   text-align: left;
+  font-size: 0.875rem;
 }
 
 .form-select-placeholder {
-  color: var(--muted-dim);
+  color: var(--muted);
 }
 
 .form-select-chevron {
@@ -3142,21 +3164,43 @@ select.input-neon {
   left: 0;
   right: 0;
   margin: 0;
-  padding: 0.35rem;
+  padding: 0.3rem;
   list-style: none;
-  max-height: 14rem;
+  max-height: 12rem;
   overflow-y: auto;
-  background: var(--bg-card-solid);
+  background: rgba(8, 14, 28, 0.98);
   border: 1px solid var(--border-strong);
   border-radius: 0.75rem;
   box-shadow: var(--shadow-card), var(--glow);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 240, 255, 0.32) rgba(0, 0, 0, 0.45);
+}
+
+.form-select-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form-select-menu::-webkit-scrollbar-track {
+  margin: 0.25rem 0;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 9999px;
+}
+
+.form-select-menu::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.28);
+  border-radius: 9999px;
+}
+
+.form-select-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.45);
 }
 
 .form-select-option {
-  padding: 0.65rem 0.85rem;
-  font-size: 0.9375rem;
-  color: var(--foreground);
-  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--muted);
+  border-radius: 0.45rem;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
 }
@@ -3164,11 +3208,11 @@ select.input-neon {
 .form-select-option:hover,
 .form-select-option:focus-visible {
   background: rgba(0, 240, 255, 0.08);
-  color: var(--neon-bright);
+  color: var(--foreground);
 }
 
 .form-select-option.is-selected {
-  background: rgba(0, 240, 255, 0.12);
+  background: rgba(0, 240, 255, 0.1);
   color: var(--neon-bright);
 }
 

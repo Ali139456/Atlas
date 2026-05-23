@@ -40,10 +40,6 @@ export function SiteFooter() {
                 className="footer-logo"
               />
             </Link>
-            <p className="footer-tagline">
-              {site.tagline}. Specialized real estate accounting and finance outsourcing for
-              owners, property managers, asset managers, and investors.
-            </p>
             <Link href={homeAnchors.contact} className="footer-cta">
               Get a no-obligation proposal →
             </Link>
