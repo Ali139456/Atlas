@@ -29,6 +29,7 @@
   --nav-logo-max-w: min(58vw, 260px);
   --nav-bar-min-h: clamp(5.5rem, 14vw, 7rem);
   --nav-top-gap: 0.75rem;
+  --nav-link-size: 0.875rem;
   --nav-offset: calc(var(--nav-bar-min-h) + var(--nav-top-gap));
   --radius: 1rem;
   --radius-xl: 1.5rem;
@@ -383,8 +384,8 @@ html {
 
 .nav-menu a {
   position: relative;
-  padding: 0.5rem 0.72rem;
-  font-size: 0.75rem;
+  padding: 0.55rem 0.8rem;
+  font-size: var(--nav-link-size);
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--muted);
@@ -445,8 +446,8 @@ html {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.5rem 0.72rem;
-  font-size: 0.75rem;
+  padding: 0.55rem 0.8rem;
+  font-size: var(--nav-link-size);
   font-weight: 500;
   color: var(--muted);
   border: none;
@@ -3839,8 +3840,8 @@ a.footer-contact-value:hover {
 
   .nav-menu a,
   .nav-dropdown-trigger {
-    padding: 0.45rem 0.5rem;
-    font-size: 0.6875rem;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8125rem;
   }
 
   .nav-mega-panel {
@@ -3879,8 +3880,8 @@ a.footer-contact-value:hover {
 
   .nav-menu a,
   .nav-dropdown-trigger {
-    padding: 0.5rem 0.85rem;
-    font-size: 0.8125rem;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.9375rem;
   }
 
   .nav-mega-grid {
