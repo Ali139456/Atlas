@@ -1,30 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
-import { footerBarLinks } from "@/lib/nav-menu";
+import { footerBarLinks, footerLinkGroups } from "@/lib/nav-menu";
 import { homeAnchors, site } from "@/lib/site-content";
 
-const linkGroups = [
-  {
-    title: "Services",
-    links: [
-      { href: "/services/owners-developers", label: "Owners & Developers" },
-      { href: "/services/property-management", label: "Property Management" },
-      { href: "/services/asset-management", label: "Asset Management" },
-      { href: "/services/investors", label: "Investors" },
-      { href: "/pricing", label: "Pricing" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { href: homeAnchors.features, label: "Benefits" },
-      { href: homeAnchors.whyUs, label: "Why us" },
-      { href: homeAnchors.roles, label: "Popular roles" },
-      { href: homeAnchors.clients, label: "Client profiles" },
-      { href: homeAnchors.resources, label: "Useful links" },
-    ],
-  },
-] as const;
+function FooterLink({
+  href,
+  label,
+  external,
+}: {
+  href: string;
+  label: string;
+  external?: boolean;
+}) {
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        {label}
+      </a>
+    );
+  }
+
+  return <Link href={href}>{label}</Link>;
+}
 
 export function SiteFooter() {
   return (
@@ -47,13 +44,13 @@ export function SiteFooter() {
           </div>
 
           <div className="footer-links-grid">
-            {linkGroups.map((group) => (
+            {footerLinkGroups.map((group) => (
               <div key={group.title} className="footer-col">
                 <p className="footer-col-title">{group.title}</p>
                 <ul>
-                  {group.links.map((l) => (
-                    <li key={l.label}>
-                      <Link href={l.href}>{l.label}</Link>
+                  {group.links.map((link) => (
+                    <li key={link.label}>
+                      <FooterLink href={link.href} label={link.label} external={link.external} />
                     </li>
                   ))}
                 </ul>
@@ -61,7 +58,7 @@ export function SiteFooter() {
             ))}
 
             <div className="footer-col footer-col--contact">
-              <p className="footer-col-title">Contact</p>
+              <p className="footer-col-title">Contact Us</p>
               <ul className="footer-contact-list">
                 <li className="footer-contact-item">
                   <span className="footer-contact-icon" aria-hidden>

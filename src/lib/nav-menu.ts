@@ -32,6 +32,55 @@ export const footerBarLinks: readonly NavLink[] = [
   { label: "Contact Us", href: homeAnchors.contact },
 ];
 
+export const footerLinkGroups = [
+  {
+    title: "Useful Links",
+    links: [
+      { label: "About Us", href: homeAnchors.whyUs },
+      { label: "Technology", href: "https://www.outsourcinghubindia.com/technology/", external: true },
+      { label: "Data Security", href: "https://www.outsourcinghubindia.com/data-security/", external: true },
+      {
+        label: "How to Outsource",
+        href: "https://www.outsourcinghubindia.com/how-to-outsource-accounting/",
+        external: true,
+      },
+      { label: "Blog", href: "https://www.outsourcinghubindia.com/blog/", external: true },
+      { label: "Careers", href: "https://www.outsourcinghubindia.com/career/", external: true },
+      { label: "CSR Policy", href: "https://www.outsourcinghubindia.com/csr-policy/", external: true },
+      { label: "Privacy Policy", href: "https://www.outsourcinghubindia.com/privacy-policy/", external: true },
+      { label: "Cookie Policy", href: "https://www.outsourcinghubindia.com/cookie-policy/", external: true },
+      { label: "Testimonials", href: "https://www.outsourcinghubindia.com/testimonials/", external: true },
+      { label: "Partnership", href: "https://www.outsourcinghubindia.com/partnership", external: true },
+    ] satisfies readonly NavLink[],
+  },
+  {
+    title: "Industries",
+    links: [
+      {
+        label: "Real Estate",
+        href: "https://www.outsourcinghubindia.com/real-estate-accountants/",
+        external: true,
+      },
+      {
+        label: "Construction",
+        href: "https://www.outsourcinghubindia.com/accounting-for-construction-companies/",
+        external: true,
+      },
+      {
+        label: "Logistics",
+        href: "https://www.outsourcinghubindia.com/logistics-transportation/",
+        external: true,
+      },
+      {
+        label: "Retail",
+        href: "https://www.outsourcinghubindia.com/retail-accounting-services/",
+        external: true,
+      },
+      { label: "CPA Firms", href: "https://www.outsourcinghubindia.com/cpa-firms/", external: true },
+    ] satisfies readonly NavLink[],
+  },
+] as const;
+
 export const navServicesLinks: readonly NavLink[] = serviceCategories.map((category) => ({
   label: category.shortTitle,
   href: `/services/${category.slug}`,
