@@ -7,7 +7,10 @@ const bodySchema = z.object({
   name: z.string().min(2).max(120),
   email: z.string().email().max(254),
   company: z.string().max(200).optional().or(z.literal("")),
+  phone: z.string().max(40).optional().or(z.literal("")),
+  industry: z.string().max(120).optional().or(z.literal("")),
   service: z.string().max(120).optional().or(z.literal("")),
+  companySize: z.string().max(40).optional().or(z.literal("")),
   message: z.string().min(10).max(5000),
 });
 
@@ -27,7 +30,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const { name, email, company, service, message } = parsed.data;
+  const { name, email, company, phone, industry, service, companySize, message } = parsed.data;
 
   let stored = false;
   const admin = createServiceRoleClient();
@@ -62,7 +65,10 @@ export async function POST(request: Request) {
         `Name: ${name}`,
         `Email: ${email}`,
         company ? `Company: ${company}` : null,
-        service ? `Service: ${service}` : null,
+        phone ? `Phone: ${phone}` : null,
+        industry ? `Industry: ${industry}` : null,
+        service ? `Nature of inquiry: ${service}` : null,
+        companySize ? `Company size: ${companySize}` : null,
         "",
         message,
       ]

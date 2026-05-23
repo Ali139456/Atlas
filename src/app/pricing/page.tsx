@@ -13,7 +13,7 @@ export default function PricingPage() {
   return (
     <>
       <SiteHeader />
-      <main className="site-main">
+      <main className="site-main section-bg">
         <div className="pricing-page-intro site-container relative z-10">
           <nav className="service-breadcrumb" aria-label="Breadcrumb">
             <ol className="service-breadcrumb-list">

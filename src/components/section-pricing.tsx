@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { paymentMethods, pricingPerks, pricingPlans } from "@/lib/site-content";
+import { homeAnchors, paymentMethods, pricingPerks, pricingPlans } from "@/lib/site-content";
 
 const PRICING_FEATURE_SLOTS = 6;
 
@@ -63,7 +63,7 @@ function PricingCard({
 
       <div className="pricing-card-foot">
         <Link
-          href="/#contact"
+          href={homeAnchors.contact}
           className={`pricing-card-cta w-full text-center ${plan.highlighted ? "btn-neon" : "btn-outline"}`}
         >
           {plan.cta}
@@ -88,7 +88,7 @@ export function PricingSection() {
     if (slide) {
       track.scrollTo({
         left: slide.offsetLeft,
-        behavior: smooth ? "smooth" : "instant",
+        behavior: smooth ? "smooth" : "auto",
       });
     }
     setActive(next);
@@ -129,7 +129,7 @@ export function PricingSection() {
   }, [scrollToIndex]);
 
   return (
-    <section id="pricing" className="relative bg-black section-pad overflow-hidden">
+    <section id="pricing" className="relative section-pad overflow-hidden">
       <div className="blob w-[550px] h-[400px] right-0 top-1/2 -translate-y-1/2 bg-cyan-500/10" aria-hidden />
       <div className="site-container relative z-10">
         <div className="section-intro">

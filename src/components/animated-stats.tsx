@@ -24,7 +24,7 @@ function StatBlock({
         {count}
         <span className="text-2xl sm:text-3xl">{suffix}</span>
       </p>
-      <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-[var(--muted)]">
+      <p className="mt-3 text-xs font-medium leading-relaxed text-[var(--muted)]">
         {label}
       </p>
     </div>

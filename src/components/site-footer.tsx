@@ -16,21 +16,21 @@ const linkGroups = [
   {
     title: "Company",
     links: [
-      { href: homeAnchors.mission, label: "About" },
-      { href: homeAnchors.process, label: "Process" },
-      { href: homeAnchors.faq, label: "FAQ" },
+      { href: homeAnchors.features, label: "Benefits" },
+      { href: homeAnchors.whyUs, label: "Why us" },
+      { href: homeAnchors.roles, label: "Popular roles" },
+      { href: homeAnchors.clients, label: "Client profiles" },
+      { href: homeAnchors.resources, label: "Useful links" },
     ],
   },
 ] as const;
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer section-bg">
       <div className="site-container footer-inner">
         <div className="footer-main">
-          <div
-            className="footer-brand"
-          >
+          <div className="footer-brand">
             <Link href="/" aria-label={`${site.brand} home`} className="footer-logo-link">
               <Image
                 src={site.logo}
@@ -41,11 +41,11 @@ export function SiteFooter() {
               />
             </Link>
             <p className="footer-tagline">
-              Accounting and finance outsourcing: AP, AR, bookkeeping, payroll, reconciliations,
-              and reporting for growing businesses.
+              {site.tagline}. Specialized real estate accounting and finance outsourcing for
+              owners, property managers, asset managers, and investors.
             </p>
             <Link href={homeAnchors.contact} className="footer-cta">
-              Schedule a consultation →
+              Get a no-obligation proposal →
             </Link>
           </div>
 
@@ -73,7 +73,11 @@ export function SiteFooter() {
                       <circle cx="12" cy="10" r="2.5" />
                     </svg>
                   </span>
-                  <span className="footer-contact-value">{site.address}</span>
+                  <span className="footer-contact-value footer-contact-address">
+                    {site.addressLine1}
+                    <br />
+                    {site.addressLine2}
+                  </span>
                 </li>
                 <li className="footer-contact-item">
                   <span className="footer-contact-icon" aria-hidden>

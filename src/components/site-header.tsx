@@ -3,8 +3,43 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { NavServicesMenu } from "@/components/nav-services-menu";
-import { navLinks, site } from "@/lib/site-content";
+import { NavDropdown } from "@/components/nav-dropdown";
+import { NavIndustryMenu } from "@/components/nav-industry-menu";
+import {
+  navCta,
+  navIndustryColumns,
+  navPrimaryLinks,
+  navResourcesLinks,
+  navServicesLinks,
+} from "@/lib/nav-menu";
+import { site } from "@/lib/site-content";
+
+function NavPlainLink({
+  href,
+  label,
+  onNavigate,
+  highlight,
+}: {
+  href: string;
+  label: string;
+  onNavigate?: () => void;
+  highlight?: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      className={highlight ? "nav-overlay-link nav-overlay-link--highlight" : "nav-overlay-link"}
+      onClick={onNavigate}
+    >
+      <span>{label}</span>
+      <span className="nav-overlay-link-icon" aria-hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+      </span>
+    </Link>
+  );
+}
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -35,13 +70,17 @@ export function SiteHeader() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  const homeLink = navPrimaryLinks[0];
+  const aboutLink = navPrimaryLinks[1];
+  const contactLink = navPrimaryLinks[2];
+
   return (
     <>
       <header className={`nav-wrap${scrolled ? " nav-wrap--scrolled" : ""}`}>
         <div className="nav-wrap-glow" aria-hidden />
         <div className="site-container">
           <div className="nav-inner">
-            <Link href="/" aria-label="Atlas Global Finance home" className="nav-brand shrink-0">
+            <Link href="/" aria-label={`${site.brand} home`} className="nav-brand shrink-0">
               <Image
                 src={site.logo}
                 alt=""
@@ -53,29 +92,26 @@ export function SiteHeader() {
             </Link>
 
             <nav className="nav-menu" aria-label="Main">
-              <NavServicesMenu />
-              {navLinks.map((l) => (
-                <Link key={l.href} href={l.href}>
-                  {l.label}
-                </Link>
-              ))}
+              <Link href={homeLink.href}>{homeLink.label}</Link>
+              <Link href={aboutLink.href}>{aboutLink.label}</Link>
+              <NavDropdown label="Services" items={navServicesLinks} />
+              <NavIndustryMenu label="Industry" columns={navIndustryColumns} />
+              <NavDropdown label="Resources" items={navResourcesLinks} />
+              <Link href={contactLink.href}>{contactLink.label}</Link>
             </nav>
 
             <div className="nav-actions">
-              <Link href="/#contact" className="btn-outline !py-2.5 !px-5 !text-[0.65rem]">
-                Get started
-              </Link>
-              <Link href="/#contact" className="btn-neon !py-2.5 !px-5 !text-[0.65rem]">
-                Join today
+              <Link href={navCta.href} className="btn-neon !py-2.5 !px-5 !text-[0.65rem]">
+                {navCta.label}
               </Link>
             </div>
 
             <button
               type="button"
-              className="nav-toggle lg:hidden"
+              className="nav-toggle nav-mobile-only"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => setOpen((value) => !value)}
             >
               <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 {open ? (
@@ -91,7 +127,7 @@ export function SiteHeader() {
 
       {open ? (
         <div
-          className="nav-overlay lg:hidden"
+          className="nav-overlay nav-mobile-only"
           role="dialog"
           aria-modal="true"
           aria-label="Site navigation"
@@ -99,14 +135,8 @@ export function SiteHeader() {
           <div className="nav-overlay-glow" aria-hidden />
           <div className="nav-overlay-inner site-container">
             <div className="nav-overlay-top">
-              <Link href="/" aria-label="Atlas Global Finance home" className="nav-brand" onClick={close}>
-                <Image
-                  src={site.logo}
-                  alt=""
-                  width={400}
-                  height={500}
-                  className="nav-logo"
-                />
+              <Link href="/" aria-label={`${site.brand} home`} className="nav-brand" onClick={close}>
+                <Image src={site.logo} alt="" width={400} height={500} className="nav-logo" />
               </Link>
               <button
                 type="button"
@@ -126,36 +156,41 @@ export function SiteHeader() {
             </div>
 
             <nav className="nav-overlay-nav" aria-label="Mobile">
-              <NavServicesMenu variant="mobile" onNavigate={close} />
-              {navLinks.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className={`nav-overlay-link ${
-                    l.href === "/#contact" ? "nav-overlay-link--highlight" : ""
-                  }`}
-                  onClick={close}
-                >
-                  <span>{l.label}</span>
-                  <span className="nav-overlay-link-icon" aria-hidden>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                  </span>
-                </Link>
-              ))}
+              <NavPlainLink href={homeLink.href} label={homeLink.label} onNavigate={close} />
+              <NavPlainLink href={aboutLink.href} label={aboutLink.label} onNavigate={close} />
+              <NavDropdown
+                label="Services"
+                items={navServicesLinks}
+                variant="mobile"
+                onNavigate={close}
+              />
+              <NavIndustryMenu
+                label="Industry"
+                columns={navIndustryColumns}
+                variant="mobile"
+                onNavigate={close}
+              />
+              <NavDropdown
+                label="Resources"
+                items={navResourcesLinks}
+                variant="mobile"
+                onNavigate={close}
+              />
+              <NavPlainLink
+                href={contactLink.href}
+                label={contactLink.label}
+                onNavigate={close}
+                highlight
+              />
             </nav>
 
             <div className="nav-overlay-actions">
-              <Link href="/#contact" className="nav-overlay-btn btn-outline" onClick={close}>
-                Get started
-              </Link>
-              <Link href="/#contact" className="nav-overlay-btn btn-neon" onClick={close}>
-                Join today
+              <Link href={navCta.href} className="nav-overlay-btn btn-neon" onClick={close}>
+                {navCta.label}
               </Link>
             </div>
 
-            <p className="nav-overlay-foot">Tap a link above or book a free consult</p>
+            <p className="nav-overlay-foot">Tap a link above or request a no-obligation proposal</p>
           </div>
         </div>
       ) : null}

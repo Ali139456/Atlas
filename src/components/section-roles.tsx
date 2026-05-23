@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { popularRoles } from "@/lib/site-content";
+import { homeAnchors, popularRoles } from "@/lib/site-content";
 
 export function RolesSection() {
   return (
-    <section id="roles" className="roles-section relative bg-black section-pad overflow-hidden">
+    <section id="roles" className="roles-section relative section-pad overflow-hidden">
       <div className="blob w-[480px] h-[360px] left-0 top-1/4 bg-purple-500/10" aria-hidden />
       <div className="site-container relative z-10">
         <div className="section-intro">
@@ -25,7 +25,7 @@ export function RolesSection() {
                 <h3 className="role-card-title">{role.title}</h3>
                 <p className="role-card-desc">{role.description}</p>
                 <div className="role-card-actions">
-                  <Link href="/#contact" className="role-card-cta">
+                  <Link href={homeAnchors.contact} className="role-card-cta">
                     Contact us
                   </Link>
                 </div>

@@ -2,17 +2,20 @@ export const site = {
   brand: "Atlas Global Finance",
   logo: "/atlas-logo.png",
   email: "hello@atlasglobalfinance.com",
-  tagline: "Accounting & Finance Outsourcing",
-  phone: "+1 (555) 000-0000",
-  address: "Remote-first · US, Canada & worldwide",
+  salesEmail: "hello@atlasglobalfinance.com",
+  tagline: "Finance and Accounting Outsourcing",
+  phone: "+1 (646) 367-8976",
+  phoneIndia: "+91-11-26475715",
+  addressLine1: "244 Fifth Avenue, Suite P228, New York, NY 10001",
+  addressLine2: "Remote delivery US, Canada, UK & Australia",
 } as const;
 
 export const navLinks = [
-  { href: "/#mission", label: "About" },
-  { href: "/#features", label: "Why us" },
-  { href: "/#process", label: "Process" },
+  { href: "/#features", label: "Benefits" },
+  { href: "/#services", label: "Services" },
+  { href: "/#why-us", label: "Why us" },
+  { href: "/#roles", label: "Roles" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/#faq", label: "FAQ" },
   { href: "/#contact", label: "Contact" },
 ] as const;
 
@@ -20,13 +23,13 @@ export const navLinks = [
 export const homeAnchors = {
   contact: "/#contact",
   services: "/#services",
-  mission: "/#mission",
   features: "/#features",
-  process: "/#process",
-  faq: "/#faq",
+  whyUs: "/#why-us",
+  video: "/#video",
   industries: "/#industries",
   roles: "/#roles",
-  standards: "/#standards",
+  clients: "/#clients",
+  resources: "/#resources",
 } as const;
 
 export const images = {
@@ -38,245 +41,128 @@ export const images = {
 } as const;
 
 export const hero = {
-  eyebrow: "Accounting outsourcing",
-  title: "Finance &",
-  titleAccent: "bookkeeping",
-  titleSuffix: "done for you.",
-  description:
-    "Outsource accounts payable, receivable, payroll, reconciliations, and reporting on major ERP platforms with delivery built for growing businesses.",
-  primaryCta: "Free consultation",
-  secondaryCta: "View services",
-  trustLine: "Trusted outsourcing partner for businesses from $1M–$500M in revenue",
-  image: images.hero,
-  imageAlt: "Accounting team managing financial reports and dashboards",
+  title: "The Smart New Way to Grow!",
+  titleLines: [
+    [
+      { text: "The " },
+      { text: "Smart", accent: true },
+      { text: " " },
+      { text: "New", accent: true },
+      { text: " Way" },
+    ],
+    [
+      { text: "to " },
+      { text: "Grow!", accent: true },
+    ],
+  ],
+  subtitle: "Finance and Accounting Outsourcing",
+  primaryCta: "Learn more",
+  primaryCtaHref: "/#features",
+  certStrip: "/homepage-banner-strip.webp",
 } as const;
 
 export const marqueeItems = [
   "Accounts Payable",
   "Accounts Receivable",
-  "Bookkeeping",
-  "Payroll Processing",
-  "Bank Reconciliations",
+  "Residential Property Accounting",
+  "Commercial Property Accounting",
+  "HOA / Condo Accounting",
+  "Construction Accounting",
+  "Lease Abstraction",
+  "CAM Reconciliation",
+  "Portfolio Accounting",
   "Financial Reporting",
-  "Management Dashboards",
-  "QuickBooks · Xero",
-  "NetSuite · SAP",
+  "Investment Analysis",
   "Year-End Close",
 ] as const;
 
 export const stats = [
-  { value: "40", suffix: "–60%", label: "Typical cost savings vs in-house" },
-  { value: "8", suffix: "+", label: "Core finance processes covered" },
-  { value: "48", suffix: "h", label: "Report turnaround on Growth plans" },
-  { value: "100", suffix: "%", label: "Remote delivery & secure portals" },
+  {
+    value: "19",
+    suffix: "+",
+    label: "Years as a specialized finance and accounting outsourcing company",
+  },
+  {
+    value: "300",
+    suffix: "+",
+    label: "Clients served in the United States, Canada, United Kingdom and Australia",
+  },
+  {
+    value: "500",
+    suffix: "+",
+    label: "Team including accounting graduates, CPAs and MBAs",
+  },
+  {
+    value: "6",
+    suffix: "+",
+    label: "Years average outsourcing accounting experience per staff member",
+  },
 ] as const;
 
-export const mission = {
-  eyebrow: "About Atlas",
-  lead: "We provide end-to-end",
-  highlight1: "accounting outsourcing",
-  mid: ", from daily bookkeeping and AP/AR to",
-  highlight2: "financial reporting & budgeting",
-  end: ", so you scale finance without scaling overhead.",
-  image: images.mission,
-  imageAlt: "Finance professionals reviewing accounts and reports",
+export const whyChooseUs = {
+  eyebrow: "Why choose us",
+  title: "Why",
+  titleAccent: "Choose Us",
+} as const;
+
+export const corporateVideo = {
+  eyebrow: "Corporate profile",
+  title: "Corporate Profile",
+  titleAccent: "Video",
+  description:
+    "The video provides a brief overview of our services, real estate expertise, clients, work culture and most importantly our vision to be recognized as a leading outsourcing provider for the real estate segment.",
+  youtubeId: "kHds9-LozZc",
+  thumbnail: "https://i.ytimg.com/vi/kHds9-LozZc/hqdefault.jpg",
 } as const;
 
 export const industries = [
-  "CPA & accounting firms",
-  "Real estate",
-  "Logistics",
-  "Retail & eCommerce",
-  "IT & professional services",
-  "Healthcare",
-  "Manufacturing",
-  "Startups & SMBs",
+  "Construction",
+  "Logistic & Transportation",
+  "Retail",
+  "CPA Firms",
 ] as const;
 
 export const features = {
-  eyebrow: "Why outsource",
-  title: "Benefits of",
-  titleAccent: "outsourced finance",
+  eyebrow: "Benefits",
+  title: "Benefits of Outsourcing",
+  titleAccent: "Accounting",
+  sideImage: "/images/benefits-side.webp",
+  sideImageAlt: "Team collaboration and outsourced accounting support",
   items: [
     {
-      title: "40–60% cost savings",
-      description:
-        "Reduce in-house headcount and overhead while maintaining accuracy. Pay for the hours and scope you actually need.",
+      title: "High Cost Savings",
+      description: "Realize cost reductions of 40%-60%.",
       icon: "expert",
-      image: "/images/feature-expert.png",
     },
     {
-      title: "Scalable engagements",
-      description:
-        "Full-time, part-time, or as-needed support. Scale up for month-end, year-end, or busy seasons without long hiring cycles.",
+      title: "Grow without Overheads",
+      description: "Scale up and down based on your needs.",
       icon: "process",
-      image: "/images/feature-process.png",
     },
     {
-      title: "Dedicated team",
-      description:
-        "Bookkeepers and accountants who live in AP, AR, payroll, and close, not generic ticket queues or one-size automation.",
+      title: "Focus on Core Business",
+      description: "Focus on running the business instead of managing books.",
       icon: "focus",
-      image: "/images/feature-focus.png",
     },
     {
-      title: "Multi-ERP expertise",
-      description:
-        "QuickBooks Online, Xero, NetSuite, SAP, and secure cloud workflows. We work inside the tools your business already uses.",
+      title: "Flexible Staffing",
+      description: "Use us as full-time, part-time or on an as-needed basis.",
       icon: "network",
-      image: "/images/feature-network.png",
-    },
-  ],
-} as const;
-
-export const services = {
-  eyebrow: "Our services",
-  title: "Finance processes",
-  titleAccent: "we run for you",
-  description:
-    "The same core accounting and finance workflows trusted by outsourcing firms worldwide, delivered remotely with documented processes and CPA-ready outputs.",
-  image: images.services,
-  imageAlt: "Outsourced accounting and bookkeeping workspace",
-  items: [
-    {
-      title: "Accounts Payable",
-      description:
-        "Invoice entry, PO matching, vendor reconciliations, disbursement processing, and timely payments without late penalties.",
-      icon: "payable",
     },
     {
-      title: "Accounts Receivable",
-      description:
-        "Customer billing, cash application, aging reports, and collections support to keep cash flow predictable.",
-      icon: "receivable",
-    },
-    {
-      title: "Bookkeeping & general accounting",
-      description:
-        "Daily transaction recording, categorization, journal entries, and clean ledgers maintained to GAAP standards.",
-      icon: "book",
-    },
-    {
-      title: "Payroll processing",
-      description:
-        "Gross-to-net calculations, tax withholdings, compliance updates, and electronic filing of payroll returns.",
-      icon: "payroll",
-    },
-    {
-      title: "Bank & account reconciliations",
-      description:
-        "Monthly bank, credit card, and balance-sheet reconciliations with variance research and documentation.",
-      icon: "reconcile",
-    },
-    {
-      title: "Financial reporting",
-      description:
-        "P&L, balance sheet, cash flow, and custom management reports delivered on your close calendar.",
-      icon: "chart",
-    },
-    {
-      title: "Dashboards & budgeting",
-      description:
-        "KPI dashboards, variance analysis, forecasts, and budget models leadership can act on.",
-      icon: "dashboard",
-    },
-    {
-      title: "Inventory & fixed assets",
-      description:
-        "Inventory tracking support, travel & expense processing, and fixed-asset register maintenance.",
-      icon: "folder",
-    },
-    {
-      title: "Catch-up & year-end close",
-      description:
-        "Backlog cleanup, audit-ready year-end close, and controller-level review before filing season.",
-      icon: "tax",
-    },
-    {
-      title: "CFO & controller advisory",
-      description:
-        "Financial modeling, strategic analysis, and part-time controller oversight without a full-time hire.",
-      icon: "advisory",
-    },
-  ],
-} as const;
-
-export const standards = {
-  eyebrow: "Why Atlas",
-  title: "Built like a leading",
-  titleAccent: "outsourcing firm",
-  description:
-    "Enterprise-grade delivery, secure systems, and clear engagement models without the overhead of building an in-house finance team.",
-  items: [
-    {
-      num: "01",
-      title: "Process-driven delivery",
-      body: "Documented workflows for AP, AR, payroll, reconciliations, and close with consistent quality every month.",
-    },
-    {
-      num: "02",
-      title: "Secure cloud operations",
-      body: "Role-based access, encrypted portals, and industry-standard platforms to protect your financial data.",
-    },
-    {
-      num: "03",
-      title: "Transparent engagement models",
-      body: "Clear scope, flat-rate tiers, and FTE or hourly options with no surprise invoices.",
-    },
-    {
-      num: "04",
-      title: "US-friendly communication",
-      body: "Responsive support, scheduled reviews, and month-end status updates your team and CPA can rely on.",
-    },
-  ],
-} as const;
-
-export const popularRoles = {
-  eyebrow: "Outsourced talent",
-  title: "Popular",
-  titleAccent: "roles",
-  description:
-    "Dedicated finance professionals placed in your workflows, from AP/AR through property accounting and lease administration.",
-  items: [
-    {
-      title: "Accounts Payable Specialist",
-      description:
-        "2- and 3-way invoice matching with POs and GRs, utility and vendor bill entry, expense coding, and vendor reconciliations.",
-    },
-    {
-      title: "Accounts Receivable Specialist",
-      description:
-        "Invoicing, rent runs, tenant and customer setup, late-fee processing, and collection support aligned to your PM or ERP.",
-    },
-    {
-      title: "Property Accountant",
-      description:
-        "General ledger accounting, payroll support, bank reconciliations, month-end close, and reporting with variance analysis.",
-    },
-    {
-      title: "Sr. Property Accountant",
-      description:
-        "Cash flow projections, budget prep, expense variance analysis, balance sheet review, and controller support.",
-    },
-    {
-      title: "Financial Analyst",
-      description:
-        "Financial modeling, business plans, market research, and analysis of statements for owners and asset managers.",
-    },
-    {
-      title: "Lease Administrator",
-      description:
-        "Lease abstraction, residential and commercial real estate accounting, including CAM reconciliation support.",
+      title: "Specialized Expertise",
+      description: "Access to best practices derived from 300+ businesses.",
+      icon: "expert",
     },
   ],
 } as const;
 
 export const industriesServed = {
-  eyebrow: "Who we serve",
-  title: "Other industries",
-  titleAccent: "served",
+  eyebrow: "Industries",
+  title: "Other Industries",
+  titleAccent: "Served",
   description:
-    "Outsourced accounting and finance support tailored to how your industry books, bills, and reports.",
+    "Accounting and finance outsourcing for construction, logistics, retail, CPA firms, and more.",
   items: [
     {
       title: "Construction",
@@ -284,7 +170,7 @@ export const industriesServed = {
         "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
     },
     {
-      title: "Logistics & transportation",
+      title: "Logistic & Transportation",
       image:
         "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80",
     },
@@ -294,38 +180,226 @@ export const industriesServed = {
         "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
     },
     {
-      title: "CPA firms",
+      title: "CPA Firms",
       image:
         "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80",
     },
   ],
 } as const;
 
-export const process = {
-  eyebrow: "How it works",
-  title: "Simple onboarding,",
-  titleAccent: "steady execution",
+export const popularRoles = {
+  eyebrow: "Talent",
+  title: "Popular",
+  titleAccent: "Roles",
   description:
-    "We mirror proven outsourcing playbooks: discovery, secure handoff, then recurring delivery on your calendar.",
-  steps: [
+    "Dedicated finance professionals placed in your workflows, from AP/AR through property accounting and lease administration.",
+  items: [
     {
-      num: "01",
-      title: "Discovery & scoping",
-      body: "We map your ERP, chart of accounts, AP/AR volume, payroll needs, and reporting deadlines on a free call.",
+      title: "Accounts Payable Specialist",
+      description:
+        "Accounts Payable Specialist can perform activities such as 2 Way/3 Way matching of invoices with POs and GRs/Packing Slips, entry of invoices and utilities, coding of expenses, entering checks for further approval, tracking payables, vendor reconciliations and other miscellaneous accounts payable activities.",
     },
     {
-      num: "02",
-      title: "Secure transition",
-      body: "Portal setup, access controls, process documentation, and a reconciled opening baseline.",
+      title: "Accounts Receivable Specialist",
+      description:
+        "Accounts Receivable Specialist typically can perform activities such as invoicing, running rents (for real estate cos.), tenant/customer set-up and accounting, late fee processing, rent receipting/cash application services, tracking receivables, email and call based collection support, and miscellaneous accounts receivable tasks.",
     },
     {
-      num: "03",
-      title: "Ongoing outsourcing",
-      body: "Daily/weekly processing plus month-end close, reports, and advisory touchpoints on rhythm.",
+      title: "Property Accountant",
+      description:
+        "Property Accountant can provide the following accounting services: general ledger accounting, payroll, bank reconciliations, inter-company accounting, monthly closing of books including finalization and simple monthly reporting with variance analysis.",
+    },
+    {
+      title: "Sr. Property Accountant",
+      description:
+        "Sr. Property Accountant can provide the following accounting services: general ledger accounting, cash flow projections and management, inter-company accounting, prepare budgets, analyze expense variances, review balance sheets, prepare monthly financials including detailed monthly reporting and assist Controller in month/year end activities.",
+    },
+    {
+      title: "Financial Analyst",
+      description:
+        "Financial Analyst is a specialist profile used for financial modeling, business plan formulation, business research and financial analysis assignments. They are responsible for preparation of project reports, financial modeling, management reporting, analysis of financial statements, simple valuations and other custom tasks.",
+    },
+    {
+      title: "Lease Administrator",
+      description:
+        "Lease Administrator have experience in lease abstraction, lease administration, real estate accounting (including CAM reconciliation) with exposure to residential and commercial leases. They are well-versed with CAM reconciliation and are familiar with various leasing terms and clauses.",
     },
   ],
 } as const;
 
+export const clientProfiles = {
+  eyebrow: "Case studies",
+  title: "Client",
+  titleAccent: "Profiles",
+  description:
+    "Organizations we support with outsourced accounting, reporting, and back-office finance across real estate, construction, transportation, IT, and professional services.",
+  cardTagline: "Trusted finance outsourcing partner · US, Canada, UK & Australia",
+  items: [
+    {
+      category: "Real Estate",
+      description:
+        "A vertically integrated, full service real estate company based out of Bellevue, WA. They specialize in commercial properties. The firm has developed and built in excess of 81 properties and have more than 10,000 units under management.",
+    },
+    {
+      category: "Real Estate",
+      description:
+        "A midsized real estate property management firm based out of Beverly Hills, CA. The firm manages over 50 properties, across 9 states, encompassing over 1200 tenants and nearly 1.5 million square feet.",
+    },
+    {
+      category: "Construction",
+      description:
+        "A well-known construction and development company in Canada specializing in construction and development of high rise concretes. It is a mid-sized firm and one of British Columbia's most experienced and respected developers.",
+    },
+    {
+      category: "Construction",
+      description:
+        "A construction company in Aspen, Colorado providing general contracting, plumbing and property management services.",
+    },
+    {
+      category: "Transportation",
+      description:
+        "A 100 year old moving and storage company headquartered in Colorado with multi-state operations. The firms' revenues are about 50-75 mn and has about 250 employees.",
+    },
+    {
+      category: "Information Technology",
+      description:
+        "A mid-size data warehouse consulting and engineering firm based in OH. They build new data warehouse solutions, optimize existing environments, and offer an outsourced service for point of sale data analysis.",
+    },
+    {
+      category: "Accounting",
+      description:
+        "A large accounting firm in the US (Northville, MI). The firm has clients from virtually every business sector from around the US.",
+    },
+    {
+      category: "Accounting",
+      description:
+        "A mid-sized accounting company in USA (Chicago, IL). The company has a successful track record and is a leading national provider of tax resolution, tax preparation, bookkeeping and accounting services.",
+    },
+  ],
+} as const;
+
+export const contactForm = {
+  eyebrow: "Contact us",
+  title: "Get In",
+  titleAccent: "Touch",
+  lead: "Contact us for a customized no-obligation proposal for outsourcing your accounting activities.",
+  industries: [
+    "Fully Integrated Real Estate",
+    "Real Estate Developer",
+    "Property Management",
+    "Real Estate Funds/REIT",
+    "Real Estate Investor/Syndicate",
+    "Real Estate Brokerage",
+    "Other",
+  ],
+  inquiryTypes: [
+    "Year-End Close & Audit Support",
+    "Property Accounting",
+    "Fund Accounting",
+    "Portfolio Reporting",
+    "Construction/Draws",
+    "Back-Office Outsourcing",
+    "Other",
+  ],
+  companySizes: [
+    "1-10",
+    "11-50",
+    "51-200",
+    "201-500",
+    "501-1000",
+    "1001-5000",
+    "5001-10000",
+    "10001+",
+  ],
+} as const;
+
+export const usefulLinksSection = {
+  title: "Useful Links",
+  items: [
+    {
+      label: "Process Snapshots",
+      image: "/images/useful-links/process-snapshots.png",
+      href: "https://www.outsourcinghubindia.com/process-snapshots/",
+    },
+    {
+      label: "Case Studies",
+      image: "/images/useful-links/case-studies.png",
+      href: "https://www.outsourcinghubindia.com/casestudy/",
+    },
+    {
+      label: "Brochure",
+      image: "/images/useful-links/brochure.png",
+      href: "/downloads/accounting-outsourcing-brochure.pdf",
+    },
+    {
+      label: "Outsourcing Guide",
+      image: "/images/useful-links/outsourcing-guide.png",
+      href: "/downloads/outsourcing-guide-fao.pdf",
+    },
+  ],
+} as const;
+
+/** @deprecated use usefulLinksSection */
+export const usefulLinks = usefulLinksSection.items.map((item) => ({ label: item.label }));
+
+export const certificatesSection = {
+  title: "Certificates And Memberships",
+  items: [
+    {
+      name: "SOC 2 Type II",
+      image: "/images/certificates/soc2-type-ii.png",
+    },
+    {
+      name: "ISO 27001",
+      image: "/images/certificates/iso-27001.png",
+    },
+    {
+      name: "NAHMA Member",
+      image: "/images/certificates/nahma.png",
+    },
+    {
+      name: "NASSCOM Member",
+      image: "/images/certificates/nasscom.png",
+    },
+    {
+      name: "GRESB",
+      image: "/images/certificates/gresb.png",
+    },
+    {
+      name: "IACC",
+      image: "/images/certificates/iacc.png",
+    },
+    {
+      name: "CFMA Member",
+      image: "/images/certificates/cfma.png",
+    },
+    {
+      name: "CAI Business Partner",
+      image: "/images/certificates/cai-business-partner.png",
+    },
+    {
+      name: "CII",
+      image: "/images/certificates/cii.png",
+    },
+    {
+      name: "NAA Member",
+      image: "/images/certificates/naa.png",
+    },
+    {
+      name: "Community Associations",
+      image: "/images/certificates/cc-logo.png",
+    },
+    {
+      name: "Quadel",
+      image: "/images/certificates/quadel.png",
+    },
+  ],
+} as const;
+
+export const certificatesNote =
+  "Certificates and memberships available on request." as const;
+
+/** Legacy exports kept for pricing page */
 export const pricingPlans = [
   {
     name: "Starter",
@@ -380,7 +454,7 @@ export const pricingPlans = [
 ] as const;
 
 export const pricingPerks = [
-  "40–60% savings vs in-house",
+  "40-60% savings vs in-house",
   "FTE or hourly models",
   "Free consultation call",
 ] as const;
@@ -390,31 +464,4 @@ export const paymentMethods = [
   { name: "ACH bank transfer", detail: "US business checking" },
   { name: "Wire transfer", detail: "For annual engagements" },
   { name: "Invoicing", detail: "Net-15 for approved accounts" },
-] as const;
-
-export const faqs = [
-  {
-    q: "What accounting processes can you outsource?",
-    a: "We handle accounts payable, accounts receivable, bookkeeping, payroll, reconciliations, financial reporting, dashboards, budgeting, inventory support, fixed assets, catch-up work, and controller-level advisory.",
-  },
-  {
-    q: "Which software platforms do you support?",
-    a: "QuickBooks Online, Xero, NetSuite, SAP, and other cloud ERPs. We work inside your existing stack with documented, secure access.",
-  },
-  {
-    q: "Can you work with my CPA or accounting firm?",
-    a: "Yes. We deliver tax-ready books, reconciliations, and schedules your CPA needs. Many of our clients are businesses and firms that white-label or supplement outsourced capacity.",
-  },
-  {
-    q: "Do you offer full-time and part-time outsourcing?",
-    a: "Absolutely. Engagements can be full-time equivalent, part-time monthly, or project-based for catch-up, year-end, or seasonal spikes.",
-  },
-  {
-    q: "What industries do you serve?",
-    a: "CPA firms, real estate, logistics, retail, IT, healthcare, manufacturing, and growth-stage businesses typically between $1M and $500M in annual revenue.",
-  },
-  {
-    q: "How do we get started?",
-    a: "Book a free consultation below. We'll review your volumes, tools, and timeline, then recommend the right plan or custom FTE model.",
-  },
 ] as const;

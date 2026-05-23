@@ -3,26 +3,29 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { homeAnchors, industriesServed } from "@/lib/site-content";
+import { usefulLinksSection } from "@/lib/site-content";
 
-export function IndustriesServedSection() {
+export function UsefulLinksSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  const items = industriesServed.items;
+  const items = usefulLinksSection.items;
 
-  const scrollToIndex = useCallback((index: number, smooth = true) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const next = Math.max(0, Math.min(index, items.length - 1));
-    const slide = track.children[next] as HTMLElement | undefined;
-    if (slide) {
-      track.scrollTo({
-        left: slide.offsetLeft,
-        behavior: smooth ? "smooth" : "auto",
-      });
-    }
-    setActive(next);
-  }, [items.length]);
+  const scrollToIndex = useCallback(
+    (index: number, smooth = true) => {
+      const track = trackRef.current;
+      if (!track) return;
+      const next = Math.max(0, Math.min(index, items.length - 1));
+      const slide = track.children[next] as HTMLElement | undefined;
+      if (slide) {
+        track.scrollTo({
+          left: slide.offsetLeft,
+          behavior: smooth ? "smooth" : "auto",
+        });
+      }
+      setActive(next);
+    },
+    [items.length],
+  );
 
   const goPrev = () => scrollToIndex(active - 1);
   const goNext = () => scrollToIndex(active + 1);
@@ -55,28 +58,17 @@ export function IndustriesServedSection() {
   const canNext = active < items.length - 1;
 
   return (
-    <section
-      id="industries"
-      className="industries-section relative section-pad overflow-hidden"
-    >
-      <div className="blob w-[450px] h-[350px] right-0 bottom-0 bg-cyan-500/8" aria-hidden />
+    <section id="resources" className="useful-links-section relative section-pad overflow-hidden">
       <div className="site-container relative z-10">
-        <div className="industries-header">
-          <div className="section-intro">
-            <p className="eyebrow-pill">{industriesServed.eyebrow}</p>
-            <h2 className="display-lg section-title text-white">
-              {industriesServed.title}{" "}
-              <span className="text-gradient-neon">{industriesServed.titleAccent}</span>
-            </h2>
-            <p className="mt-4 max-w-xl text-[var(--muted)]">{industriesServed.description}</p>
-          </div>
-          <div className="industries-arrows">
+        <div className="useful-links-header">
+          <h2 className="useful-links-title">{usefulLinksSection.title}</h2>
+          <div className="useful-links-arrows">
             <button
               type="button"
-              className="industries-arrow"
+              className="useful-links-arrow"
               onClick={goPrev}
               disabled={!canPrev}
-              aria-label="Previous industry"
+              aria-label="Previous useful link"
             >
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M15 18l-6-6 6-6" />
@@ -84,10 +76,10 @@ export function IndustriesServedSection() {
             </button>
             <button
               type="button"
-              className="industries-arrow"
+              className="useful-links-arrow"
               onClick={goNext}
               disabled={!canNext}
-              aria-label="Next industry"
+              aria-label="Next useful link"
             >
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M9 18l6-6-6-6" />
@@ -96,23 +88,25 @@ export function IndustriesServedSection() {
           </div>
         </div>
 
-        <div className="industries-carousel section-body">
-          <div ref={trackRef} className="industries-track">
+        <div className="useful-links-carousel">
+          <div ref={trackRef} className="useful-links-track">
             {items.map((item) => (
               <Link
-                key={item.title}
-                href={homeAnchors.contact}
-                className="industry-card group"
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="useful-link-card group"
               >
                 <Image
                   src={item.image}
                   alt=""
                   fill
                   sizes="(max-width: 640px) 85vw, 280px"
-                  className="industry-card-img object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="useful-link-img object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="industry-card-overlay" aria-hidden />
-                <p className="industry-card-title">{item.title}</p>
+                <div className="useful-link-overlay" aria-hidden />
+                <p className="useful-link-label">{item.label}</p>
               </Link>
             ))}
           </div>

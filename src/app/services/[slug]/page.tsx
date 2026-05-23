@@ -9,7 +9,7 @@ import {
   getServiceCategory,
   serviceCategories,
 } from "@/lib/service-categories";
-import { site } from "@/lib/site-content";
+import { homeAnchors, site } from "@/lib/site-content";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -35,8 +35,8 @@ export default async function ServiceCategoryPage({ params }: Props) {
   return (
     <>
       <SiteHeader />
-      <main className="site-main">
-        <section className="service-detail-page relative bg-mesh bg-grid section-pad overflow-hidden">
+      <main className="site-main section-bg">
+        <section className="service-detail-page relative section-pad overflow-hidden">
           <div className="blob w-[480px] h-[360px] left-1/2 -translate-x-1/2 top-0 bg-cyan-500/8" aria-hidden />
           <div className="site-container relative z-10">
             <nav className="service-breadcrumb" aria-label="Breadcrumb">
@@ -56,7 +56,7 @@ export default async function ServiceCategoryPage({ params }: Props) {
                   </svg>
                 </li>
                 <li>
-                  <Link href="/#services">Services</Link>
+                  <Link href={homeAnchors.services}>Services</Link>
                 </li>
                 <li className="service-breadcrumb-sep" aria-hidden>
                   <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
@@ -122,10 +122,10 @@ export default async function ServiceCategoryPage({ params }: Props) {
                 Ready to outsource {category.shortTitle.toLowerCase()} workflows?
               </p>
               <div className="service-detail-footer-actions">
-                <Link href="/#contact" className="btn-neon">
+                <Link href={homeAnchors.contact} className="btn-neon">
                   Book free consultation
                 </Link>
-                <Link href="/#services" className="btn-outline">
+                <Link href={homeAnchors.services} className="btn-outline">
                   View all services
                 </Link>
               </div>

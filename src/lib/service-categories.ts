@@ -174,8 +174,8 @@ export function getAllServiceSlugs() {
 
 export const servicesOverview = {
   eyebrow: "Our services",
-  title: "Four specialized",
-  titleAccent: "service lines",
+  title: "Our",
+  titleAccent: "Services",
   description:
-    "Choose your path. Each service line includes dedicated sub-services delivered by our outsourced finance team.",
+    "Owners and developers, property management, asset management, and investors, each with dedicated sub-services delivered by our outsourced finance team.",
 } as const;

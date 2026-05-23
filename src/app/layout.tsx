@@ -12,11 +12,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Atlas Global Finance | Virtual Bookkeeping & Reporting",
+    default: "Atlas Global Finance | Finance and Accounting Outsourcing",
     template: "%s | Atlas Global Finance",
   },
   description:
-    "Accounting outsourcing for AP, AR, bookkeeping, payroll, reconciliations, and financial reporting. QuickBooks, Xero, and NetSuite for US businesses.",
+    "Finance and accounting outsourcing with real estate expertise. AP, AR, bookkeeping, property accounting, and reporting for US, Canada, UK, and Australia.",
   keywords: [
     "accounting outsourcing",
     "accounts payable",
@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     "Xero",
     "NetSuite",
   ],
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover" as const,
 };
 
 export default function RootLayout({

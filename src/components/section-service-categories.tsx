@@ -4,7 +4,7 @@ import { ServiceCategoryIcon } from "@/components/service-category-icon";
 
 export function ServiceCategoriesSection() {
   return (
-    <section id="services" className="relative bg-black section-pad overflow-hidden">
+    <section id="services" className="relative section-pad overflow-hidden">
       <div className="blob w-[500px] h-[400px] right-0 top-0 bg-cyan-500/10" aria-hidden />
       <div className="site-container relative z-10">
         <div className="section-intro">
