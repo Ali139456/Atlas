@@ -4,12 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { NavDropdown } from "@/components/nav-dropdown";
-import { NavIndustryMenu } from "@/components/nav-industry-menu";
 import {
   navCta,
-  navIndustryColumns,
+  navIndustryLinks,
   navPrimaryLinks,
-  navResourcesLinks,
   navServicesLinks,
 } from "@/lib/nav-menu";
 import { site } from "@/lib/site-content";
@@ -88,6 +86,7 @@ export function SiteHeader() {
                 height={500}
                 className="nav-logo"
                 priority
+                loading="eager"
               />
             </Link>
 
@@ -95,8 +94,7 @@ export function SiteHeader() {
               <Link href={homeLink.href}>{homeLink.label}</Link>
               <Link href={aboutLink.href}>{aboutLink.label}</Link>
               <NavDropdown label="Services" items={navServicesLinks} />
-              <NavIndustryMenu label="Industry" columns={navIndustryColumns} />
-              <NavDropdown label="Resources" items={navResourcesLinks} />
+              <NavDropdown label="Industry" items={navIndustryLinks} />
               <Link href={contactLink.href}>{contactLink.label}</Link>
             </nav>
 
@@ -136,7 +134,14 @@ export function SiteHeader() {
           <div className="nav-overlay-inner site-container">
             <div className="nav-overlay-top">
               <Link href="/" aria-label={`${site.brand} home`} className="nav-brand" onClick={close}>
-                <Image src={site.logo} alt="" width={400} height={500} className="nav-logo" />
+                <Image
+                  src={site.logo}
+                  alt=""
+                  width={400}
+                  height={500}
+                  className="nav-logo"
+                  loading="eager"
+                />
               </Link>
               <button
                 type="button"
@@ -164,15 +169,9 @@ export function SiteHeader() {
                 variant="mobile"
                 onNavigate={close}
               />
-              <NavIndustryMenu
-                label="Industry"
-                columns={navIndustryColumns}
-                variant="mobile"
-                onNavigate={close}
-              />
               <NavDropdown
-                label="Resources"
-                items={navResourcesLinks}
+                label="Industry"
+                items={navIndustryLinks}
                 variant="mobile"
                 onNavigate={close}
               />

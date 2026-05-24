@@ -1,58 +1,107 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { homeAnchors, industriesServed } from "@/lib/site-content";
 
-export function IndustriesServedSection() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
-  const items = industriesServed.items;
-
-  const scrollToIndex = useCallback((index: number, smooth = true) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const next = Math.max(0, Math.min(index, items.length - 1));
-    const slide = track.children[next] as HTMLElement | undefined;
-    if (slide) {
-      track.scrollTo({
-        left: slide.offsetLeft,
-        behavior: smooth ? "smooth" : "auto",
-      });
-    }
-    setActive(next);
-  }, [items.length]);
-
-  const goPrev = () => scrollToIndex(active - 1);
-  const goNext = () => scrollToIndex(active + 1);
+function useVisibleCount() {
+  const [count, setCount] = useState(4);
 
   useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    const onScroll = () => {
-      const slides = Array.from(track.children) as HTMLElement[];
-      const center = track.scrollLeft + track.clientWidth / 2;
-      let closest = 0;
-      let minDist = Infinity;
-      slides.forEach((slide, i) => {
-        const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
-        const dist = Math.abs(center - slideCenter);
-        if (dist < minDist) {
-          minDist = dist;
-          closest = i;
-        }
-      });
-      setActive(closest);
-    };
-
-    track.addEventListener("scroll", onScroll, { passive: true });
-    return () => track.removeEventListener("scroll", onScroll);
+    const mq = window.matchMedia("(min-width: 48rem)");
+    const update = () => setCount(mq.matches ? 4 : 2);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
-  const canPrev = active > 0;
-  const canNext = active < items.length - 1;
+  return count;
+}
+
+export function IndustriesServedSection() {
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+  const [enableTransition, setEnableTransition] = useState(true);
+  const visibleCount = useVisibleCount();
+  const items = industriesServed.items;
+  const loopItems = useMemo(
+    () => [...items, ...items.slice(0, visibleCount)],
+    [items, visibleCount],
+  );
+
+  const applyTransform = useCallback(
+    (index: number, withTransition: boolean) => {
+      const track = trackRef.current;
+      const slide = track?.firstElementChild as HTMLElement | undefined;
+      if (!track || !slide) return;
+
+      const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 16;
+      const step = slide.offsetWidth + gap;
+
+      track.style.transition = withTransition
+        ? "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)"
+        : "none";
+      track.style.transform = `translateX(-${index * step}px)`;
+    },
+    [],
+  );
+
+  useEffect(() => {
+    setActive(0);
+  }, [visibleCount]);
+
+  useEffect(() => {
+    applyTransform(active, enableTransition);
+  }, [active, enableTransition, applyTransform, loopItems.length, visibleCount]);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const observer = new ResizeObserver(() => {
+      applyTransform(active, false);
+    });
+    observer.observe(viewport);
+    return () => observer.disconnect();
+  }, [active, applyTransform]);
+
+  useEffect(() => {
+    if (active !== items.length) return;
+
+    const resetTimer = window.setTimeout(() => {
+      setEnableTransition(false);
+      setActive(0);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => setEnableTransition(true));
+      });
+    }, 460);
+
+    return () => window.clearTimeout(resetTimer);
+  }, [active, items.length]);
+
+  const goNext = useCallback(() => {
+    setEnableTransition(true);
+    setActive((current) => (current >= items.length - 1 ? items.length : current + 1));
+  }, [items.length]);
+
+  const goPrev = useCallback(() => {
+    if (active === 0) {
+      setEnableTransition(false);
+      setActive(items.length);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setEnableTransition(true);
+          setActive(items.length - 1);
+        });
+      });
+      return;
+    }
+
+    setEnableTransition(true);
+    setActive((current) => current - 1);
+  }, [active, items.length]);
 
   return (
     <section
@@ -70,15 +119,17 @@ export function IndustriesServedSection() {
             </h2>
             <p className="mt-4 max-w-xl text-[var(--muted)]">{industriesServed.description}</p>
           </div>
+        </div>
+
+        <div className="industries-carousel section-body">
           <div className="industries-arrows">
             <button
               type="button"
               className="industries-arrow"
               onClick={goPrev}
-              disabled={!canPrev}
               aria-label="Previous industry"
             >
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M15 18l-6-6 6-6" />
               </svg>
             </button>
@@ -86,37 +137,42 @@ export function IndustriesServedSection() {
               type="button"
               className="industries-arrow"
               onClick={goNext}
-              disabled={!canNext}
               aria-label="Next industry"
             >
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M9 18l6-6-6-6" />
               </svg>
             </button>
           </div>
-        </div>
 
-        <div className="industries-carousel section-body">
-          <div ref={trackRef} className="industries-track">
-            {items.map((item) => (
-              <Link
-                key={item.title}
-                href={homeAnchors.contact}
-                className="industry-card group"
-              >
-                <Image
-                  src={item.image}
-                  alt=""
-                  fill
-                  sizes="(max-width: 640px) 85vw, 280px"
-                  className="industry-card-img object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="industry-card-overlay" aria-hidden />
-                <p className="industry-card-title">{item.title}</p>
-              </Link>
-            ))}
+          <div
+            ref={viewportRef}
+            className="industries-viewport"
+            aria-live="polite"
+            style={{ ["--visible-count" as string]: visibleCount }}
+          >
+            <div ref={trackRef} className="industries-track">
+              {loopItems.map((item, index) => (
+                <Link
+                  key={`${item.title}-${index}`}
+                  href={homeAnchors.contact}
+                  className="industry-card group"
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 767px) 45vw, 240px"
+                    className="industry-card-img object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="industry-card-overlay" aria-hidden />
+                  <p className="industry-card-title">{item.title}</p>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   );

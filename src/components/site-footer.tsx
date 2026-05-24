@@ -76,7 +76,11 @@ export function SiteFooter() {
                 <li className="footer-contact-item">
                   <span className="footer-contact-icon" aria-hidden>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M5 4h4l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v4c0 1-1 2-2 2-2.8A16 16 0 0 1 3.8 6C3 6 2 5 2 4V4z" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3 5a2 2 0 012-2h2.5a1 1 0 01.95.69l1.1 3.3a1 1 0 01-.5 1.21l-1.66.83a11.04 11.04 0 005.52 5.52l.83-1.66a1 1 0 011.21-.5l3.3 1.1a1 1 0 01.69.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"
+                      />
                     </svg>
                   </span>
                   <a href={`tel:${site.phone.replace(/\D/g, "")}`} className="footer-contact-value">

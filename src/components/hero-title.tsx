@@ -21,14 +21,14 @@ export function HeroAnimatedTitle({ title, lines }: HeroAnimatedTitleProps) {
         {lines.map((lineParts, lineIndex) => (
           <Fragment key={lineIndex}>
             {lineIndex > 0 ? <br /> : null}
-            <span className={`hero-headline-line${lineIndex === 1 ? " hero-headline-line--bottom" : ""}`}>
+            <span className="hero-headline-line">
               {lineParts.map((part, partIndex) => {
                 const chars = part.text.split("");
 
                 return (
                   <span
                     key={`${lineIndex}-${partIndex}-${part.text}`}
-                    className={part.accent ? "hero-accent-word" : undefined}
+                    className={`hero-word${part.accent ? " hero-accent-word" : ""}`}
                   >
                     {chars.map((char, i) => {
                       const index = charIndex++;
