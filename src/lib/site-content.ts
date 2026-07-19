@@ -31,18 +31,14 @@ export const hero = {
   title: "Your Trusted Partner for Outsourced Accounting Solutions.",
   titleLines: [
     [
-      { text: "Your " },
+      { text: "Your" },
       { text: "Trusted" },
-      { text: " " },
       { text: "Partner" },
-      { text: " " },
       { text: "for" },
     ],
     [
       { text: "Outsourced", accent: true },
-      { text: " " },
       { text: "Accounting", accent: true },
-      { text: " " },
       { text: "Solutions." },
     ],
   ],

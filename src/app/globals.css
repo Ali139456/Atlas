@@ -995,6 +995,24 @@ html::-webkit-scrollbar-thumb:hover {
   white-space: nowrap;
 }
 
+@keyframes hero-char-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.35em);
+  animation: hero-char-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 .hero-subtitle {
   margin-top: 1.15rem;
   max-width: 34rem;
@@ -1038,9 +1056,9 @@ html::-webkit-scrollbar-thumb:hover {
     line-height: 1.16;
   }
 
-  /* Let words wrap naturally on mobile instead of forced desktop breaks */
-  .hero-title br {
-    display: none;
+  /* Keep intentional line breaks on small screens */
+  .hero-title-break {
+    display: block;
   }
 
   .hero-cta-row {
@@ -1175,14 +1193,21 @@ html::-webkit-scrollbar-thumb:hover {
 
 .hero-accent-word {
   display: inline-block;
+}
+
+.hero-accent-word .hero-char {
   background: linear-gradient(135deg, var(--neon-bright), var(--neon), var(--neon-dim));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-.hero-char {
-  display: inline-block;
+@media (prefers-reduced-motion: reduce) {
+  .hero-char {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }
 
 .hero-visual {

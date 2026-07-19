@@ -38,13 +38,14 @@
   color: inherit;
   cursor: pointer;
   transition:
-    flex 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    min-width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    max-width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
+    flex 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    min-width 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    max-width 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    min-height 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.55s ease,
+    border-color 0.55s ease,
+    box-shadow 0.55s ease;
 }
 
 .svc-acc__panel:hover:not(.is-active) {
@@ -91,6 +92,10 @@
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
+  transition:
+    opacity 0.45s ease 0.15s,
+    color 0.45s ease,
+    padding 0.85s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .svc-acc__panel.is-active .svc-acc__rail {
@@ -115,13 +120,13 @@
 
 .svc-acc__panel.is-active .svc-acc__body {
   display: flex;
-  animation: svc-acc-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: svc-acc-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
 }
 
 @keyframes svc-acc-in {
   from {
     opacity: 0;
-    transform: translateX(14px);
+    transform: translateX(18px);
   }
   to {
     opacity: 1;
@@ -143,6 +148,10 @@
   box-shadow: 0 0 24px rgba(0, 232, 240, 0.14);
 }
 
+.svc-acc__panel.is-active .svc-acc__icon {
+  animation: svc-acc-item-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+}
+
 .svc-acc__title {
   margin: 0;
   font-family: var(--font-display), system-ui, sans-serif;
@@ -152,12 +161,20 @@
   color: #fff;
 }
 
+.svc-acc__panel.is-active .svc-acc__title {
+  animation: svc-acc-item-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
+}
+
 .svc-acc__desc {
   margin: 0;
   max-width: 28rem;
   font-size: 0.95rem;
   line-height: 1.55;
   color: rgba(210, 230, 235, 0.84);
+}
+
+.svc-acc__panel.is-active .svc-acc__desc {
+  animation: svc-acc-item-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both;
 }
 
 .svc-acc__more {
@@ -174,6 +191,21 @@
   letter-spacing: 0.04em;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.svc-acc__panel.is-active .svc-acc__more {
+  animation: svc-acc-item-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.52s both;
+}
+
+@keyframes svc-acc-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .svc-acc__more:hover {
@@ -347,8 +379,21 @@
 
 @media (prefers-reduced-motion: reduce) {
   .svc-acc__panel,
-  .svc-acc__panel.is-active .svc-acc__body {
+  .svc-acc__rail,
+  .svc-acc__panel.is-active .svc-acc__body,
+  .svc-acc__icon,
+  .svc-acc__title,
+  .svc-acc__desc,
+  .svc-acc__more {
     transition: none;
     animation: none;
+  }
+
+  .svc-acc__icon,
+  .svc-acc__title,
+  .svc-acc__desc,
+  .svc-acc__more {
+    opacity: 1;
+    transform: none;
   }
 }
