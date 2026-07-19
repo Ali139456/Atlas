@@ -173,9 +173,8 @@ export function getAllServiceSlugs() {
 }
 
 export const servicesOverview = {
-  eyebrow: "Our services",
-  title: "Our",
-  titleAccent: "Services",
+  eyebrow: "Services",
+  title: "Expert accounting services for your business",
   description:
-    "Owners and developers, property management, asset management, and investors, each with dedicated sub-services delivered by our outsourced finance team.",
+    "Stay compliant, organized, and confident with professional financial management.",
 } as const;

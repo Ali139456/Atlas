@@ -9,7 +9,7 @@ import {
   getServiceCategory,
   serviceCategories,
 } from "@/lib/service-categories";
-import { homeAnchors, site } from "@/lib/site-content";
+import { homeAnchors, site, siteCta } from "@/lib/site-content";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -122,8 +122,8 @@ export default async function ServiceCategoryPage({ params }: Props) {
                 Ready to outsource {category.shortTitle.toLowerCase()} workflows?
               </p>
               <div className="service-detail-footer-actions">
-                <Link href={homeAnchors.contact} className="btn-neon">
-                  Book free consultation
+                <Link href={siteCta.href} className="btn-neon">
+                  {siteCta.label}
                 </Link>
                 <Link href={homeAnchors.services} className="btn-outline">
                   View all services

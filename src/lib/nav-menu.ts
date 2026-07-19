@@ -1,5 +1,5 @@
 import { serviceCategories } from "@/lib/service-categories";
-import { homeAnchors, industriesServed } from "@/lib/site-content";
+import { homeAnchors, industriesServed, siteCta } from "@/lib/site-content";
 
 export type NavLink = {
   label: string;
@@ -8,45 +8,67 @@ export type NavLink = {
 };
 
 export const navCta = {
-  label: "Inquire Now",
-  href: homeAnchors.contact,
+  label: siteCta.label,
+  href: siteCta.href,
 } as const;
 
 export const navPrimaryLinks = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: homeAnchors.whyUs },
+  { label: "Benefits", href: homeAnchors.features },
+  { label: "Why Choose Us", href: homeAnchors.whyUs },
+  { label: "Roles", href: homeAnchors.roles },
+  { label: "Reviews", href: homeAnchors.reviews },
   { label: "Contact Us", href: homeAnchors.contact },
 ] as const;
 
 export const footerBarLinks: readonly NavLink[] = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: homeAnchors.whyUs },
-  { label: "Services", href: homeAnchors.services },
-  { label: "Industry", href: homeAnchors.industries },
-  { label: "Contact Us", href: homeAnchors.contact },
+  { label: "Privacy Policy", href: homeAnchors.contact },
+  { label: "Terms of Use", href: homeAnchors.contact },
 ];
 
 export const footerLinkGroups: readonly { title: string; links: readonly NavLink[] }[] = [
   {
-    title: "Useful Links",
+    title: "Company",
     links: [
-      { label: "About Us", href: homeAnchors.whyUs },
-      { label: "Services", href: homeAnchors.services },
-      { label: "Benefits", href: homeAnchors.features },
-      { label: "Popular Roles", href: homeAnchors.roles },
-      { label: "Contact Us", href: homeAnchors.contact },
+      { label: "Home", href: "/" },
+      { label: "Contact us", href: homeAnchors.contact },
+      { label: "About us", href: homeAnchors.whyUs },
     ],
   },
   {
-    title: "Industries",
-    links: industriesServed.items.map(
-      (item): NavLink => ({
-        label: item.title,
-        href: homeAnchors.industries,
-      }),
-    ),
+    title: "Resources",
+    links: [
+      { label: "Benefits", href: homeAnchors.features },
+      { label: "Services", href: homeAnchors.services },
+      { label: "Industries", href: homeAnchors.industries },
+      { label: "Popular Roles", href: homeAnchors.roles },
+      { label: "Reviews", href: homeAnchors.reviews },
+    ],
   },
 ];
+
+export const footerSocialLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com",
+    icon: "linkedin" as const,
+  },
+  {
+    label: "X",
+    href: "https://x.com",
+    icon: "x" as const,
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com",
+    icon: "facebook" as const,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com",
+    icon: "instagram" as const,
+  },
+] as const;
 
 export const navServicesLinks: readonly NavLink[] = serviceCategories.map((category) => ({
   label: category.shortTitle,

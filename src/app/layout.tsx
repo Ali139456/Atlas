@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import Script from "next/script";
+import { Outfit, Syne } from "next/font/google";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
+});
+
+const syne = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -36,18 +44,38 @@ export const viewport = {
   viewportFit: "cover" as const,
 };
 
+const SCROLL_BOOT =
+  `try{` +
+  `if("scrollRestoration"in history)history.scrollRestoration="manual";` +
+  `var n=performance.getEntriesByType&&performance.getEntriesByType("navigation")[0];` +
+  `var reload=n&&n.type==="reload";` +
+  `if(reload){` +
+  `history.replaceState(null,"",location.pathname+location.search);` +
+  `scrollTo(0,0);document.documentElement.scrollTop=0;document.body.scrollTop=0;` +
+  `}else if(!location.hash||location.hash==="#"||location.hash==="#top"){` +
+  `scrollTo(0,0);document.documentElement.scrollTop=0;` +
+  `}` +
+  `}catch(e){}`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full overflow-x-clip`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${outfit.variable} ${syne.variable} h-full overflow-x-clip`}
+      suppressHydrationWarning
+    >
       <body
         id="top"
         className="site-body flex min-h-full max-w-[100vw] flex-col antialiased"
         suppressHydrationWarning
       >
+        <Script id="scroll-restoration" strategy="beforeInteractive">
+          {SCROLL_BOOT}
+        </Script>
         <ScrollToTop />
         {children}
       </body>

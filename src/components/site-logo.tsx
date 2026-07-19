@@ -18,7 +18,7 @@ export function SiteLogo({ className = "nav-logo", priority = false }: SiteLogoP
       width={LOGO_WIDTH}
       height={LOGO_HEIGHT}
       className={className}
-      sizes="(max-width: 47.9375rem) 180px, 320px"
+      sizes="(max-width: 47.9375rem) 200px, 360px"
       quality={90}
       {...(priority
         ? { loading: "eager" as const, fetchPriority: "high" as const }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { homeAnchors, popularRoles } from "@/lib/site-content";
+import { popularRoles, siteCta } from "@/lib/site-content";
 
 export function RolesSection() {
   return (
@@ -25,8 +25,8 @@ export function RolesSection() {
                 <h3 className="role-card-title">{role.title}</h3>
                 <p className="role-card-desc">{role.description}</p>
                 <div className="role-card-actions">
-                  <Link href={homeAnchors.contact} className="role-card-cta">
-                    Contact us
+                  <Link href={siteCta.href} className="role-card-cta">
+                    {siteCta.label}
                   </Link>
                 </div>
               </article>

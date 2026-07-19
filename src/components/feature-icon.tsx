@@ -1,4 +1,4 @@
-type IconKey = "expert" | "process" | "focus" | "network";
+type IconKey = "expert" | "process" | "focus" | "network" | "savings";
 
 export function FeatureIcon({ name, className = "h-6 w-6" }: { name: IconKey; className?: string }) {
   const p = {
@@ -11,6 +11,12 @@ export function FeatureIcon({ name, className = "h-6 w-6" }: { name: IconKey; cl
   };
 
   switch (name) {
+    case "savings":
+      return (
+        <svg {...p}>
+          <path d="M12 3v18M7.5 8.5c0-1.7 2-3 4.5-3s4.5 1.3 4.5 3-2 3-4.5 3-4.5 1.3-4.5 3 2 3 4.5 3 4.5-1.3 4.5-3" />
+        </svg>
+      );
     case "expert":
       return (
         <svg {...p}>

@@ -16,19 +16,13 @@ function NavPlainLink({
   href,
   label,
   onNavigate,
-  highlight,
 }: {
   href: string;
   label: string;
   onNavigate?: () => void;
-  highlight?: boolean;
 }) {
   return (
-    <Link
-      href={href}
-      className={highlight ? "nav-overlay-link nav-overlay-link--highlight" : "nav-overlay-link"}
-      onClick={onNavigate}
-    >
+    <Link href={href} className="nav-overlay-link" onClick={onNavigate}>
       <span>{label}</span>
       <span className="nav-overlay-link-icon" aria-hidden>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -68,31 +62,43 @@ export function SiteHeader() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const homeLink = navPrimaryLinks[0];
-  const aboutLink = navPrimaryLinks[1];
-  const contactLink = navPrimaryLinks[2];
+  const [homeLink, benefitsLink, whyLink, rolesLink, reviewsLink, contactLink] =
+    navPrimaryLinks;
 
   return (
     <>
       <header className={`nav-wrap${scrolled ? " nav-wrap--scrolled" : ""}`}>
-        <div className="nav-wrap-glow" aria-hidden />
         <div className="site-container">
           <div className="nav-inner">
-            <Link href="/" aria-label={`${site.brand} home`} className="nav-brand shrink-0">
-              <SiteLogo priority />
+            <Link href="/" aria-label={`${site.brand} home`} className="nav-brand-chip">
+              <SiteLogo priority className="nav-logo" />
             </Link>
 
             <nav className="nav-menu" aria-label="Main">
               <Link href={homeLink.href}>{homeLink.label}</Link>
-              <Link href={aboutLink.href}>{aboutLink.label}</Link>
+              <Link href={benefitsLink.href}>{benefitsLink.label}</Link>
               <NavDropdown label="Services" items={navServicesLinks} />
               <NavDropdown label="Industry" items={navIndustryLinks} />
+              <Link href={whyLink.href}>{whyLink.label}</Link>
+              <Link href={rolesLink.href}>{rolesLink.label}</Link>
+              <Link href={reviewsLink.href}>{reviewsLink.label}</Link>
               <Link href={contactLink.href}>{contactLink.label}</Link>
             </nav>
 
             <div className="nav-actions">
-              <Link href={navCta.href} className="btn-neon !py-2.5 !px-5 !text-[0.65rem]">
-                {navCta.label}
+              <Link href={navCta.href} className="nav-cta-chip">
+                <span>{navCta.label}</span>
+                <span className="nav-cta-arrow" aria-hidden>
+                  <svg viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M4 12L12 4M12 4H6.5M12 4V9.5"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
               </Link>
             </div>
 
@@ -125,8 +131,8 @@ export function SiteHeader() {
           <div className="nav-overlay-glow" aria-hidden />
           <div className="nav-overlay-inner site-container">
             <div className="nav-overlay-top">
-              <Link href="/" aria-label={`${site.brand} home`} className="nav-brand" onClick={close}>
-                <SiteLogo priority />
+              <Link href="/" aria-label={`${site.brand} home`} className="nav-brand-chip" onClick={close}>
+                <SiteLogo priority className="nav-logo" />
               </Link>
               <button
                 type="button"
@@ -147,7 +153,7 @@ export function SiteHeader() {
 
             <nav className="nav-overlay-nav" aria-label="Mobile">
               <NavPlainLink href={homeLink.href} label={homeLink.label} onNavigate={close} />
-              <NavPlainLink href={aboutLink.href} label={aboutLink.label} onNavigate={close} />
+              <NavPlainLink href={benefitsLink.href} label={benefitsLink.label} onNavigate={close} />
               <NavDropdown
                 label="Services"
                 items={navServicesLinks}
@@ -160,12 +166,10 @@ export function SiteHeader() {
                 variant="mobile"
                 onNavigate={close}
               />
-              <NavPlainLink
-                href={contactLink.href}
-                label={contactLink.label}
-                onNavigate={close}
-                highlight
-              />
+              <NavPlainLink href={whyLink.href} label={whyLink.label} onNavigate={close} />
+              <NavPlainLink href={rolesLink.href} label={rolesLink.label} onNavigate={close} />
+              <NavPlainLink href={reviewsLink.href} label={reviewsLink.label} onNavigate={close} />
+              <NavPlainLink href={contactLink.href} label={contactLink.label} onNavigate={close} />
             </nav>
 
             <div className="nav-overlay-actions">
@@ -174,7 +178,7 @@ export function SiteHeader() {
               </Link>
             </div>
 
-            <p className="nav-overlay-foot">Tap a link above or request a no-obligation proposal</p>
+            <p className="nav-overlay-foot">Tap a link above or get a proposal</p>
           </div>
         </div>
       ) : null}

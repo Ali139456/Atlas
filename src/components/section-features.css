@@ -1,0 +1,304 @@
+.benefits__intro {
+  max-width: 38rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.benefits__title {
+  margin: 0.85rem 0 0;
+  font-size: clamp(1.65rem, 3.6vw, 3rem);
+  line-height: 1.12;
+}
+
+.benefits__lead {
+  margin: 0.85rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.benefits__layout {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: stretch;
+}
+
+.benefits__timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 0;
+}
+
+.benefits__rail {
+  position: absolute;
+  top: 0.85rem;
+  bottom: 0.85rem;
+  left: 0.82rem;
+  width: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 232, 240, 0.55),
+    rgba(0, 232, 240, 0.18) 45%,
+    rgba(0, 232, 240, 0.08)
+  );
+  box-shadow: 0 0 12px rgba(0, 232, 240, 0.25);
+}
+
+.benefits__step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.75rem 1fr;
+  gap: 0.7rem;
+  align-items: start;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) var(--tl-delay, 0ms),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) var(--tl-delay, 0ms);
+}
+
+.benefits__step.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+.benefits__node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-top: 0.75rem;
+}
+
+.benefits__node-core {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 232, 240, 0.55);
+  background: rgba(3, 6, 12, 0.95);
+  box-shadow: 0 0 0 3px rgba(0, 232, 240, 0.08);
+  transition:
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+.benefits__step.is-on .benefits__node-core {
+  background: var(--neon);
+  border-color: var(--neon-bright);
+  box-shadow:
+    0 0 0 4px rgba(0, 232, 240, 0.14),
+    0 0 14px rgba(0, 232, 240, 0.5);
+  animation: benefits-node-pulse 2.4s ease-in-out infinite;
+}
+
+.benefits__card {
+  padding: 0.7rem 0.9rem 0.75rem;
+  border-radius: 0.95rem;
+  border: 1px solid rgba(0, 232, 240, 0.16);
+  background:
+    linear-gradient(155deg, rgba(12, 24, 42, 0.88) 0%, rgba(5, 10, 20, 0.95) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.benefits__step--metric .benefits__card {
+  padding: 0.8rem 0.95rem 0.85rem;
+}
+
+.benefits__step.is-on .benefits__card:hover {
+  border-color: rgba(0, 232, 240, 0.38);
+  transform: translateY(-1px);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.28),
+    0 0 18px rgba(0, 232, 240, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.benefits__index {
+  display: block;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(142, 249, 255, 0.75);
+}
+
+.benefits__metric {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  font-weight: 750;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(120deg, #fff 15%, var(--neon-bright) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.benefits__metric-label {
+  margin: 0.2rem 0 0;
+  font-size: 0.62rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(160, 245, 255, 0.68);
+}
+
+.benefits__card-title {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.benefits__card-desc {
+  margin: 0.2rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.benefits__aside {
+  position: relative;
+  display: flex;
+  min-height: 16rem;
+}
+
+.benefits__visual {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 16rem;
+  border-radius: calc(var(--radius-xl) + 0.1rem);
+  overflow: hidden;
+}
+
+.benefits__visual-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 40%, rgba(3, 6, 12, 0.82) 100%),
+    radial-gradient(70% 50% at 15% 10%, rgba(0, 232, 240, 0.14), transparent 60%);
+}
+
+.benefits__visual-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 1.1rem 1.15rem 1.2rem;
+}
+
+.benefits__visual-kicker {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--neon-bright);
+}
+
+.benefits__visual-text {
+  margin: 0.35rem 0 0;
+  max-width: 22rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: rgba(244, 250, 252, 0.9);
+}
+
+@keyframes benefits-node-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 4px rgba(0, 232, 240, 0.12),
+      0 0 12px rgba(0, 232, 240, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(0, 232, 240, 0.08),
+      0 0 20px rgba(0, 232, 240, 0.65);
+  }
+}
+
+@media (max-width: 29.9375rem) {
+  .benefits__aside {
+    min-height: 14rem;
+  }
+
+  .benefits__visual {
+    min-height: 14rem;
+  }
+
+  .benefits__card {
+    padding: 0.65rem 0.8rem 0.7rem;
+  }
+
+  .benefits__card-title {
+    font-size: 0.9rem;
+  }
+
+  .benefits__card-desc {
+    font-size: 0.78rem;
+  }
+}
+
+@media (min-width: 40rem) and (max-width: 59.9375rem) {
+  .benefits__visual {
+    min-height: 18rem;
+  }
+}
+
+@media (min-width: 60rem) {
+  .benefits__layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(16rem, 0.95fr);
+    gap: clamp(1.75rem, 3.5vw, 2.75rem);
+    align-items: stretch;
+  }
+
+  .benefits__aside {
+    min-height: 100%;
+  }
+
+  .benefits__visual {
+    min-height: 100%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 80rem) {
+  .benefits__layout {
+    gap: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .benefits__step,
+  .benefits__step.is-on {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .benefits__step.is-on .benefits__node-core {
+    animation: none;
+  }
+}
+
+@media (hover: none) {
+  .benefits__step.is-on .benefits__card:hover {
+    transform: none;
+  }
+}

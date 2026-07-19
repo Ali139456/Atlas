@@ -1,0 +1,191 @@
+.industries-header {
+  max-width: 40rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.35rem);
+}
+
+.industries-title {
+  margin: 0.85rem 0 0;
+  font-size: clamp(1.7rem, 3.8vw, 3.1rem);
+  line-height: 1.12;
+}
+
+.industries-lead {
+  margin: 0.95rem 0 0;
+  max-width: 34rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.industry-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 1.35 / 1;
+  overflow: hidden;
+  border-radius: calc(var(--radius-xl) + 0.05rem);
+  border: 1px solid rgba(0, 232, 240, 0.18);
+  background: rgba(4, 10, 18, 0.9);
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    border-color 0.3s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+
+.industry-card-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(0, 232, 240, 0.08);
+  pointer-events: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.industry-card-img {
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+  filter: saturate(0.92) brightness(0.92);
+}
+
+.industry-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(3, 6, 12, 0.08) 20%, rgba(3, 6, 12, 0.88) 100%),
+    radial-gradient(80% 60% at 50% 0%, rgba(0, 232, 240, 0.1), transparent 60%);
+  pointer-events: none;
+  transition: background 0.35s ease;
+}
+
+.industry-card-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1rem 0.85rem 1.05rem;
+  text-align: center;
+}
+
+.industry-card-index {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(142, 249, 255, 0.7);
+}
+
+.industry-card-title {
+  margin: 0;
+  font-size: clamp(0.82rem, 1.4vw, 1rem);
+  font-weight: 650;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.industry-card:hover {
+  border-color: rgba(0, 232, 240, 0.45);
+  transform: translateY(-4px);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.4),
+    0 0 28px rgba(0, 232, 240, 0.12);
+}
+
+.industry-card:hover .industry-card-img {
+  transform: scale(1.07);
+  filter: saturate(1.05) brightness(1);
+}
+
+.industry-card:hover .industry-card-frame {
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 232, 240, 0.28),
+    inset 0 0 28px rgba(0, 232, 240, 0.08);
+}
+
+.industry-card:hover .industry-card-index {
+  color: var(--neon-bright);
+}
+
+/* Small phones — single column so titles stay readable */
+@media (max-width: 29.9375rem) {
+  .industries-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .industry-card {
+    aspect-ratio: 16 / 10;
+  }
+
+  .industry-card-content {
+    padding: 0.9rem 0.85rem 1rem;
+  }
+
+  .industry-card-title {
+    font-size: 0.95rem;
+  }
+}
+
+/* Large phones — keep 2-up */
+@media (min-width: 30rem) and (max-width: 47.9375rem) {
+  .industries-grid {
+    gap: 0.8rem;
+  }
+
+  .industry-card {
+    aspect-ratio: 1.25 / 1;
+  }
+
+  .industry-card-title {
+    font-size: 0.86rem;
+  }
+}
+
+/* Tablets — 3-up */
+@media (min-width: 48rem) {
+  .industries-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.05rem;
+  }
+
+  .industry-card {
+    aspect-ratio: 1.45 / 1;
+  }
+
+  .industry-card-content {
+    padding: 1.15rem 1rem 1.2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 68.75rem) {
+  .industries-grid {
+    gap: 1.15rem;
+  }
+
+  .industry-card {
+    aspect-ratio: 1.5 / 1;
+  }
+
+  .industry-card-title {
+    font-size: 1.05rem;
+  }
+}
+
+@media (hover: none) {
+  .industry-card:hover {
+    transform: none;
+  }
+}
