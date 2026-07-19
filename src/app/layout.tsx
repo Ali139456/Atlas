@@ -42,8 +42,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full overflow-x-clip`}>
-      <body id="top" className="site-body flex min-h-full max-w-[100vw] flex-col antialiased">
+    <html lang="en" className={`${inter.variable} h-full overflow-x-clip`} suppressHydrationWarning>
+      <body
+        id="top"
+        className="site-body flex min-h-full max-w-[100vw] flex-col antialiased"
+        suppressHydrationWarning
+      >
         <ScrollToTop />
         {children}
       </body>
