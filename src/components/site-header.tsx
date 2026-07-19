@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { NavDropdown } from "@/components/nav-dropdown";
+import { SiteLogo } from "@/components/site-logo";
 import {
   navCta,
   navIndustryLinks,
@@ -79,15 +79,7 @@ export function SiteHeader() {
         <div className="site-container">
           <div className="nav-inner">
             <Link href="/" aria-label={`${site.brand} home`} className="nav-brand shrink-0">
-              <Image
-                src={site.logo}
-                alt=""
-                width={400}
-                height={500}
-                className="nav-logo"
-                priority
-                loading="eager"
-              />
+              <SiteLogo priority />
             </Link>
 
             <nav className="nav-menu" aria-label="Main">
@@ -134,14 +126,7 @@ export function SiteHeader() {
           <div className="nav-overlay-inner site-container">
             <div className="nav-overlay-top">
               <Link href="/" aria-label={`${site.brand} home`} className="nav-brand" onClick={close}>
-                <Image
-                  src={site.logo}
-                  alt=""
-                  width={400}
-                  height={500}
-                  className="nav-logo"
-                  loading="eager"
-                />
+                <SiteLogo priority />
               </Link>
               <button
                 type="button"

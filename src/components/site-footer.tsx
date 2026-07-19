@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { footerBarLinks, footerLinkGroups } from "@/lib/nav-menu";
+import { SiteLogo } from "@/components/site-logo";
 import { homeAnchors, site } from "@/lib/site-content";
 
 function FooterLink({
@@ -30,13 +30,7 @@ export function SiteFooter() {
         <div className="footer-main">
           <div className="footer-brand">
             <Link href="/" aria-label={`${site.brand} home`} className="footer-logo-link">
-              <Image
-                src={site.logo}
-                alt=""
-                width={400}
-                height={500}
-                className="footer-logo"
-              />
+              <SiteLogo className="footer-logo" />
             </Link>
             <Link href={homeAnchors.contact} className="footer-cta">
               Get a no-obligation proposal →
