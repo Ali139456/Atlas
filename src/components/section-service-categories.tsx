@@ -11,7 +11,7 @@ export function ServiceCategoriesSection() {
 
   return (
     <section id="services" className="svc-acc relative section-pad overflow-hidden">
-      <div className="blob w-[500px] h-[400px] left-0 bottom-0 bg-cyan-500/10" aria-hidden />
+      <div className="blob w-[500px] h-[400px] left-0 bottom-0 blob--accent" aria-hidden />
       <div className="site-container relative z-10">
         <div className="svc-acc__layout">
           <div
@@ -28,7 +28,7 @@ export function ServiceCategoriesSection() {
                   tabIndex={0}
                   aria-selected={isActive}
                   aria-expanded={isActive}
-                  className={`svc-acc__panel${isActive ? " is-active" : ""}`}
+                  className={`svc-acc__panel svc-acc__panel--${index + 1}${isActive ? " is-active" : ""}`}
                   onClick={() => setActive(index)}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {

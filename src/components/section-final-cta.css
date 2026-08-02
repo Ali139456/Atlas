@@ -3,7 +3,7 @@
   overflow: hidden;
   margin-top: clamp(1.25rem, 4vw, 3rem);
   padding-block: clamp(3.25rem, 8vw, 6.5rem);
-  background: #05080f;
+  background: var(--final-cta-bg, #05080f);
   isolation: isolate;
 }
 
@@ -65,7 +65,7 @@
   font-weight: 750;
   line-height: 1.15;
   letter-spacing: -0.03em;
-  color: #fff;
+  color: var(--heading);
   overflow-wrap: break-word;
 }
 
@@ -84,20 +84,21 @@
   margin-top: 1.75rem;
   padding: 0.95rem 1.75rem;
   border-radius: 0.85rem;
-  background: linear-gradient(135deg, var(--neon-bright), var(--neon));
-  color: #031018;
+  background: var(--btn-primary-bg, var(--neon));
+  color: var(--btn-primary-fg, #ffffff);
   font-size: 0.82rem;
   font-weight: 750;
   letter-spacing: 0.04em;
   text-decoration: none;
   text-transform: uppercase;
-  box-shadow: 0 0 28px rgba(0, 232, 240, 0.28);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--glow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .final-cta__btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 36px rgba(0, 232, 240, 0.4);
+  background: var(--neon-dim);
+  box-shadow: var(--glow);
 }
 
 /* Phones */
@@ -190,4 +191,18 @@
   .final-cta__btn:hover {
     transform: none;
   }
+}
+
+[data-theme="light"] .final-cta {
+  background: var(--final-cta-bg);
+  border-top: 1px solid rgba(147, 197, 253, 0.35);
+}
+
+[data-theme="light"] .final-cta__arc {
+  border-color: rgba(37, 99, 235, 0.18);
+  box-shadow: none;
+}
+
+[data-theme="light"] .final-cta__grid {
+  background-image: none;
 }

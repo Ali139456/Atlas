@@ -31,7 +31,7 @@ function PricingCard({
       </div>
 
       <div className="pricing-card-head">
-        <h3 className="text-base font-semibold text-white sm:text-lg">{plan.name}</h3>
+        <h3 className="text-base font-semibold text-heading sm:text-lg">{plan.name}</h3>
         <p className="mt-0.5 text-xs text-[var(--muted-dim)]">{plan.billing}</p>
         <p className="pricing-card-price mt-2 display-lg text-gradient-neon">
           {plan.price}
@@ -130,11 +130,11 @@ export function PricingSection() {
 
   return (
     <section id="pricing" className="relative section-pad overflow-hidden">
-      <div className="blob w-[550px] h-[400px] right-0 top-1/2 -translate-y-1/2 bg-cyan-500/10" aria-hidden />
+      <div className="blob w-[550px] h-[400px] right-0 top-1/2 -translate-y-1/2 blob--accent" aria-hidden />
       <div className="site-container relative z-10">
         <div className="section-intro">
           <p className="eyebrow-pill">Select your plan</p>
-          <h2 className="display-lg section-title pricing-page-title text-white">
+          <h2 className="display-lg section-title pricing-page-title text-heading">
             Flexible pricing{" "}
             <span className="text-gradient-neon">that fits you</span>
           </h2>

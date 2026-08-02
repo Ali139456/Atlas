@@ -95,11 +95,11 @@ const visuals = [
 export function WhyChooseUsSection() {
   return (
     <section id="why-us" className="why-us relative section-pad overflow-hidden">
-      <div className="blob w-[520px] h-[360px] left-1/2 top-0 -translate-x-1/2 bg-cyan-500/10" aria-hidden />
+      <div className="blob w-[520px] h-[360px] left-1/2 top-0 -translate-x-1/2 blob--accent" aria-hidden />
       <div className="site-container relative z-10">
         <div className="why-us__intro">
           <p className="eyebrow-pill">{whyChooseUs.eyebrow}</p>
-          <h2 className="display-lg why-us__title text-white">
+          <h2 className="display-lg why-us__title text-heading">
             {whyChooseUs.title}{" "}
             <span className="text-gradient-neon">{whyChooseUs.titleAccent}</span>
           </h2>
@@ -115,7 +115,7 @@ export function WhyChooseUsSection() {
             return (
               <article
                 key={item.title}
-                className={`why-us__card${wide ? " why-us__card--wide" : ""}`}
+                className={`why-us__card why-us__card--${index + 1}${wide ? " why-us__card--wide" : ""}`}
               >
                 <div className="why-us__card-visual">
                   <Visual />

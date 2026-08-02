@@ -36,13 +36,13 @@ export function TestimonialsSection() {
 
   return (
     <section id="reviews" className="reviews relative section-pad overflow-hidden">
-      <div className="blob w-[480px] h-[340px] right-0 top-0 bg-cyan-500/10" aria-hidden />
+      <div className="blob w-[480px] h-[340px] right-0 top-0 blob--accent" aria-hidden />
       <div className="reviews__glow" aria-hidden />
 
       <div className="site-container relative z-10">
         <div className="reviews__intro">
           <p className="eyebrow-pill">{testimonials.eyebrow}</p>
-          <h2 className="display-lg reviews__title text-white">
+          <h2 className="display-lg reviews__title text-heading">
             {testimonials.title}{" "}
             <span className="text-gradient-neon">{testimonials.titleAccent}</span>
           </h2>

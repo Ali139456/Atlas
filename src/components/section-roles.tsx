@@ -4,11 +4,11 @@ import { popularRoles, siteCta } from "@/lib/site-content";
 export function RolesSection() {
   return (
     <section id="roles" className="roles-section relative section-pad overflow-hidden">
-      <div className="blob w-[480px] h-[360px] left-0 top-1/4 bg-purple-500/10" aria-hidden />
+      <div className="blob w-[480px] h-[360px] left-0 top-1/4 blob--accent" aria-hidden />
       <div className="site-container relative z-10">
         <div className="section-intro">
           <p className="eyebrow-pill">{popularRoles.eyebrow}</p>
-          <h2 className="display-lg section-title text-white">
+          <h2 className="display-lg section-title text-heading">
             {popularRoles.title}{" "}
             <span className="text-gradient-neon">{popularRoles.titleAccent}</span>
           </h2>
@@ -18,7 +18,7 @@ export function RolesSection() {
         <ul className="roles-grid section-body">
           {popularRoles.items.map((role, index) => (
             <li key={role.title}>
-              <article className="role-card glass-strong glass-hover">
+              <article className={`role-card role-card--${index + 1} glass-strong glass-hover`}>
                 <span className="role-card-num text-gradient-neon">
                   {String(index + 1).padStart(2, "0")}
                 </span>

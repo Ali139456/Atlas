@@ -88,7 +88,7 @@ export function ContactSection() {
         <div className="contact-sec__layout">
           <div className="contact-sec__info">
             <p className="eyebrow-pill">{contactForm.eyebrow}</p>
-            <h2 className="display-lg contact-sec__title text-white">
+            <h2 className="display-lg contact-sec__title text-heading">
               {contactForm.title}{" "}
               <span className="text-gradient-neon">{contactForm.titleAccent}</span>
             </h2>

@@ -43,11 +43,11 @@ export function FeaturesSection() {
 
   return (
     <section id="features" className="benefits relative section-pad overflow-hidden">
-      <div className="blob w-[420px] h-[320px] left-0 top-1/4 bg-cyan-500/10" aria-hidden />
+      <div className="blob w-[420px] h-[320px] left-0 top-1/4 blob--accent" aria-hidden />
       <div className="site-container relative z-10">
         <div className="benefits__intro">
           <p className="eyebrow-pill">{features.eyebrow}</p>
-          <h2 className="display-lg benefits__title text-white">
+          <h2 className="display-lg benefits__title text-heading">
             {features.title}{" "}
             <span className="text-gradient-neon">{features.titleAccent}</span>
           </h2>
@@ -70,7 +70,7 @@ export function FeaturesSection() {
                   key={item.title}
                   role="listitem"
                   data-tl-index={index}
-                  className={`benefits__step${isOn ? " is-on" : ""}${hasMetric ? " benefits__step--metric" : ""}`}
+                  className={`benefits__step benefits__step--${index + 1}${isOn ? " is-on" : ""}${hasMetric ? " benefits__step--metric" : ""}`}
                   style={{ ["--tl-delay" as string]: `${index * 60}ms` }}
                 >
                   <span className="benefits__node" aria-hidden>

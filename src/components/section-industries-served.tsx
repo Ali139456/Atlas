@@ -9,13 +9,13 @@ export function IndustriesServedSection() {
       id="industries"
       className="industries-section relative section-pad overflow-hidden"
     >
-      <div className="blob w-[480px] h-[360px] right-0 bottom-0 bg-cyan-500/10" aria-hidden />
-      <div className="blob w-[360px] h-[280px] left-0 top-1/3 bg-cyan-500/5" aria-hidden />
+      <div className="blob w-[480px] h-[360px] right-0 bottom-0 blob--accent" aria-hidden />
+      <div className="blob w-[360px] h-[280px] left-0 top-1/3 blob--accent-soft" aria-hidden />
 
       <div className="site-container relative z-10">
         <div className="industries-header">
           <p className="eyebrow-pill">{industriesServed.eyebrow}</p>
-          <h2 className="display-lg industries-title text-white">
+          <h2 className="display-lg industries-title text-heading">
             {industriesServed.title}{" "}
             <span className="text-gradient-neon">{industriesServed.titleAccent}</span>
           </h2>

@@ -34,7 +34,7 @@ export function HeroTitle({ title, lines }: HeroTitleProps) {
   let charIndex = 0;
 
   return (
-    <h1 className="hero-title display-xl text-white" aria-label={title}>
+    <h1 className="hero-title display-xl text-heading" aria-label={title}>
       <span aria-hidden="true">
         {lines.map((lineParts, lineIndex) => {
           const words = toWords(lineParts);

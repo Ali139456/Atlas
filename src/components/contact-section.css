@@ -115,7 +115,7 @@
   display: block;
   font-size: 0.95rem;
   font-weight: 650;
-  color: #fff;
+  color: var(--heading);
 }
 
 .contact-sec__tile-copy em {
@@ -148,23 +148,20 @@
 }
 
 .contact-sec__tile:hover .contact-sec__tile-go {
-  color: #031018;
+  color: #ffffff;
   border-color: transparent;
-  background: linear-gradient(135deg, var(--neon-bright), var(--neon));
+  background: var(--neon);
 }
 
 .contact-sec__panel {
   width: 100%;
   padding: clamp(1.15rem, 2.8vw, 1.55rem);
   border-radius: calc(var(--radius-xl) + 0.2rem);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  background:
-    linear-gradient(165deg, rgba(16, 24, 38, 0.72), rgba(6, 10, 18, 0.82));
+  border: 1px solid var(--contact-panel-border, rgba(255, 255, 255, 0.09));
+  background: var(--contact-panel-bg, #0f2744);
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
-  box-shadow:
-    0 22px 50px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: var(--contact-panel-shadow, 0 22px 50px rgba(0, 0, 0, 0.35));
 }
 
 .contact-sec__form {
@@ -190,7 +187,7 @@
   border: 1px solid transparent;
   border-radius: 0.9rem;
   background: rgba(0, 0, 0, 0.35);
-  color: #fff;
+  color: var(--heading);
   font: inherit;
   font-size: 0.95rem;
   outline: none;
@@ -243,19 +240,20 @@
   margin-top: 0.25rem;
   border: none;
   border-radius: 9999px;
-  background: linear-gradient(135deg, #fff 0%, #e8fbff 100%);
-  color: #031018;
+  background: var(--btn-primary-bg, var(--neon));
+  color: var(--btn-primary-fg, #ffffff);
   font-size: 0.78rem;
   font-weight: 750;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .contact-sec__submit:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 28px rgba(255, 255, 255, 0.18);
+  background: var(--neon-dim);
+  box-shadow: var(--glow-sm);
 }
 
 .contact-sec__msg {
@@ -356,4 +354,50 @@
   .contact-sec__submit:hover {
     transform: none;
   }
+}
+
+[data-theme="light"] .contact-sec__watermark {
+  color: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .contact-sec__tile {
+  border-color: rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+}
+
+[data-theme="light"] .contact-sec__tile:hover {
+  border-color: var(--border-strong);
+  background: #f8fafc;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .contact-sec__tile-go {
+  color: var(--muted);
+  border-color: rgba(0, 0, 0, 0.1);
+  background: #f8fafc;
+}
+
+[data-theme="light"] .contact-sec__panel {
+  --contact-panel-bg: #ffffff;
+  --contact-panel-border: rgba(0, 0, 0, 0.08);
+  --contact-panel-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .contact-sec__input,
+[data-theme="light"] .contact-sec__panel .form-select-trigger.input-neon {
+  background: #f8fafc;
+  border-color: rgba(0, 0, 0, 0.08);
+  color: var(--heading);
+}
+
+[data-theme="light"] .contact-sec__input::placeholder,
+[data-theme="light"] .contact-sec__panel .form-select-placeholder {
+  color: var(--muted-dim);
+}
+
+[data-theme="light"] .contact-sec__input:focus,
+[data-theme="light"] .contact-sec__panel .form-select-trigger.input-neon:hover,
+[data-theme="light"] .contact-sec__panel .form-select.is-open .form-select-trigger.input-neon {
+  background: #ffffff;
+  border-color: var(--border-strong);
 }

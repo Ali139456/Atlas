@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { NavDropdown } from "@/components/nav-dropdown";
 import { SiteLogo } from "@/components/site-logo";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
   navCta,
   navIndustryLinks,
@@ -86,6 +87,7 @@ export function SiteHeader() {
             </nav>
 
             <div className="nav-actions">
+              <ThemeToggle />
               <Link href={navCta.href} className="nav-cta-chip">
                 <span>{navCta.label}</span>
                 <span className="nav-cta-arrow" aria-hidden>
@@ -102,21 +104,24 @@ export function SiteHeader() {
               </Link>
             </div>
 
-            <button
-              type="button"
-              className="nav-toggle nav-mobile-only"
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-              onClick={() => setOpen((value) => !value)}
-            >
-              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                {open ? (
-                  <path d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path d="M4 7h16M4 12h16M4 17h16" />
-                )}
-              </svg>
-            </button>
+            <div className="nav-mobile-actions nav-mobile-only">
+              <ThemeToggle />
+              <button
+                type="button"
+                className="nav-toggle"
+                aria-label={open ? "Close menu" : "Open menu"}
+                aria-expanded={open}
+                onClick={() => setOpen((value) => !value)}
+              >
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  {open ? (
+                    <path d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path d="M4 7h16M4 12h16M4 17h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -173,6 +178,7 @@ export function SiteHeader() {
             </nav>
 
             <div className="nav-overlay-actions">
+              <ThemeToggle />
               <Link href={navCta.href} className="nav-overlay-btn btn-neon" onClick={close}>
                 {navCta.label}
               </Link>

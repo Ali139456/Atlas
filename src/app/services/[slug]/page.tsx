@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ServiceCategoryIcon } from "@/components/service-category-icon";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import "../service-detail.css";
 import {
   getAllServiceSlugs,
   getServiceCategory,
@@ -37,7 +38,7 @@ export default async function ServiceCategoryPage({ params }: Props) {
       <SiteHeader />
       <main className="site-main section-bg">
         <section className="service-detail-page relative section-pad overflow-hidden">
-          <div className="blob w-[480px] h-[360px] left-1/2 -translate-x-1/2 top-0 bg-cyan-500/8" aria-hidden />
+          <div className="blob w-[480px] h-[360px] left-1/2 -translate-x-1/2 top-0 blob--accent-soft" aria-hidden />
           <div className="site-container relative z-10">
             <nav className="service-breadcrumb" aria-label="Breadcrumb">
               <ol className="service-breadcrumb-list">
@@ -82,17 +83,17 @@ export default async function ServiceCategoryPage({ params }: Props) {
                 </div>
                 <p className="eyebrow-pill service-detail-eyebrow">{site.brand}</p>
               </div>
-              <h1 className="display-lg mt-4 text-white">{category.title}</h1>
+              <h1 className="display-lg mt-4 text-heading">{category.title}</h1>
               <p className="service-detail-lead">{category.description}</p>
               <p className="service-detail-summary">{category.summary}</p>
             </header>
 
             <nav className="service-tabs" aria-label="Service categories">
-              {serviceCategories.map((item) => (
+              {serviceCategories.map((item, tabIndex) => (
                 <Link
                   key={item.slug}
                   href={`/services/${item.slug}`}
-                  className={item.slug === category.slug ? "is-active" : undefined}
+                  className={`service-tab service-tab--${tabIndex + 1}${item.slug === category.slug ? " is-active" : ""}`}
                   aria-current={item.slug === category.slug ? "page" : undefined}
                 >
                   {item.shortTitle}
@@ -101,12 +102,20 @@ export default async function ServiceCategoryPage({ params }: Props) {
             </nav>
 
             <div className="service-subs-list-wrap">
-              <p className="service-subs-heading">
-                What we deliver for <span className="text-[var(--neon)]">{category.shortTitle}</span>
-              </p>
-              <ol className="service-subs-list">
+              <div className="service-subs-head">
+                <p className="service-subs-heading">
+                  What we deliver for <span>{category.shortTitle}</span>
+                </p>
+                <p className="service-subs-count">
+                  {category.subServices.length} capabilities
+                </p>
+              </div>
+              <ul className="service-subs-grid">
                 {category.subServices.map((sub, index) => (
-                  <li key={sub.title} className="service-subs-item">
+                  <li
+                    key={sub.title}
+                    className={`service-subs-card service-subs-card--${(index % 4) + 1}`}
+                  >
                     <span className="service-subs-index">{String(index + 1).padStart(2, "0")}</span>
                     <div className="service-subs-content">
                       <h2 className="service-subs-title">{sub.title}</h2>
@@ -114,7 +123,7 @@ export default async function ServiceCategoryPage({ params }: Props) {
                     </div>
                   </li>
                 ))}
-              </ol>
+              </ul>
             </div>
 
             <div className="service-detail-footer">

@@ -124,10 +124,9 @@ export const features = {
   eyebrow: "Benefits",
   title: "Benefits of Outsourcing",
   titleAccent: "Accounting",
-  sideImage:
-    "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=65",
+  sideImage: "/images/benefits-finance-dashboard.png",
   sideImageAlt:
-    "Accounting desk with calculator, financial ledgers, and report documents",
+    "Finance analytics dashboard with sales charts, KPI metrics, and reporting widgets",
   items: [
     {
       title: "High Cost Savings",

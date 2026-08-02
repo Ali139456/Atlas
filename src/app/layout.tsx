@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Outfit, Syne } from "next/font/google";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -76,8 +77,10 @@ export default function RootLayout({
         <Script id="scroll-restoration" strategy="beforeInteractive">
           {SCROLL_BOOT}
         </Script>
-        <ScrollToTop />
-        {children}
+        <ThemeProvider>
+          <ScrollToTop />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

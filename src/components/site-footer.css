@@ -1,6 +1,6 @@
 .site-footer {
-  background: #03060c;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--footer-bg, var(--bg));
+  border-top: 1px solid var(--footer-border);
 }
 
 .footer-shell {
@@ -47,9 +47,9 @@
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(244, 250, 252, 0.85);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--footer-social-border);
+  color: var(--footer-social-fg);
+  background: var(--footer-social-bg);
   transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
 }
 
@@ -59,9 +59,9 @@
 }
 
 .footer-social:hover {
-  border-color: rgba(0, 232, 240, 0.4);
+  border-color: var(--border-strong);
   color: var(--neon-bright);
-  background: rgba(0, 232, 240, 0.08);
+  background: var(--blob-accent-soft);
   transform: translateY(-1px);
 }
 
@@ -69,7 +69,7 @@
   margin: 0 0 1rem;
   font-size: 1rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--footer-title);
 }
 
 .footer-col ul {
@@ -116,8 +116,8 @@
   height: 2.15rem;
   border-radius: 0.65rem;
   color: var(--neon);
-  border: 1px solid rgba(0, 232, 240, 0.35);
-  background: rgba(0, 232, 240, 0.06);
+  border: 1px solid var(--border-strong);
+  background: var(--blob-accent-soft);
 }
 
 .footer-touch-icon svg {
@@ -128,7 +128,7 @@
 .footer-copy {
   margin: 0;
   padding-top: 1.35rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--footer-border);
   text-align: center;
   font-size: clamp(0.72rem, 2.4vw, 0.8rem);
   line-height: 1.5;
@@ -215,4 +215,29 @@
   .footer-social:hover {
     transform: none;
   }
+}
+
+[data-theme="light"] .site-footer {
+  background: var(--footer-bg);
+}
+
+[data-theme="light"] .footer-social {
+  background: var(--footer-social-bg);
+  border-color: var(--footer-social-border);
+}
+
+[data-theme="light"] .footer-social:hover {
+  border-color: rgba(37, 99, 235, 0.35);
+  color: #2563eb;
+  background: #eff6ff;
+}
+
+[data-theme="light"] .footer-touch-icon {
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.2);
+  background: #ffffff;
+}
+
+[data-theme="light"] .footer-col a:hover {
+  color: #2563eb;
 }
