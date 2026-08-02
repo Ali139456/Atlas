@@ -1,3 +1,5 @@
+import { industries } from "./industries";
+
 export const site = {
   brand: "Atlas Global Finance",
   logo: "/atlas-logo.png",
@@ -171,38 +173,11 @@ export const industriesServed = {
   titleAccent: "Served",
   description:
     "Accounting and finance outsourcing for construction, logistics, retail, CPA firms, restaurants, amusement businesses, and more.",
-  items: [
-    {
-      title: "Construction",
-      image:
-        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=640&q=60",
-    },
-    {
-      title: "Logistic & Transportation",
-      image:
-        "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=640&q=60",
-    },
-    {
-      title: "Retail",
-      image:
-        "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=640&q=60",
-    },
-    {
-      title: "CPA Firms",
-      image:
-        "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=640&q=60",
-    },
-    {
-      title: "Restaurant Business",
-      image:
-        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=640&q=60",
-    },
-    {
-      title: "Amusement Business",
-      image:
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=640&q=60",
-    },
-  ],
+  items: industries.map(({ slug, title, cardImage }) => ({
+    slug,
+    title,
+    image: cardImage,
+  })),
 } as const;
 
 export const popularRoles = {

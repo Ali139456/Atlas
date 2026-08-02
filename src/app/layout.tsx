@@ -47,6 +47,8 @@ export const viewport = {
 
 const SCROLL_BOOT =
   `try{` +
+  `var t=localStorage.getItem("theme");` +
+  `if(t==="light")document.documentElement.setAttribute("data-theme","light");` +
   `if("scrollRestoration"in history)history.scrollRestoration="manual";` +
   `var n=performance.getEntriesByType&&performance.getEntriesByType("navigation")[0];` +
   `var reload=n&&n.type==="reload";` +

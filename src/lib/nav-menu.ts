@@ -78,6 +78,6 @@ export const navServicesLinks: readonly NavLink[] = serviceCategories.map((categ
 export const navIndustryLinks: readonly NavLink[] = industriesServed.items.map(
   (item): NavLink => ({
     label: item.title,
-    href: homeAnchors.industries,
+    href: `/industries/${item.slug}`,
   }),
 );

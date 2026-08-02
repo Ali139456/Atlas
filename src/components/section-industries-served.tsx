@@ -1,6 +1,6 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import { homeAnchors, industriesServed } from "@/lib/site-content";
+import { industriesServed } from "@/lib/site-content";
 import "./section-industries.css";
 
 export function IndustriesServedSection() {
@@ -25,8 +25,8 @@ export function IndustriesServedSection() {
         <div className="industries-grid">
           {industriesServed.items.map((item, index) => (
             <Link
-              key={item.title}
-              href={homeAnchors.contact}
+              key={item.slug}
+              href={`/industries/${item.slug}`}
               className="industry-card group"
             >
               <span className="industry-card-frame" aria-hidden />

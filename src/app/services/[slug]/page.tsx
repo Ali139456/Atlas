@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ServiceCategoryIcon } from "@/components/service-category-icon";
@@ -77,68 +78,96 @@ export default async function ServiceCategoryPage({ params }: Props) {
             </nav>
 
             <header className="service-detail-hero">
-              <div className="service-detail-hero-top">
-                <div className="service-detail-hero-icon">
-                  <ServiceCategoryIcon name={category.icon} className="h-8 w-8" />
+              <div className="service-detail-copy">
+                <div className="service-detail-hero-top">
+                  <div className="service-detail-hero-icon">
+                    <ServiceCategoryIcon name={category.icon} className="h-8 w-8" />
+                  </div>
+                  <p className="eyebrow-pill service-detail-eyebrow">{site.brand}</p>
                 </div>
-                <p className="eyebrow-pill service-detail-eyebrow">{site.brand}</p>
+                <h1 className="display-lg mt-4 text-heading">{category.title}</h1>
+                <p className="service-detail-lead">{category.description}</p>
+                <p className="service-detail-summary">{category.summary}</p>
               </div>
-              <h1 className="display-lg mt-4 text-heading">{category.title}</h1>
-              <p className="service-detail-lead">{category.description}</p>
-              <p className="service-detail-summary">{category.summary}</p>
+
+              <div className="service-detail-visual photo-frame">
+                <Image
+                  src={category.heroImage}
+                  alt={`${category.title} accounting services`}
+                  fill
+                  priority
+                  sizes="(max-width: 767px) 100vw, 46vw"
+                  className="object-cover"
+                  quality={75}
+                />
+                <div className="service-detail-visual-overlay" aria-hidden />
+              </div>
             </header>
 
-            <nav className="service-tabs" aria-label="Service categories">
-              {serviceCategories.map((item, tabIndex) => (
-                <Link
-                  key={item.slug}
-                  href={`/services/${item.slug}`}
-                  className={`service-tab service-tab--${tabIndex + 1}${item.slug === category.slug ? " is-active" : ""}`}
-                  aria-current={item.slug === category.slug ? "page" : undefined}
-                >
-                  {item.shortTitle}
-                </Link>
-              ))}
-            </nav>
+            <section className="service-capabilities" aria-labelledby="service-capabilities-heading">
+                  <div className="service-capabilities-head">
+                    <p className="service-capabilities-eyebrow">Capabilities</p>
+                    <h2 id="service-capabilities-heading" className="service-capabilities-title display-lg">
+                      What we deliver for{" "}
+                      <span className="text-gradient-neon">{category.shortTitle}</span>
+                    </h2>
+                    <p className="service-capabilities-count">
+                      {category.subServices.length} focused workflows
+                    </p>
+                  </div>
 
-            <div className="service-subs-list-wrap">
-              <div className="service-subs-head">
-                <p className="service-subs-heading">
-                  What we deliver for <span>{category.shortTitle}</span>
-                </p>
-                <p className="service-subs-count">
-                  {category.subServices.length} capabilities
-                </p>
-              </div>
-              <ul className="service-subs-grid">
-                {category.subServices.map((sub, index) => (
-                  <li
-                    key={sub.title}
-                    className={`service-subs-card service-subs-card--${(index % 4) + 1}`}
-                  >
-                    <span className="service-subs-index">{String(index + 1).padStart(2, "0")}</span>
-                    <div className="service-subs-content">
-                      <h2 className="service-subs-title">{sub.title}</h2>
-                      <p className="service-subs-desc">{sub.description}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                  <ul className="service-capabilities-list">
+                    {category.subServices.map((sub, index) => (
+                      <li key={sub.title} className="service-capability">
+                        <div className="service-capability-media">
+                          <Image
+                            src={sub.image}
+                            alt={sub.title}
+                            fill
+                            sizes="(max-width: 767px) 100vw, 220px"
+                            className="object-cover"
+                            quality={75}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="service-capability-body">
+                          <span className="service-capability-index">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <h3 className="service-capability-title">{sub.title}</h3>
+                          <p className="service-capability-desc">{sub.description}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
 
-            <div className="service-detail-footer">
-              <p className="text-[var(--muted)]">
-                Ready to outsource {category.shortTitle.toLowerCase()} workflows?
-              </p>
-              <div className="service-detail-footer-actions">
-                <Link href={siteCta.href} className="btn-neon">
-                  {siteCta.label}
-                </Link>
-                <Link href={homeAnchors.services} className="btn-outline">
-                  View all services
-                </Link>
-              </div>
-            </div>
+                <nav className="service-tabs service-tabs--end" aria-label="Service categories">
+                  {serviceCategories.map((item, tabIndex) => (
+                    <Link
+                      key={item.slug}
+                      href={`/services/${item.slug}`}
+                      className={`service-tab service-tab--${tabIndex + 1}${item.slug === category.slug ? " is-active" : ""}`}
+                      aria-current={item.slug === category.slug ? "page" : undefined}
+                    >
+                      {item.shortTitle}
+                    </Link>
+                  ))}
+                </nav>
+
+                <div className="service-detail-footer">
+                  <p className="text-[var(--muted)]">
+                    Ready to outsource {category.shortTitle.toLowerCase()} workflows?
+                  </p>
+                  <div className="service-detail-footer-actions">
+                    <Link href={siteCta.href} className="btn-neon">
+                      {siteCta.label}
+                    </Link>
+                    <Link href={homeAnchors.services} className="btn-outline">
+                      View all services
+                    </Link>
+                  </div>
+                </div>
           </div>
         </section>
       </main>
