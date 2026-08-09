@@ -72,6 +72,7 @@
 .industry-tabs {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: safe center;
   gap: 0.55rem;
   overflow-x: auto;
   padding: 0.35rem;

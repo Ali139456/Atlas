@@ -122,11 +122,7 @@ export function SiteFooter() {
                     <circle cx="12" cy="10" r="2.4" />
                   </svg>
                 </span>
-                <span>
-                  {site.addressLine1}
-                  <br />
-                  {site.addressLine2}
-                </span>
+                <span>{site.addressLine1}</span>
               </li>
               <li>
                 <span className="footer-touch-icon" aria-hidden>

@@ -184,7 +184,7 @@ export function SiteHeader() {
               </Link>
             </div>
 
-            <p className="nav-overlay-foot">Tap a link above or get a proposal</p>
+            <p className="nav-overlay-foot">Tap a link above or inquire now</p>
           </div>
         </div>
       ) : null}

@@ -8,8 +8,7 @@ export const site = {
   phone: "+1 (407) 968-5277",
   phoneAlt: "+1 (407) 535-9192",
   phones: ["+1 (407) 968-5277", "+1 (407) 535-9192"] as const,
-  addressLine1: "244 Fifth Avenue, Suite P228, New York, NY 10001",
-  addressLine2: "Remote delivery US, Canada, UK & Australia",
+  addressLine1: "1683 N Hancock Rd, Suite 103, Minneola, FL 34715, USA",
 } as const;
 
 /** Hash links that must include `/` so they work from any page. */
@@ -25,7 +24,7 @@ export const homeAnchors = {
 
 /** Shared conversion CTA across the site */
 export const siteCta = {
-  label: "Get a Proposal",
+  label: "Inquire Now",
   href: "/#contact",
 } as const;
 
@@ -305,7 +304,7 @@ export const finalCta = {
   title: "Ready to Streamline Your Accounting with Atlas",
   description:
     "Unlock clearer closes, flexible staffing, and 40–60% cost savings. Tell us about your portfolio and get a customized proposal.",
-  buttonLabel: "Get a Proposal",
+  buttonLabel: "Inquire Now",
 } as const;
 
 export const pricingPlans = [
