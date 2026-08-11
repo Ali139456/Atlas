@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { FormSelect } from "@/components/form-select";
 import { contactForm, site, siteCta } from "@/lib/site-content";
@@ -97,33 +98,20 @@ export function ContactSection() {
             <div className="contact-sec__tiles">
               <a href={`mailto:${site.email}`} className="contact-sec__tile">
                 <span className="contact-sec__tile-icon" aria-hidden>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
-                    <path d="M4 6h16v12H4z" />
-                    <path d="M4 7l8 6 8-6" />
-                  </svg>
+                  <Mail className="h-5 w-5" strokeWidth={1.7} />
                 </span>
                 <span className="contact-sec__tile-copy">
                   <strong>Email us</strong>
                   <em>{site.email}</em>
                 </span>
                 <span className="contact-sec__tile-go" aria-hidden>
-                  <svg viewBox="0 0 16 16" fill="none">
-                    <path
-                      d="M4 12L12 4M12 4H6.5M12 4V9.5"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={1.6} />
                 </span>
               </a>
 
               <a href={`tel:${site.phone.replace(/[^\d+]/g, "")}`} className="contact-sec__tile">
                 <span className="contact-sec__tile-icon" aria-hidden>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
-                    <path d="M6.5 4.5h3l1.5 4-2 1.5a12 12 0 005.5 5.5l1.5-2 4 1.5v3a2 2 0 01-2.2 2A15.5 15.5 0 014.5 6.7 2 2 0 016.5 4.5z" />
-                  </svg>
+                  <Phone className="h-5 w-5" strokeWidth={1.7} />
                 </span>
                 <span className="contact-sec__tile-copy">
                   <strong>Call us</strong>
@@ -134,15 +122,7 @@ export function ContactSection() {
                   </em>
                 </span>
                 <span className="contact-sec__tile-go" aria-hidden>
-                  <svg viewBox="0 0 16 16" fill="none">
-                    <path
-                      d="M4 12L12 4M12 4H6.5M12 4V9.5"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={1.6} />
                 </span>
               </a>
 
@@ -153,25 +133,14 @@ export function ContactSection() {
                 className="contact-sec__tile"
               >
                 <span className="contact-sec__tile-icon" aria-hidden>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
-                    <path d="M12 21s7-5.4 7-11a7 7 0 10-14 0c0 5.6 7 11 7 11z" />
-                    <circle cx="12" cy="10" r="2.4" />
-                  </svg>
+                  <MapPin className="h-5 w-5" strokeWidth={1.7} />
                 </span>
                 <span className="contact-sec__tile-copy">
                   <strong>Our location</strong>
                   <em>{site.addressLine1}</em>
                 </span>
                 <span className="contact-sec__tile-go" aria-hidden>
-                  <svg viewBox="0 0 16 16" fill="none">
-                    <path
-                      d="M4 12L12 4M12 4H6.5M12 4V9.5"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={1.6} />
                 </span>
               </a>
             </div>

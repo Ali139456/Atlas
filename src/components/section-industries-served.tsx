@@ -22,33 +22,49 @@ export function IndustriesServedSection() {
           <p className="industries-lead">{industriesServed.description}</p>
         </div>
 
-        <div className="industries-grid">
-          {industriesServed.items.map((item, index) => (
+        <div className="industries-grid industries-grid--lead">
+          {industriesServed.items.map((item) => (
             <Link
               key={item.slug}
               href={`/industries/${item.slug}`}
-              className="industry-card group"
+              className="industry-card industry-card--lead group"
             >
               <span className="industry-card-frame" aria-hidden />
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
-                sizes="(max-width: 639px) 50vw, (max-width: 1023px) 33vw, 28vw"
+                sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
                 className="industry-card-img object-cover"
                 quality={60}
                 loading="lazy"
               />
               <div className="industry-card-overlay" aria-hidden />
-              <div className="industry-card-content">
-                <span className="industry-card-index">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+              <div className="industry-card-content industry-card-content--lead">
+                <span className="industry-card-index">{item.index}</span>
                 <p className="industry-card-title">{item.title}</p>
+                <p className="industry-card-desc">{item.description}</p>
               </div>
             </Link>
           ))}
         </div>
+
+        {industriesServed.moreItems.length > 0 ? (
+          <div className="industries-more">
+            <p className="industries-more__label">{industriesServed.moreLabel}</p>
+            <div className="industries-more__links">
+              {industriesServed.moreItems.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={`/industries/${item.slug}`}
+                  className="industries-more__link"
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </div>
     </section>
   );

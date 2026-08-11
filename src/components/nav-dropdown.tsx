@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { NavLink } from "@/lib/nav-menu";
@@ -40,9 +41,11 @@ export function NavDropdown({ label, items, variant = "desktop", onNavigate }: N
         >
           <span>{label}</span>
           <span className="nav-overlay-link-icon" aria-hidden>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d={open ? "M6 15l6-6 6 6" : "M9 18l6-6-6-6"} />
-            </svg>
+            {open ? (
+              <ChevronUp className="h-5 w-5" strokeWidth={2} />
+            ) : (
+              <ChevronDown className="h-5 w-5" strokeWidth={2} />
+            )}
           </span>
         </button>
         {open ? (
@@ -75,9 +78,7 @@ export function NavDropdown({ label, items, variant = "desktop", onNavigate }: N
         onClick={() => setOpen((value) => !value)}
       >
         {label}
-        <svg className="nav-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M6 9l6 6 6-6" />
-        </svg>
+        <ChevronDown className="nav-dropdown-chevron" strokeWidth={2} aria-hidden />
       </button>
       {open ? (
         <div className="nav-dropdown-panel" role="menu">

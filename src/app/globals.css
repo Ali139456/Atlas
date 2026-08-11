@@ -195,6 +195,7 @@ html::-webkit-scrollbar-thumb:hover {
 .site-main {
   flex: 1;
   padding-top: var(--nav-offset);
+  overflow-x: clip;
 }
 
 .site-main--home {
@@ -1029,8 +1030,8 @@ html::-webkit-scrollbar-thumb:hover {
   flex-direction: column;
   align-items: stretch;
   min-height: 100svh;
-  padding-top: calc(var(--nav-offset) + 1rem);
-  padding-bottom: clamp(2rem, 5vw, 3.25rem);
+  padding-top: calc(var(--nav-offset) + 0.5rem);
+  padding-bottom: clamp(1.25rem, 3vw, 2rem);
 }
 
 .hero-media {
@@ -1085,11 +1086,11 @@ html::-webkit-scrollbar-thumb:hover {
   position: relative;
   z-index: 1;
   display: grid;
-  gap: clamp(2rem, 5vw, 3.5rem);
+  gap: clamp(1.25rem, 3vw, 2rem);
   align-items: center;
   flex: 1;
   width: 100%;
-  padding-block: clamp(1.25rem, 3vw, 2.25rem);
+  padding-block: clamp(0.5rem, 1.5vw, 1rem);
 }
 
 .hero-copy {
@@ -1101,15 +1102,15 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 .hero-badge {
-  margin-bottom: 1.15rem;
+  margin-bottom: 0.85rem;
   align-self: flex-start;
   animation: hero-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-title {
   max-width: 100%;
-  font-size: clamp(1.85rem, 5.2vw + 0.45rem, 4.35rem);
-  line-height: 1.12;
+  font-size: clamp(1.75rem, 4.5vw + 0.4rem, 2.95rem);
+  line-height: 1.14;
   overflow-wrap: normal;
   word-break: keep-all;
   hyphens: none;
@@ -1141,15 +1142,25 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 .hero-subtitle {
-  margin-top: 1.15rem;
-  max-width: 34rem;
-  font-size: clamp(0.95rem, 1.7vw, 1.125rem);
+  margin-top: 0.85rem;
+  max-width: 38rem;
+  font-size: clamp(0.92rem, 1.4vw, 1.05rem);
   font-weight: 400;
   letter-spacing: 0.01em;
   text-transform: none;
-  line-height: 1.65;
+  line-height: 1.6;
   color: rgba(244, 250, 252, 0.82);
   animation: hero-fade-up 0.8s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-positioning {
+  margin-top: 0.65rem;
+  max-width: 36rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: rgba(142, 249, 255, 0.88);
+  animation: hero-fade-up 0.8s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-cta-row {
@@ -1157,8 +1168,8 @@ html::-webkit-scrollbar-thumb:hover {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.85rem;
-  margin-top: 2rem;
+  gap: 0.75rem;
+  margin-top: 1.35rem;
   animation: hero-fade-up 0.85s 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
@@ -1179,7 +1190,7 @@ html::-webkit-scrollbar-thumb:hover {
   }
 
   .hero-title {
-    font-size: clamp(1.7rem, 7.2vw, 2.15rem);
+    font-size: clamp(1.85rem, 7.5vw, 2.35rem);
     line-height: 1.16;
   }
 
@@ -1209,12 +1220,49 @@ html::-webkit-scrollbar-thumb:hover {
   .hero-shell {
     gap: 2.25rem;
   }
+
+  .hero-dashboard {
+    width: min(100%, 26rem);
+    margin-inline: auto;
+  }
+
+  .hero-cta-row {
+    flex-wrap: wrap;
+  }
 }
 
 @media (min-width: 64rem) {
+  .hero-wrap--cinematic {
+    max-height: 100svh;
+    overflow: hidden;
+  }
+
   .hero-shell {
-    grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
-    gap: clamp(2rem, 4vw, 3.75rem);
+    grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .hero-copy {
+    max-width: none;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 2.8vw + 0.45rem, 3.15rem);
+    max-width: 46rem;
+    line-height: 1.12;
+  }
+
+  .hero-subtitle {
+    max-width: 42rem;
+  }
+
+  .hero-positioning {
+    max-width: 40rem;
+  }
+
+  .hero-cta-row .btn-neon,
+  .hero-cta-row .btn-outline {
+    padding: 0.78rem 1.45rem;
   }
 }
 
@@ -1484,7 +1532,7 @@ html::-webkit-scrollbar-thumb:hover {
 .hero-dashboard {
   position: relative;
   width: min(100%, 28rem);
-  min-height: 22rem;
+  min-height: 0;
   margin-inline: auto;
   opacity: 0;
   transform: translateY(22px) scale(0.96);
@@ -1517,7 +1565,7 @@ html::-webkit-scrollbar-thumb:hover {
 .hero-dash-card--main {
   position: relative;
   z-index: 2;
-  padding: 1.25rem 1.25rem 1.1rem;
+  padding: 1rem 1.1rem 0.95rem;
   opacity: 0;
   transform: translateY(16px);
   transition:
@@ -1719,6 +1767,56 @@ html::-webkit-scrollbar-thumb:hover {
   text-shadow: var(--dash-growth-shadow, 0 0 18px rgba(0, 232, 240, 0.35));
 }
 
+.hero-dash-growth--text {
+  font-size: 1rem;
+  line-height: 1.35;
+  text-shadow: none;
+}
+
+.hero-dash-pillars {
+  list-style: none;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.hero-dash-pillar {
+  display: grid;
+  gap: 0.12rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.hero-dash-pillar strong {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--neon-bright);
+}
+
+.hero-dash-pillar span {
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.hero-dash-outcome {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-dash-outcome-text {
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--neon-bright);
+}
+
 .hero-dash-hint {
   margin: 0;
   font-size: 0.7rem;
@@ -1866,6 +1964,14 @@ html::-webkit-scrollbar-thumb:hover {
 /* Hero dashboard — light theme */
 [data-theme="light"] .hero-dash-glow {
   background: radial-gradient(ellipse, rgba(147, 197, 253, 0.18), transparent 70%);
+}
+
+[data-theme="light"] .hero-dash-outcome {
+  border-top-color: rgba(147, 197, 253, 0.35);
+}
+
+[data-theme="light"] .hero-dash-outcome-text {
+  color: #1d4ed8;
 }
 
 [data-theme="light"] .hero-dash-card--main {
@@ -4238,6 +4344,10 @@ html:not([data-theme="light"]) .nav-wrap--scrolled .nav-inner {
 
 [data-theme="light"] .hero-video {
   opacity: 0.2;
+}
+
+[data-theme="light"] .hero-positioning {
+  color: #0e7490;
 }
 
 [data-theme="light"] .hero-subtitle {

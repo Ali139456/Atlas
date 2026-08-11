@@ -1,3 +1,4 @@
+import { Star } from "lucide-react";
 import { testimonials } from "@/lib/site-content";
 import "./section-testimonials.css";
 
@@ -5,17 +6,11 @@ function Stars({ count }: { count: number }) {
   return (
     <div className="reviews__stars" aria-label={`${count} out of 5 stars`}>
       {Array.from({ length: 5 }, (_, i) => (
-        <svg
+        <Star
           key={i}
-          viewBox="0 0 20 20"
-          className={i < count ? "is-on" : undefined}
+          className={`h-4 w-4${i < count ? " is-on fill-current" : ""}`}
           aria-hidden
-        >
-          <path
-            d="M10 1.6l2.35 5.35 5.8.5-4.4 3.8 1.35 5.65L10 13.95 4.9 16.9l1.35-5.65-4.4-3.8 5.8-.5L10 1.6z"
-            fill="currentColor"
-          />
-        </svg>
+        />
       ))}
     </div>
   );

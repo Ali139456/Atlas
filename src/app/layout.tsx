@@ -21,21 +21,20 @@ const syne = Syne({
 
 export const metadata: Metadata = {
   title: {
-    default: "Atlas Global Finance | Finance and Accounting Outsourcing",
+    default: "Atlas Global Finance | Smarter Accounting. Greater Efficiency.",
     template: "%s | Atlas Global Finance",
   },
   description:
-    "Finance and accounting outsourcing with real estate expertise. AP, AR, bookkeeping, property accounting, and reporting for US, Canada, UK, and Australia.",
+    "Technology-driven accounting operations partner. Experienced professionals, AI-assisted workflows, and efficient financial operations for HOA, restaurants, and growing businesses.",
   keywords: [
-    "accounting outsourcing",
+    "accounting operations",
+    "technology-enabled accounting",
     "accounts payable",
-    "accounts receivable",
-    "bookkeeping services",
-    "payroll processing",
-    "financial reporting",
-    "QuickBooks",
-    "Xero",
-    "NetSuite",
+    "bank reconciliation",
+    "general ledger",
+    "HOA accounting",
+    "restaurant accounting",
+    "AI-assisted workflows",
   ],
 };
 

@@ -1,5 +1,6 @@
-import { serviceCategories } from "@/lib/service-categories";
-import { homeAnchors, industriesServed, siteCta } from "@/lib/site-content";
+import { industries } from "./industries";
+import { serviceCategories } from "./service-categories";
+import { homeAnchors, siteCta } from "./site-content";
 
 export type NavLink = {
   label: string;
@@ -14,10 +15,10 @@ export const navCta = {
 
 export const navPrimaryLinks = [
   { label: "Home", href: "/" },
-  { label: "Benefits", href: homeAnchors.features },
-  { label: "Why Choose Us", href: homeAnchors.whyUs },
-  { label: "Roles", href: homeAnchors.roles },
-  { label: "Reviews", href: homeAnchors.reviews },
+  { label: "Value", href: homeAnchors.value },
+  { label: "Why Atlas", href: homeAnchors.whyUs },
+  { label: "Technology", href: homeAnchors.technology },
+  { label: "How It Works", href: homeAnchors.howItWorks },
   { label: "Contact Us", href: homeAnchors.contact },
 ] as const;
 
@@ -32,17 +33,17 @@ export const footerLinkGroups: readonly { title: string; links: readonly NavLink
     links: [
       { label: "Home", href: "/" },
       { label: "Contact us", href: homeAnchors.contact },
-      { label: "About us", href: homeAnchors.whyUs },
+      { label: "Why Atlas", href: homeAnchors.whyUs },
     ],
   },
   {
     title: "Resources",
     links: [
-      { label: "Benefits", href: homeAnchors.features },
+      { label: "Value", href: homeAnchors.value },
       { label: "Services", href: homeAnchors.services },
+      { label: "Technology", href: homeAnchors.technology },
       { label: "Industries", href: homeAnchors.industries },
-      { label: "Popular Roles", href: homeAnchors.roles },
-      { label: "Reviews", href: homeAnchors.reviews },
+      { label: "How It Works", href: homeAnchors.howItWorks },
     ],
   },
 ];
@@ -75,9 +76,9 @@ export const navServicesLinks: readonly NavLink[] = serviceCategories.map((categ
   href: `/services/${category.slug}`,
 }));
 
-export const navIndustryLinks: readonly NavLink[] = industriesServed.items.map(
+export const navIndustryLinks: readonly NavLink[] = industries.map(
   (item): NavLink => ({
-    label: item.title,
+    label: item.shortTitle,
     href: `/industries/${item.slug}`,
   }),
 );

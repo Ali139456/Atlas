@@ -1,5 +1,6 @@
 "use client";
 
+import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { homeAnchors, paymentMethods, pricingPerks, pricingPlans } from "@/lib/site-content";
@@ -53,7 +54,7 @@ function PricingCard({
           >
             {feature ? (
               <>
-                <span className="text-[var(--neon)]">✓</span>
+                <Check className="h-4 w-4 shrink-0 text-[var(--neon)]" strokeWidth={2} aria-hidden />
                 <span>{feature}</span>
               </>
             ) : null}
@@ -152,9 +153,7 @@ export function PricingSection() {
               disabled={active === 0}
               aria-label="Previous plan"
             >
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
+              <ChevronLeft className="h-4 w-4" strokeWidth={2} aria-hidden />
             </button>
 
             <div className="pricing-track-wrap">
@@ -174,9 +173,7 @@ export function PricingSection() {
               disabled={active === pricingPlans.length - 1}
               aria-label="Next plan"
             >
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
+              <ChevronRight className="h-4 w-4" strokeWidth={2} aria-hidden />
             </button>
           </div>
 

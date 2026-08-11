@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -47,29 +48,13 @@ export default async function IndustryPage({ params }: Props) {
                   <Link href="/">Home</Link>
                 </li>
                 <li className="service-breadcrumb-sep" aria-hidden>
-                  <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
-                    <path
-                      d="M6 4l4 4-4 4"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <ChevronRight className="h-3.5 w-3.5" strokeWidth={1.5} />
                 </li>
                 <li>
                   <Link href={homeAnchors.industries}>Industries</Link>
                 </li>
                 <li className="service-breadcrumb-sep" aria-hidden>
-                  <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
-                    <path
-                      d="M6 4l4 4-4 4"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <ChevronRight className="h-3.5 w-3.5" strokeWidth={1.5} />
                 </li>
                 <li className="service-breadcrumb-current" aria-current="page">
                   <span>{industry.shortTitle}</span>

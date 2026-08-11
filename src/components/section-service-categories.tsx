@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { ServiceCategoryIcon } from "@/components/service-category-icon";
@@ -72,20 +73,7 @@ export function ServiceCategoriesSection() {
               className="btn-neon svc-acc__cta"
             >
               All Services
-              <svg
-                className="svc-acc__cta-arrow"
-                viewBox="0 0 16 16"
-                fill="none"
-                aria-hidden
-              >
-                <path
-                  d="M4 12L12 4M12 4H6.5M12 4V9.5"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <ArrowUpRight className="svc-acc__cta-arrow h-4 w-4" strokeWidth={1.75} aria-hidden />
             </Link>
           </div>
         </div>

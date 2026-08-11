@@ -1,14 +1,12 @@
 import { ContactSection } from "@/components/contact-section";
-import { FeaturesSection } from "@/components/section-features";
+import { CoreServicesSection } from "@/components/section-core-services";
 import { FinalCtaSection } from "@/components/section-final-cta";
+import { HowItWorksSection } from "@/components/section-how-it-works";
 import { IndustriesServedSection } from "@/components/section-industries-served";
 import { Hero } from "@/components/hero";
 import { WhyChooseUsSection } from "@/components/section-mission";
-import { RolesSection } from "@/components/section-roles";
-import { ServiceCategoriesSection } from "@/components/section-service-categories";
-import { TestimonialsSection } from "@/components/section-testimonials";
-import { ProofStrip } from "@/components/proof-strip";
-import { TrustMarquee } from "@/components/trust-marquee";
+import { TechnologySection } from "@/components/section-technology";
+import { ValuePropositionSection } from "@/components/section-value-prop";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -18,14 +16,12 @@ export default function Home() {
       <SiteHeader />
       <main className="site-main site-main--home section-bg">
         <Hero />
-        <TrustMarquee />
-        <ProofStrip />
-        <FeaturesSection />
-        <ServiceCategoriesSection />
-        <IndustriesServedSection />
+        <ValuePropositionSection />
+        <CoreServicesSection />
         <WhyChooseUsSection />
-        <RolesSection />
-        <TestimonialsSection />
+        <TechnologySection />
+        <IndustriesServedSection />
+        <HowItWorksSection />
         <ContactSection />
         <FinalCtaSection />
       </main>

@@ -1,0 +1,388 @@
+.tech-sec__bg-glow {
+  position: absolute;
+  inset: 10% auto auto 50%;
+  width: min(42rem, 90vw);
+  height: 22rem;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 232, 240, 0.08), transparent 68%);
+  pointer-events: none;
+}
+
+.tech-sec__intro {
+  max-width: 46rem;
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.tech-sec__title {
+  margin: 0.9rem 0 0;
+  font-size: clamp(1.7rem, 3.8vw, 3.1rem);
+  line-height: 1.12;
+}
+
+.tech-sec__pillar-heading {
+  margin: 1rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--heading);
+}
+
+.tech-sec__lead {
+  margin: 0.75rem 0 0;
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.tech-sec__cards {
+  display: grid;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.tech-sec__language,
+.tech-sec__control {
+  min-height: 100%;
+  border-radius: calc(var(--radius-xl) + 0.15rem);
+  border: 1px solid var(--border);
+}
+
+.tech-sec__language {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.35rem, 2.5vw, 1.75rem);
+  background:
+    linear-gradient(180deg, rgba(0, 232, 240, 0.04) 0%, transparent 42%),
+    var(--surface-glass);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.tech-sec__language-label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--neon-bright);
+}
+
+.tech-sec__language-list {
+  list-style: none;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.tech-sec__language-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.94rem;
+  line-height: 1.45;
+  color: var(--foreground);
+}
+
+.tech-sec__language-dot {
+  flex-shrink: 0;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-top: 0.45rem;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 10px rgba(0, 232, 240, 0.45);
+}
+
+.tech-sec__control {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: clamp(1.35rem, 2.5vw, 1.85rem);
+  background: linear-gradient(165deg, #123456 0%, #0a1628 52%, #08111f 100%);
+  border-color: rgba(125, 211, 252, 0.22);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.tech-sec__control-glow {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5rem;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.18), transparent);
+  pointer-events: none;
+}
+
+.tech-sec__control-eyebrow {
+  position: relative;
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(142, 249, 255, 0.9);
+}
+
+.tech-sec__control-headline {
+  position: relative;
+  margin: 0.9rem 0 0;
+  font-size: clamp(1.12rem, 2vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: #ffffff;
+}
+
+.tech-sec__control-desc {
+  position: relative;
+  margin: 0.85rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.62;
+  color: rgba(226, 232, 240, 0.84);
+}
+
+.tech-sec__control-pillars {
+  position: relative;
+  list-style: none;
+  margin: 1.35rem 0 0;
+  padding: 1rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-sec__control-pillars li {
+  padding: 0.42rem 0.72rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: rgba(244, 250, 252, 0.92);
+}
+
+.tech-sec__guardrails {
+  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  padding: clamp(1rem, 2vw, 1.25rem);
+  border-radius: calc(var(--radius-xl) + 0.2rem);
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(0, 232, 240, 0.03), transparent 38%),
+    var(--surface-glass);
+  box-shadow: var(--shadow-card);
+}
+
+.tech-sec__guardrails-head {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
+  padding: 0 0.15rem;
+}
+
+.tech-sec__guardrails-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(0, 232, 240, 0.22);
+  background: rgba(0, 232, 240, 0.08);
+  color: var(--neon-bright);
+}
+
+.tech-sec__guardrails-icon svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.tech-sec__guardrails-title {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--heading);
+}
+
+.tech-sec__guardrails-panel {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  border-radius: calc(var(--radius-xl) + 0.05rem);
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+
+.tech-sec__guardrails-col {
+  padding: clamp(1.1rem, 2vw, 1.35rem);
+}
+
+.tech-sec__guardrails-divider {
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(0, 232, 240, 0.18) 18%,
+    rgba(0, 232, 240, 0.18) 82%,
+    transparent
+  );
+}
+
+.tech-sec__guardrails-label {
+  margin: 0;
+  padding: 0.38rem 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tech-sec__guardrails-col--use .tech-sec__guardrails-label {
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.28);
+}
+
+.tech-sec__guardrails-col--avoid .tech-sec__guardrails-label {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.28);
+}
+
+.tech-sec__guardrails-col ul {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.tech-sec__guardrails-col li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--foreground);
+}
+
+.tech-sec__guardrails-mark {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-top: 0.08rem;
+  border-radius: 50%;
+}
+
+.tech-sec__guardrails-mark svg {
+  width: 0.72rem;
+  height: 0.72rem;
+}
+
+.tech-sec__guardrails-mark--use {
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.14);
+  border: 1px solid rgba(74, 222, 128, 0.24);
+}
+
+.tech-sec__guardrails-mark--avoid {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.14);
+  border: 1px solid rgba(248, 113, 113, 0.24);
+}
+
+@media (min-width: 48rem) {
+  .tech-sec__cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.15rem;
+  }
+}
+
+@media (max-width: 47.9375rem) {
+  .tech-sec__guardrails-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-sec__guardrails-divider {
+    width: auto;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 232, 240, 0.18) 18%,
+      rgba(0, 232, 240, 0.18) 82%,
+      transparent
+    );
+  }
+
+  .tech-sec__intro {
+    margin-bottom: clamp(1.35rem, 3vw, 2rem);
+  }
+
+  .tech-sec__title {
+    font-size: clamp(1.55rem, 6.5vw, 2.15rem);
+  }
+
+  .tech-sec__control-headline {
+    font-size: 1.05rem;
+  }
+
+  .tech-sec__guardrails {
+    padding: 0.85rem;
+  }
+}
+
+@media (max-width: 29.9375rem) {
+  .tech-sec__language,
+  .tech-sec__control {
+    padding: 1.1rem 1rem;
+  }
+
+  .tech-sec__control-pillars li {
+    font-size: 0.68rem;
+    padding: 0.38rem 0.62rem;
+  }
+}
+
+[data-theme="light"] .tech-sec__language,
+[data-theme="light"] .tech-sec__guardrails {
+  background: #ffffff;
+}
+
+[data-theme="light"] .tech-sec__language {
+  background:
+    linear-gradient(180deg, rgba(6, 182, 212, 0.05) 0%, transparent 42%),
+    #ffffff;
+}
+
+[data-theme="light"] .tech-sec__guardrails-panel {
+  background: #f8fafc;
+}
+
+[data-theme="light"] .tech-sec__control {
+  background: linear-gradient(165deg, #1e40af 0%, #1e3a8a 52%, #172554 100%);
+}
+
+[data-theme="light"] .tech-sec__guardrails-icon {
+  background: #ecfeff;
+  border-color: rgba(6, 182, 212, 0.25);
+}
+
+[data-theme="light"] .tech-sec__control-pillars li {
+  background: rgba(255, 255, 255, 0.1);
+}

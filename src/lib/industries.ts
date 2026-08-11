@@ -14,6 +14,75 @@ export type Industry = {
 
 export const industries = [
   {
+    slug: "hoa-property-management",
+    title: "HOA & Property Management",
+    shortTitle: "HOA / Property",
+    cardImage:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=640&q=60",
+    heroImage:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1400&q=75",
+    dashboardImage: "/images/industry-finance-construction.png",
+    description:
+      "Community association and management-company accounting for assessments, reserves, vendor payables, and board-ready reporting.",
+    summary:
+      "We support HOA boards and property managers with disciplined assessment billing, reserve tracking, payables, and reporting that keeps communities and owners informed.",
+    highlights: [
+      "Assessment billing",
+      "Reserve tracking",
+      "Vendor payables",
+      "Board packages",
+    ],
+    challenges: [
+      {
+        title: "Board and owner transparency",
+        description:
+          "Directors and owners expect clear packages while day-to-day transactions keep moving across vendors and bank accounts.",
+      },
+      {
+        title: "Assessment and delinquency follow-up",
+        description:
+          "Late fees, payment plans, and collections require consistent coding and timely statements.",
+      },
+      {
+        title: "Reserve and operating fund clarity",
+        description:
+          "Mixing reserve and operating activity creates confusion at audit time and weakens financial control.",
+      },
+    ],
+    solutions: [
+      {
+        title: "Assessment & AR support",
+        description:
+          "Process assessments, apply receipts, and maintain aging with clear delinquency notes for managers.",
+      },
+      {
+        title: "Vendor AP & approvals",
+        description:
+          "Code invoices to the right GL and community, track approvals, and keep payables audit-ready.",
+      },
+      {
+        title: "Bank reconciliations",
+        description:
+          "Reconcile operating and reserve accounts on a disciplined cadence ahead of board meetings.",
+      },
+      {
+        title: "Board financial packages",
+        description:
+          "Prepare month-end statements, variance notes, and supporting schedules directors can review quickly.",
+      },
+      {
+        title: "Reserve fund tracking",
+        description:
+          "Separate reserve activity, contributions, and expenditures with documentation for planning discussions.",
+      },
+      {
+        title: "Management company workflows",
+        description:
+          "Fit into your existing systems, deadlines, and portfolio cadence as an extension of your team.",
+      },
+    ],
+  },
+  {
     slug: "construction",
     title: "Construction",
     shortTitle: "Construction",

@@ -4,7 +4,7 @@ export const site = {
   brand: "Atlas Global Finance",
   logo: "/atlas-logo.png",
   email: "Support@atlasglobalfinances.com",
-  tagline: "Finance and Accounting Outsourcing",
+  tagline: "Technology-Driven Accounting Operations",
   phone: "+1 (407) 968-5277",
   phoneAlt: "+1 (407) 535-9192",
   phones: ["+1 (407) 968-5277", "+1 (407) 535-9192"] as const,
@@ -15,11 +15,16 @@ export const site = {
 export const homeAnchors = {
   contact: "/#contact",
   services: "/#services",
-  features: "/#features",
+  value: "/#value",
   whyUs: "/#why-us",
+  technology: "/#technology",
   industries: "/#industries",
-  roles: "/#roles",
-  reviews: "/#reviews",
+  security: "/#security",
+  howItWorks: "/#how-it-works",
+  /** @deprecated use value — kept for older links */
+  features: "/#value",
+  roles: "/#why-us",
+  reviews: "/#contact",
 } as const;
 
 /** Shared conversion CTA across the site */
@@ -29,263 +34,306 @@ export const siteCta = {
 } as const;
 
 export const hero = {
-  title: "Your Trusted Partner for Outsourced Accounting Solutions.",
+  title: "Smarter Accounting. Greater Efficiency. Lower Cost.",
   titleLines: [
     [
-      { text: "Your" },
-      { text: "Trusted" },
-      { text: "Partner" },
-      { text: "for" },
+      { text: "Smarter Accounting." },
+      { text: "Greater Efficiency." },
     ],
-    [
-      { text: "Outsourced", accent: true },
-      { text: "Accounting", accent: true },
-      { text: "Solutions." },
-    ],
+    [{ text: "Lower Cost.", accent: true }],
   ],
   subtitle:
-    "Helping businesses streamline their finances with a team you can trust",
+    "Atlas combines experienced accounting professionals, global talent, technology, automation, and AI-assisted workflows to help businesses build more efficient and scalable financial operations.",
+  positioning:
+    "Modern accounting operations partner — not a generic offshore staffing company.",
   primaryCta: siteCta.label,
   primaryCtaHref: siteCta.href,
+  secondaryCta: "Explore Our Services",
+  secondaryCtaHref: "/#services",
   /** Ambient office loop — desktop only, lazy-loaded after idle */
   videoSrc: "https://videos.pexels.com/video-files/7578552/7578552-sd_640_360_30fps.mp4",
   dashboard: {
-    title: "Finance Snapshot",
-    balanceLabel: "Working capital",
-    balanceValue: "$248,920",
-    incomeLabel: "Monthly close",
-    incomeValue: "Day 4",
-    growthLabel: "Cost savings",
-    growthValue: "48%",
-    growthHint: "vs in-house staffing",
+    title: "Finance Operations",
+    balanceLabel: "Efficiency Index",
+    balanceValue: "↑",
+    incomeLabel: "Operating model",
+    incomeValue: "People · Process · Tech",
+    growthLabel: "Result",
+    growthValue: "Capacity",
+    growthHint: "More capacity. Lower overhead.",
+    pillars: [
+      { label: "People", value: "Experienced accounting talent" },
+      { label: "Process", value: "Standardized + optimized workflows" },
+      { label: "Technology", value: "Automation + AI-assisted tools" },
+    ],
     chart: [42, 55, 48, 68, 72, 81, 94],
     chartLabels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
   },
 } as const;
 
-export const proofStrip = {
-  eyebrow: "The numbers behind our delivery",
-  items: [
-    { value: "19+", label: "Years specializing in finance & accounting outsourcing" },
-    { value: "300+", label: "Clients across US, Canada, UK & Australia" },
-    { value: "500+", label: "Accounting graduates, CPAs and MBAs on the team" },
-    { value: "40–60%", label: "Typical cost savings vs building in-house" },
+export const valueProposition = {
+  eyebrow: "Value proposition",
+  title: "Built for a More Efficient",
+  titleAccent: "Accounting Operation",
+  description:
+    "Better efficiency creates better value. Atlas combines accounting expertise with technology, automation, AI-assisted workflows, optimized processes, and global resources to reduce unnecessary manual work and increase productivity.",
+  flow: [
+    {
+      title: "People",
+      description: "Experienced accounting professionals",
+    },
+    {
+      title: "Process",
+      description: "Standardized + optimized workflows",
+    },
+    {
+      title: "Technology",
+      description: "Automation + AI-assisted tools",
+    },
+    {
+      title: "Efficiency",
+      description: "Higher productivity + capacity",
+    },
+    {
+      title: "Client Savings",
+      description: "Lower operating cost",
+    },
   ],
 } as const;
 
-export const trustMarquee = [
-  "Accounts Payable",
-  "Accounts Receivable",
-  "Property Accounting",
-  "Bookkeeping",
-  "Financial Reporting",
-  "Lease Abstraction",
-  "CAM Reconciliation",
-  "Portfolio Accounting",
-  "Year-End Close",
-  "Payroll Support",
-] as const;
+export const coreServices = {
+  eyebrow: "Core services",
+  title: "Accounting Work",
+  titleAccent: "Atlas Performs",
+  description:
+    "Concise support for the workflows that keep your books accurate, your close on time, and your team focused.",
+  items: [
+    {
+      index: "01",
+      title: "Accounts Payable",
+      description:
+        "Invoice review, coding support, approval-ready workflows and payable tracking.",
+      href: "/services/owners-developers",
+    },
+    {
+      index: "02",
+      title: "Bank Reconciliation",
+      description:
+        "Disciplined reconciliation workflows designed for timely and accurate close support.",
+      href: "/services/property-management",
+    },
+    {
+      index: "03",
+      title: "General Ledger & Close",
+      description:
+        "GL accounting, journal support, month-end processes and financial reporting.",
+      href: "/services/asset-management",
+    },
+  ],
+} as const;
 
 export const whyChooseUs = {
-  eyebrow: "Why choose us",
-  title: "Why Companies",
-  titleAccent: "Choose Atlas",
-  description:
-    "Outsourced accounting that cuts cost, adds control, and scales with your backlog — without building a larger in-house team.",
+  eyebrow: "Why Atlas",
+  title: "Why Companies Choose",
+  titleAccent: "Atlas",
+  subtitle:
+    "Accounting Experience. Technology Driven. Built for Efficiency.",
+  intro: [
+    "Atlas Global Finance was founded by experienced accounting professionals who understand the financial and operational challenges businesses face firsthand. Our leadership brings hands-on experience across HOA and property management, restaurant operations, and business accounting.",
+  ],
+  emphasis: "But experience alone is not enough.",
+  efficiencyLead:
+    "At Atlas, efficiency is at the core of how we operate. We embrace technology, automation, and AI to streamline accounting processes, reduce repetitive manual work, improve consistency, and help our team accomplish more with fewer resources.",
   items: [
     {
-      title: "High Cost Savings",
+      index: "01",
+      title: "Technology & AI-Driven Efficiency",
       description:
-        "Realize typical reductions of 40%–60% versus hiring and carrying a full in-house finance bench.",
+        "We continuously look for opportunities to use modern technology, automation, and AI-assisted workflows to make accounting processes faster, smarter, and more efficient — while maintaining appropriate human oversight and financial controls.",
     },
     {
-      title: "Flexible Staffing",
+      index: "02",
+      title: "Efficiency That Creates Client Savings",
       description:
-        "Scale coverage up or down with full-time, part-time, or as-needed support matched to your volume.",
+        "Our goal is simple: operate more efficiently so our clients can save more. By combining skilled accounting professionals, optimized workflows, global resources, and technology, Atlas helps clients expand their accounting capacity without proportionally increasing their overhead.",
     },
     {
-      title: "Better Financial Control",
+      index: "03",
+      title: "Experienced Accounting Leadership",
       description:
-        "Stay close to the numbers with disciplined closes, clear reporting, and controls you can trust.",
+        "Atlas is led by professionals with real-world accounting and operational experience. We understand reconciliations, accounts payable, general ledger accounting, financial reporting, budgeting, month-end close, and the day-to-day demands placed on accounting departments.",
     },
     {
-      title: "Latest Technology",
+      index: "04",
+      title: "Smarter, Scalable Accounting Support",
       description:
-        "Work across modern ledgers and tools so your books, dashboards, and handoffs stay accurate.",
+        "As our clients grow, Atlas can scale with them. Our technology-enabled operating model is designed to handle increasing workloads efficiently while maintaining consistency, accountability, and quality.",
     },
     {
-      title: "Focus on What Matters",
+      index: "05",
+      title: "An Extension of Your Accounting Team",
       description:
-        "Hand off routine accounting so your team can concentrate on strategy, owners, and growth.",
+        "We don't want to operate like a disconnected outsourcing provider. Atlas is designed to become an extension of your accounting department — working within your systems, processes, controls, and expectations.",
     },
   ],
+  mission: {
+    title: "Our Mission",
+    description:
+      "To combine accounting expertise, global talent, technology, automation, and AI to create more efficient financial operations — helping our clients reduce costs, strengthen their accounting functions, and focus more resources on growing their businesses.",
+  },
 } as const;
 
-export const features = {
-  eyebrow: "Benefits",
-  title: "Benefits of Outsourcing",
-  titleAccent: "Accounting",
-  sideImage: "/images/benefits-finance-dashboard.png",
-  sideImageAlt:
-    "Finance analytics dashboard with sales charts, KPI metrics, and reporting widgets",
-  items: [
-    {
-      title: "High Cost Savings",
-      description: "Realize cost reductions of 40%-60%.",
-      metric: "40–60%",
-      metricLabel: "typical savings vs in-house",
-      icon: "savings" as const,
-      featured: true,
-    },
-    {
-      title: "Grow without Overheads",
-      description: "Scale up and down based on your needs.",
-      icon: "process" as const,
-      featured: false,
-    },
-    {
-      title: "Focus on Core Business",
-      description: "Focus on running the business instead of managing books.",
-      icon: "focus" as const,
-      featured: false,
-    },
-    {
-      title: "Flexible Staffing",
-      description: "Use us as full-time, part-time or on an as-needed basis.",
-      icon: "network" as const,
-      featured: false,
-    },
-    {
-      title: "Specialized Expertise",
-      description: "Access to best practices derived from 300+ businesses.",
-      metric: "300+",
-      metricLabel: "businesses served",
-      icon: "expert" as const,
-      featured: false,
-    },
+export const technologySection = {
+  eyebrow: "Technology + AI + Control",
+  title: "Accounting Built for the",
+  titleAccent: "Modern Business",
+  brandPillar:
+    "Technology should be a central Atlas brand pillar.",
+  description:
+    "Atlas continuously evaluates technology, automation, AI-assisted tools, and workflow improvements that help accounting professionals work more efficiently while maintaining appropriate controls, security, and human oversight.",
+  preferredLanguageLabel: "Preferred language",
+  preferredLanguage: [
+    "Technology-enabled accounting",
+    "AI-assisted workflows",
+    "Intelligent automation",
+    "Automation-supported processes",
+    "Technology-driven efficiency",
   ],
+  control: {
+    eyebrow: "Technology without sacrificing control",
+    headline: "Efficiency should never come at the expense of financial control.",
+    description:
+      "Design workflows around defined responsibilities, appropriate review, secure technology, documented processes, accountability, and professional oversight.",
+    pillars: ["Security", "Controls", "Accountability", "Human Oversight"],
+  },
+  guardrails: {
+    title: "AI Positioning Guardrails",
+    use: [
+      "AI-assisted workflows",
+      "Technology-driven efficiency",
+      "Automation-supported processes",
+      "Human oversight + professional judgment",
+    ],
+    avoid: [
+      "Fully AI-powered accounting",
+      "Autonomous accounting",
+      "AI replaces accountants",
+      "Unverifiable technology claims",
+    ],
+  },
+} as const;
+
+/** @deprecated merged into technologySection — kept for anchor compatibility */
+export const securitySection = {
+  eyebrow: technologySection.eyebrow,
+  title: "Technology Without",
+  titleAccent: "Sacrificing Control",
+  description: technologySection.control.description,
+  pillars: technologySection.control.pillars,
 } as const;
 
 export const industriesServed = {
   eyebrow: "Industries",
-  title: "Other Industries",
-  titleAccent: "Served",
+  title: "Industries Atlas",
+  titleAccent: "Actually Knows",
   description:
-    "Accounting and finance outsourcing for construction, logistics, retail, CPA firms, restaurants, amusement businesses, and more.",
-  items: industries.map(({ slug, title, cardImage }) => ({
-    slug,
-    title,
-    image: cardImage,
-  })),
-} as const;
-
-export const popularRoles = {
-  eyebrow: "Talent",
-  title: "Popular",
-  titleAccent: "Roles",
-  description:
-    "Dedicated finance professionals placed in your workflows, from AP/AR through property accounting and bookkeeping.",
+    "We lead with the industries supported by real founder and team experience — then scale accounting capacity where those workflows demand it.",
   items: [
     {
-      title: "Accounts Payable Specialist",
+      index: "01",
+      slug: "hoa-property-management",
+      title: "HOA & Property Management",
       description:
-        "Accounts Payable Specialist can perform activities such as 2 Way/3 Way matching of invoices with POs and GRs/Packing Slips, entry of invoices and utilities, coding of expenses, entering checks for further approval, tracking payables, vendor reconciliations and other miscellaneous accounts payable activities.",
+        "Community association and management-company accounting workflows — assessments, reserves, vendor payables, and board-ready reporting.",
+      image:
+        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=640&q=60",
     },
     {
-      title: "Accounts Receivable Specialist",
+      index: "02",
+      slug: "restaurant-business",
+      title: "Restaurants & Hospitality",
       description:
-        "Accounts Receivable Specialist typically can perform activities such as invoicing, running rents (for real estate cos.), tenant/customer set-up and accounting, late fee processing, rent receipting/cash application services, tracking receivables, email and call based collection support, and miscellaneous accounts receivable tasks.",
+        "Practical restaurant accounting and operational experience for food cost, daily closes, labor, and multi-unit reporting.",
+      image:
+        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=640&q=60",
     },
     {
-      title: "Property Accountant",
+      index: "03",
+      slug: "cpa-firms",
+      title: "Professional & Business Services",
       description:
-        "Property Accountant can provide the following accounting services: general ledger accounting, payroll, bank reconciliations, inter-company accounting, monthly closing of books including finalization and simple monthly reporting with variance analysis.",
-    },
-    {
-      title: "Sr. Property Accountant",
-      description:
-        "Sr. Property Accountant can provide the following accounting services: general ledger accounting, cash flow projections and management, inter-company accounting, prepare budgets, analyze expense variances, review balance sheets, prepare monthly financials including detailed monthly reporting and assist Controller in month/year end activities.",
-    },
-    {
-      title: "Financial Analyst",
-      description:
-        "Financial Analyst is a specialist profile used for financial modeling, business plan formulation, business research and financial analysis assignments. They are responsible for preparation of project reports, financial modeling, management reporting, analysis of financial statements, simple valuations and other custom tasks.",
-    },
-    {
-      title: "Bookkeeper",
-      description:
-        "Bookkeeper can perform day-to-day accounting activities such as recording transactions, categorizing expenses, processing invoices and receipts, bank and credit card reconciliations, maintaining general ledgers, and preparing basic financial reports to support monthly close and management review.",
+        "Scalable accounting support for growing service organizations that need capacity without rebuilding the back office.",
+      image:
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=640&q=60",
     },
   ],
+  moreLabel: "Additional industries we support",
+  moreItems: industries
+    .filter(
+      (item) =>
+        !["hoa-property-management", "restaurant-business", "cpa-firms"].includes(
+          item.slug,
+        ),
+    )
+    .map(({ slug, title }) => ({ slug, title })),
 } as const;
 
-export const testimonials = {
-  eyebrow: "Reviews",
-  title: "Trusted by finance",
-  titleAccent: "leaders",
+export const howItWorks = {
+  eyebrow: "How Atlas works",
+  title: "From Understanding to",
+  titleAccent: "Scale",
   description:
-    "What operators and controllers say after switching to Atlas for outsourced accounting support.",
-  items: [
+    "A simple operating model that fits your systems first — then improves efficiency over time.",
+  steps: [
     {
-      quote:
-        "Atlas cut our month-end scramble in half. We kept control of the numbers without hiring three more accountants.",
-      name: "Daniel Reyes",
-      role: "Controller",
-      company: "Northline Properties",
-      rating: 5,
-      featured: true,
+      index: "01",
+      title: "Understand",
+      description:
+        "Learn systems, workflows, responsibilities, deadlines and expectations.",
     },
     {
-      quote:
-        "Flexible staffing finally matched our seasonal leasing spikes. Reporting quality stayed consistent every month.",
-      name: "Priya Shah",
-      role: "CFO",
-      company: "Harbor Asset Group",
-      rating: 5,
-      featured: false,
+      index: "02",
+      title: "Integrate",
+      description:
+        "Fit Atlas professionals into defined client processes and controls.",
     },
     {
-      quote:
-        "Our AP backlog cleared in weeks. The team plugs into our systems like an in-house extension.",
-      name: "Marcus Chen",
-      role: "VP Finance",
-      company: "Cedar Peak Developments",
-      rating: 5,
-      featured: false,
+      index: "03",
+      title: "Optimize",
+      description:
+        "Improve standardization, workflow design, technology and automation.",
     },
     {
-      quote:
-        "Owner packages are clearer, faster, and audit-ready. I spend time on strategy instead of chasing reconciliations.",
-      name: "Elena Brooks",
-      role: "Managing Partner",
-      company: "Brooks & Co. Investors",
-      rating: 5,
-      featured: false,
+      index: "04",
+      title: "Scale",
+      description:
+        "Expand accounting capacity efficiently as workload and client needs grow.",
     },
   ],
 } as const;
 
 export const contactForm = {
   eyebrow: "Contact us",
-  title: "Get In",
-  titleAccent: "Touch",
-  lead: "Contact us for a customized no-obligation proposal for outsourcing your accounting activities.",
+  title: "Schedule a",
+  titleAccent: "Consultation",
+  lead: "Tell us about your accounting operation and we will follow up with a customized, no-obligation conversation.",
   industries: [
-    "Fully Integrated Real Estate",
-    "Real Estate Developer",
-    "Property Management",
-    "Real Estate Funds/REIT",
-    "Real Estate Investor/Syndicate",
-    "Real Estate Brokerage",
+    "HOA / Property Management",
+    "Restaurants & Hospitality",
+    "Professional & Business Services",
+    "Construction",
+    "Logistics",
+    "Retail",
+    "CPA Firms",
     "Other",
   ],
   inquiryTypes: [
-    "Year-End Close & Audit Support",
-    "Property Accounting",
-    "Fund Accounting",
-    "Portfolio Reporting",
-    "Construction/Draws",
-    "Back-Office Outsourcing",
+    "Accounts Payable",
+    "Bank Reconciliation",
+    "General Ledger & Close",
+    "HOA / Property Accounting",
+    "Restaurant Accounting",
+    "Back-Office Support",
     "Other",
   ],
   companySizes: [
@@ -301,9 +349,9 @@ export const contactForm = {
 } as const;
 
 export const finalCta = {
-  title: "Ready to Streamline Your Accounting with Atlas",
+  title: "Build a More Efficient Accounting Operation",
   description:
-    "Unlock clearer closes, flexible staffing, and 40–60% cost savings. Tell us about your portfolio and get a customized proposal.",
+    "We operate more efficiently so our clients can save more — with accounting expertise, global talent, technology, automation, and AI-assisted workflows.",
   buttonLabel: "Inquire Now",
 } as const;
 
@@ -361,7 +409,7 @@ export const pricingPlans = [
 ] as const;
 
 export const pricingPerks = [
-  "40-60% savings vs in-house",
+  "Technology-enabled accounting",
   "FTE or hourly models",
   "No long-term contracts",
 ] as const;
@@ -372,3 +420,50 @@ export const paymentMethods = [
   { name: "Wire transfer", detail: "For annual engagements" },
   { name: "Invoicing", detail: "Net-15 for approved accounts" },
 ] as const;
+
+/** Legacy exports kept so unused section files still typecheck. */
+export const proofStrip = {
+  eyebrow: "",
+  items: [] as readonly { value: string; label: string }[],
+} as const;
+
+export const trustMarquee = [] as const;
+
+export const features = {
+  eyebrow: "",
+  title: "",
+  titleAccent: "",
+  sideImage: "/images/benefits-finance-dashboard.png",
+  sideImageAlt: "",
+  items: [] as readonly {
+    title: string;
+    description: string;
+    metric?: string;
+    metricLabel?: string;
+    icon: "savings" | "process" | "focus" | "network" | "expert";
+    featured: boolean;
+  }[],
+} as const;
+
+export const popularRoles = {
+  eyebrow: "",
+  title: "",
+  titleAccent: "",
+  description: "",
+  items: [] as readonly { title: string; description: string }[],
+} as const;
+
+export const testimonials = {
+  eyebrow: "",
+  title: "",
+  titleAccent: "",
+  description: "",
+  items: [] as readonly {
+    quote: string;
+    name: string;
+    role: string;
+    company: string;
+    rating: number;
+    featured: boolean;
+  }[],
+} as const;

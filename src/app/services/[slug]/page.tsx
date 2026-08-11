@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { ServiceCategoryIcon } from "@/components/service-category-icon";
 import { SiteFooter } from "@/components/site-footer";
@@ -47,29 +48,13 @@ export default async function ServiceCategoryPage({ params }: Props) {
                   <Link href="/">Home</Link>
                 </li>
                 <li className="service-breadcrumb-sep" aria-hidden>
-                  <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
-                    <path
-                      d="M6 4l4 4-4 4"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <ChevronRight className="h-3.5 w-3.5" strokeWidth={1.5} />
                 </li>
                 <li>
                   <Link href={homeAnchors.services}>Services</Link>
                 </li>
                 <li className="service-breadcrumb-sep" aria-hidden>
-                  <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
-                    <path
-                      d="M6 4l4 4-4 4"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <ChevronRight className="h-3.5 w-3.5" strokeWidth={1.5} />
                 </li>
                 <li className="service-breadcrumb-current" aria-current="page">
                   <span>{category.shortTitle}</span>

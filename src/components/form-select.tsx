@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronDown } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 
 type FormSelectProps = {
@@ -51,16 +52,7 @@ export function FormSelect({ value, onChange, options, placeholder, id }: FormSe
         onClick={() => setOpen((current) => !current)}
       >
         <span className={isPlaceholder ? "form-select-placeholder" : undefined}>{displayLabel}</span>
-        <svg
-          className="form-select-chevron"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          aria-hidden
-        >
-          <path d="M6 9l6 6 6-6" />
-        </svg>
+        <ChevronDown className="form-select-chevron" strokeWidth={2} aria-hidden />
       </button>
       {open ? (
         <ul className="form-select-menu" role="listbox" aria-labelledby={selectId}>

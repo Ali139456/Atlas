@@ -1,0 +1,90 @@
+.how-works__intro {
+  max-width: 52rem;
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
+  text-align: center;
+  margin-inline: auto;
+}
+
+.how-works__title {
+  margin: 0.9rem 0 0;
+  font-size: clamp(1.7rem, 3.8vw, 3.1rem);
+  line-height: 1.12;
+}
+
+.how-works__lead {
+  margin: 0.9rem auto 0;
+  max-width: 48rem;
+  font-size: clamp(0.94rem, 1.5vw, 1rem);
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.how-works__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: 1fr;
+}
+
+.how-works__step {
+  position: relative;
+  padding: 1.25rem 1.2rem 1.35rem;
+  border-radius: calc(var(--radius-xl) + 0.05rem);
+  border: 1px solid var(--border);
+  background: var(--surface-glass);
+}
+
+.how-works__index {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--neon);
+}
+
+.how-works__step-title {
+  margin: 0.55rem 0 0;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 700;
+  color: var(--heading);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  overflow-wrap: break-word;
+}
+
+.how-works__step-desc {
+  margin: 0.5rem 0 0;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+@media (min-width: 40rem) {
+  .how-works__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .how-works__steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 29.9375rem) {
+  .how-works__step {
+    padding: 1.1rem 1rem 1.2rem;
+  }
+
+  .how-works__step-title {
+    letter-spacing: 0.03em;
+  }
+}
+
+[data-theme="light"] .how-works__step {
+  background: #ffffff;
+  box-shadow: var(--shadow-card);
+}
