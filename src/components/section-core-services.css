@@ -1,6 +1,6 @@
 .core-svc__intro {
   max-width: 40rem;
-  margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
+  margin-bottom: clamp(0.875rem, 2vw, 1.375rem);
 }
 
 .core-svc__title {
@@ -101,5 +101,20 @@
 
 [data-theme="light"] .core-svc__card {
   background: #ffffff;
+  border-color: rgba(10, 37, 64, 0.1);
   box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .core-svc__card:hover {
+  border-color: rgba(0, 194, 203, 0.28);
+  box-shadow: 0 14px 36px rgba(10, 37, 64, 0.12);
+}
+
+[data-theme="light"] .core-svc__index,
+[data-theme="light"] .core-svc__link {
+  color: #0891b2;
+}
+
+[data-theme="light"] .core-svc__link:hover {
+  color: #0e7490;
 }

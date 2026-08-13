@@ -1,4 +1,5 @@
 import { industries } from "./industries";
+import { coreServicesSection } from "./core-services";
 
 export const site = {
   brand: "Atlas Global Finance",
@@ -50,8 +51,6 @@ export const hero = {
   primaryCtaHref: siteCta.href,
   secondaryCta: "Explore Our Services",
   secondaryCtaHref: "/#services",
-  /** Ambient office loop — desktop only, lazy-loaded after idle */
-  videoSrc: "https://videos.pexels.com/video-files/7578552/7578552-sd_640_360_30fps.mp4",
   dashboard: {
     title: "Finance Operations",
     balanceLabel: "Efficiency Index",
@@ -62,12 +61,10 @@ export const hero = {
     growthValue: "Capacity",
     growthHint: "More capacity. Lower overhead.",
     pillars: [
-      { label: "People", value: "Experienced accounting talent" },
-      { label: "Process", value: "Standardized + optimized workflows" },
-      { label: "Technology", value: "Automation + AI-assisted tools" },
+      { label: "People", value: "Experienced accounting talent", icon: "people" as const },
+      { label: "Process", value: "Standardized + optimized workflows", icon: "process" as const },
+      { label: "Technology", value: "Automation + AI-assisted tools", icon: "technology" as const },
     ],
-    chart: [42, 55, 48, 68, 72, 81, 94],
-    chartLabels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
   },
 } as const;
 
@@ -81,56 +78,32 @@ export const valueProposition = {
     {
       title: "People",
       description: "Experienced accounting professionals",
+      icon: "people" as const,
     },
     {
       title: "Process",
       description: "Standardized + optimized workflows",
+      icon: "process" as const,
     },
     {
       title: "Technology",
       description: "Automation + AI-assisted tools",
+      icon: "technology" as const,
     },
     {
       title: "Efficiency",
       description: "Higher productivity + capacity",
+      icon: "efficiency" as const,
     },
     {
       title: "Client Savings",
       description: "Lower operating cost",
+      icon: "savings" as const,
     },
   ],
 } as const;
 
-export const coreServices = {
-  eyebrow: "Core services",
-  title: "Accounting Work",
-  titleAccent: "Atlas Performs",
-  description:
-    "Concise support for the workflows that keep your books accurate, your close on time, and your team focused.",
-  items: [
-    {
-      index: "01",
-      title: "Accounts Payable",
-      description:
-        "Invoice review, coding support, approval-ready workflows and payable tracking.",
-      href: "/services/owners-developers",
-    },
-    {
-      index: "02",
-      title: "Bank Reconciliation",
-      description:
-        "Disciplined reconciliation workflows designed for timely and accurate close support.",
-      href: "/services/property-management",
-    },
-    {
-      index: "03",
-      title: "General Ledger & Close",
-      description:
-        "GL accounting, journal support, month-end processes and financial reporting.",
-      href: "/services/asset-management",
-    },
-  ],
-} as const;
+export const coreServices = coreServicesSection;
 
 export const whyChooseUs = {
   eyebrow: "Why Atlas",
@@ -420,50 +393,3 @@ export const paymentMethods = [
   { name: "Wire transfer", detail: "For annual engagements" },
   { name: "Invoicing", detail: "Net-15 for approved accounts" },
 ] as const;
-
-/** Legacy exports kept so unused section files still typecheck. */
-export const proofStrip = {
-  eyebrow: "",
-  items: [] as readonly { value: string; label: string }[],
-} as const;
-
-export const trustMarquee = [] as const;
-
-export const features = {
-  eyebrow: "",
-  title: "",
-  titleAccent: "",
-  sideImage: "/images/benefits-finance-dashboard.png",
-  sideImageAlt: "",
-  items: [] as readonly {
-    title: string;
-    description: string;
-    metric?: string;
-    metricLabel?: string;
-    icon: "savings" | "process" | "focus" | "network" | "expert";
-    featured: boolean;
-  }[],
-} as const;
-
-export const popularRoles = {
-  eyebrow: "",
-  title: "",
-  titleAccent: "",
-  description: "",
-  items: [] as readonly { title: string; description: string }[],
-} as const;
-
-export const testimonials = {
-  eyebrow: "",
-  title: "",
-  titleAccent: "",
-  description: "",
-  items: [] as readonly {
-    quote: string;
-    name: string;
-    role: string;
-    company: string;
-    rating: number;
-    featured: boolean;
-  }[],
-} as const;

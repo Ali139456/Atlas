@@ -1,8 +1,8 @@
 .final-cta {
   position: relative;
   overflow: hidden;
-  margin-top: clamp(1.25rem, 4vw, 3rem);
-  padding-block: clamp(3.25rem, 8vw, 6.5rem);
+  margin-top: clamp(0.625rem, 2vw, 1.5rem);
+  padding-block: clamp(1.625rem, 4vw, 3.25rem);
   background: var(--final-cta-bg, #05080f);
   isolation: isolate;
 }
@@ -108,7 +108,7 @@
 /* Phones */
 @media (max-width: 29.9375rem) {
   .final-cta {
-    padding-block: 3rem 3.25rem;
+    padding-block: 1.5rem 1.625rem;
   }
 
   .final-cta__grid {
@@ -169,7 +169,7 @@
 /* Tablets */
 @media (min-width: 48rem) and (max-width: 63.9375rem) {
   .final-cta {
-    padding-block: clamp(3.75rem, 7vw, 5rem);
+    padding-block: clamp(1.875rem, 3.5vw, 2.5rem);
   }
 
   .final-cta__arc {
@@ -188,7 +188,7 @@
 /* Wide */
 @media (min-width: 80rem) {
   .final-cta {
-    padding-block: 6.75rem;
+    padding-block: 3.375rem;
   }
 }
 

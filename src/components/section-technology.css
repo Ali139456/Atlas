@@ -11,7 +11,7 @@
 
 .tech-sec__intro {
   max-width: 46rem;
-  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+  margin-bottom: clamp(0.875rem, 1.75vw, 1.25rem);
 }
 
 .tech-sec__title {
@@ -103,8 +103,8 @@
   justify-content: center;
   overflow: hidden;
   padding: clamp(1.35rem, 2.5vw, 1.85rem);
-  background: linear-gradient(165deg, #123456 0%, #0a1628 52%, #08111f 100%);
-  border-color: rgba(125, 211, 252, 0.22);
+  background: linear-gradient(165deg, #0a2540 0%, #06101c 55%, #030810 100%);
+  border-color: rgba(0, 232, 240, 0.22);
   box-shadow:
     0 22px 48px rgba(0, 0, 0, 0.38),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -114,7 +114,7 @@
   position: absolute;
   inset: 0 0 auto 0;
   height: 5rem;
-  background: linear-gradient(180deg, rgba(56, 189, 248, 0.18), transparent);
+  background: linear-gradient(180deg, rgba(0, 232, 240, 0.12), transparent);
   pointer-events: none;
 }
 
@@ -168,7 +168,7 @@
 }
 
 .tech-sec__guardrails {
-  margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+  margin-top: clamp(0.625rem, 1.25vw, 0.875rem);
   padding: clamp(1rem, 2vw, 1.25rem);
   border-radius: calc(var(--radius-xl) + 0.2rem);
   border: 1px solid var(--border);
@@ -362,6 +362,8 @@
 [data-theme="light"] .tech-sec__language,
 [data-theme="light"] .tech-sec__guardrails {
   background: #ffffff;
+  border-color: rgba(10, 37, 64, 0.1);
+  box-shadow: var(--shadow-card);
 }
 
 [data-theme="light"] .tech-sec__language {
@@ -375,14 +377,40 @@
 }
 
 [data-theme="light"] .tech-sec__control {
-  background: linear-gradient(165deg, #1e40af 0%, #1e3a8a 52%, #172554 100%);
+  background:
+    linear-gradient(180deg, rgba(0, 194, 203, 0.07) 0%, rgba(0, 194, 203, 0.02) 45%),
+    #ffffff;
+  border-color: rgba(0, 194, 203, 0.24);
+  box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .tech-sec__control-glow {
+  background: linear-gradient(180deg, rgba(0, 194, 203, 0.08), transparent);
+}
+
+[data-theme="light"] .tech-sec__control-eyebrow {
+  color: #0891b2;
+}
+
+[data-theme="light"] .tech-sec__control-headline {
+  color: #0a2540;
+}
+
+[data-theme="light"] .tech-sec__control-desc {
+  color: #64748b;
+}
+
+[data-theme="light"] .tech-sec__control-pillars {
+  border-top-color: rgba(10, 37, 64, 0.08);
+}
+
+[data-theme="light"] .tech-sec__control-pillars li {
+  border-color: rgba(0, 194, 203, 0.22);
+  background: rgba(0, 194, 203, 0.06);
+  color: #0a2540;
 }
 
 [data-theme="light"] .tech-sec__guardrails-icon {
   background: #ecfeff;
-  border-color: rgba(6, 182, 212, 0.25);
-}
-
-[data-theme="light"] .tech-sec__control-pillars li {
-  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(0, 194, 203, 0.25);
 }

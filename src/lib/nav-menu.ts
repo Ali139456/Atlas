@@ -1,5 +1,5 @@
 import { industries } from "./industries";
-import { serviceCategories } from "./service-categories";
+import { coreServicesData } from "./core-services";
 import { homeAnchors, siteCta } from "./site-content";
 
 export type NavLink = {
@@ -71,9 +71,9 @@ export const footerSocialLinks = [
   },
 ] as const;
 
-export const navServicesLinks: readonly NavLink[] = serviceCategories.map((category) => ({
-  label: category.shortTitle,
-  href: `/services/${category.slug}`,
+export const navServicesLinks: readonly NavLink[] = coreServicesData.map((service) => ({
+  label: service.shortTitle,
+  href: `/services/${service.slug}`,
 }));
 
 export const navIndustryLinks: readonly NavLink[] = industries.map(

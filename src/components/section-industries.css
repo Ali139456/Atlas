@@ -1,6 +1,6 @@
 .industries-header {
   max-width: 40rem;
-  margin-bottom: clamp(1.5rem, 3vw, 2.35rem);
+  margin-bottom: clamp(0.75rem, 1.5vw, 1.175rem);
 }
 
 .industries-title {
@@ -212,7 +212,7 @@
 }
 
 .industries-more {
-  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  margin-top: clamp(0.75rem, 1.5vw, 1.125rem);
   padding-top: 1.25rem;
   border-top: 1px solid var(--border);
 }
@@ -297,4 +297,15 @@
   .industry-card:hover {
     transform: none;
   }
+}
+
+[data-theme="light"] .industries-more__link {
+  background: #ffffff;
+  border-color: rgba(10, 37, 64, 0.1);
+  box-shadow: 0 4px 14px rgba(10, 37, 64, 0.06);
+}
+
+[data-theme="light"] .industries-more__link:hover {
+  border-color: rgba(0, 194, 203, 0.28);
+  color: #0891b2;
 }

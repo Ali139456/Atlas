@@ -1,6 +1,6 @@
 .how-works__intro {
   max-width: 52rem;
-  margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
+  margin-bottom: clamp(0.875rem, 2vw, 1.375rem);
   text-align: center;
   margin-inline: auto;
 }
@@ -86,5 +86,10 @@
 
 [data-theme="light"] .how-works__step {
   background: #ffffff;
+  border-color: rgba(10, 37, 64, 0.1);
   box-shadow: var(--shadow-card);
+}
+
+[data-theme="light"] .how-works__index {
+  color: #0891b2;
 }
