@@ -1,10 +1,29 @@
-import { BookOpen, ClipboardList, Landmark, type LucideIcon } from "lucide-react";
+import {
+  BarChart3,
+  BookOpen,
+  Building2,
+  ClipboardList,
+  Headphones,
+  Layers,
+  Monitor,
+  Shield,
+  Sparkles,
+  Wallet,
+  type LucideIcon,
+} from "lucide-react";
 import type { CoreServiceIcon } from "@/lib/core-services";
 
 const icons: Record<CoreServiceIcon, LucideIcon> = {
+  bookkeeping: BookOpen,
   payable: ClipboardList,
-  reconciliation: Landmark,
-  ledger: BookOpen,
+  reporting: BarChart3,
+  specialized: Building2,
+  payroll: Wallet,
+  "customer-service": Headphones,
+  "it-support": Monitor,
+  cybersecurity: Shield,
+  bpo: Layers,
+  automation: Sparkles,
 };
 
 export function ServicePageIcon({

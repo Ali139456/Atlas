@@ -6,7 +6,6 @@ import { ServicePageIcon } from "@/components/service-page-icon";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import {
-  coreServicesData,
   getAllCoreServiceSlugs,
   getCoreService,
 } from "@/lib/core-services";
@@ -63,20 +62,6 @@ export default async function CoreServicePage({ params }: Props) {
               </ol>
             </nav>
 
-            <nav className="svc-page__switcher" aria-label="Core services">
-              {coreServicesData.map((item) => (
-                <Link
-                  key={item.slug}
-                  href={`/services/${item.slug}`}
-                  className={`svc-page__switch${item.slug === service.slug ? " is-active" : ""}`}
-                  aria-current={item.slug === service.slug ? "page" : undefined}
-                >
-                  <span className="svc-page__switch-index">{item.index}</span>
-                  {item.shortTitle}
-                </Link>
-              ))}
-            </nav>
-
             <header className="svc-page__hero">
               <div className="svc-page__hero-main">
                 <div className="svc-page__hero-top">
@@ -84,7 +69,7 @@ export default async function CoreServicePage({ params }: Props) {
                   <span className="svc-page__hero-icon" aria-hidden>
                     <ServicePageIcon name={service.icon} className="h-5 w-5" />
                   </span>
-                  <p className="eyebrow-pill svc-page__eyebrow">Core service</p>
+                  <p className="eyebrow-pill svc-page__eyebrow">Service</p>
                 </div>
 
                 <h1 className="display-lg svc-page__title text-heading">{service.title}</h1>

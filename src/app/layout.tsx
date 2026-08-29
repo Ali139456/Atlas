@@ -27,6 +27,11 @@ export const metadata: Metadata = {
   },
   description:
     "Technology-driven accounting operations partner. Experienced professionals, AI-assisted workflows, and efficient financial operations for HOA, restaurants, and growing businesses.",
+  icons: {
+    icon: [{ url: "/atlas-logo.png", type: "image/png" }],
+    apple: "/atlas-logo.png",
+    shortcut: "/atlas-logo.png",
+  },
   keywords: [
     "accounting operations",
     "technology-enabled accounting",

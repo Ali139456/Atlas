@@ -2,6 +2,7 @@
 
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NavDropdown } from "@/components/nav-dropdown";
 import { SiteLogo } from "@/components/site-logo";
@@ -34,6 +35,8 @@ function NavPlainLink({
 }
 
 export function SiteHeader() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -67,7 +70,9 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className={`nav-wrap${scrolled ? " nav-wrap--scrolled" : ""}`}>
+      <header
+        className={`nav-wrap${isHome ? " nav-wrap--home" : ""}${scrolled ? " nav-wrap--scrolled" : ""}`}
+      >
         <div className="site-container">
           <div className="nav-inner">
             <Link href="/" aria-label={`${site.brand} home`} className="nav-brand-chip">
@@ -77,7 +82,7 @@ export function SiteHeader() {
             <nav className="nav-menu" aria-label="Main">
               <Link href={homeLink.href}>{homeLink.label}</Link>
               <Link href={valueLink.href}>{valueLink.label}</Link>
-              <NavDropdown label="Services" items={navServicesLinks} />
+              <NavDropdown label="Services" items={navServicesLinks} mega />
               <NavDropdown label="Industry" items={navIndustryLinks} />
               <Link href={whyLink.href}>{whyLink.label}</Link>
               <Link href={techLink.href}>{techLink.label}</Link>
@@ -150,6 +155,7 @@ export function SiteHeader() {
                 label="Services"
                 items={navServicesLinks}
                 variant="mobile"
+                mega
                 onNavigate={close}
               />
               <NavDropdown

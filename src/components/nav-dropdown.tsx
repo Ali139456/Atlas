@@ -9,10 +9,17 @@ type NavDropdownProps = {
   label: string;
   items: readonly NavLink[];
   variant?: "desktop" | "mobile";
+  mega?: boolean;
   onNavigate?: () => void;
 };
 
-export function NavDropdown({ label, items, variant = "desktop", onNavigate }: NavDropdownProps) {
+export function NavDropdown({
+  label,
+  items,
+  variant = "desktop",
+  mega = false,
+  onNavigate,
+}: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
 
@@ -49,7 +56,9 @@ export function NavDropdown({ label, items, variant = "desktop", onNavigate }: N
           </span>
         </button>
         {open ? (
-          <div className="nav-mobile-sublist">
+          <div
+            className={`nav-mobile-sublist${mega ? " nav-mobile-sublist--mega nav-mobile-sublist--columns" : ""}`}
+          >
             {items.map((item) => (
               <Link
                 key={`${label}-${item.label}`}
@@ -81,20 +90,41 @@ export function NavDropdown({ label, items, variant = "desktop", onNavigate }: N
         <ChevronDown className="nav-dropdown-chevron" strokeWidth={2} aria-hidden />
       </button>
       {open ? (
-        <div className="nav-dropdown-panel" role="menu">
-          {items.map((item) => (
-            <Link
-              key={`${label}-${item.label}`}
-              href={item.href}
-              className="nav-dropdown-item"
-              role="menuitem"
-              target={item.external ? "_blank" : undefined}
-              rel={item.external ? "noopener noreferrer" : undefined}
-              onClick={() => setOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <div
+          className={`nav-dropdown-panel${mega ? " nav-dropdown-panel--mega" : ""}`}
+          role="menu"
+        >
+          {mega ? (
+            <div className="nav-dropdown-grid">
+              {items.map((item) => (
+                <Link
+                  key={`${label}-${item.label}`}
+                  href={item.href}
+                  className="nav-dropdown-item"
+                  role="menuitem"
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          ) : (
+            items.map((item) => (
+              <Link
+                key={`${label}-${item.label}`}
+                href={item.href}
+                className="nav-dropdown-item"
+                role="menuitem"
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))
+          )}
         </div>
       ) : null}
     </div>
