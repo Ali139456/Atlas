@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Outfit, Syne } from "next/font/google";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { ThemeProvider } from "@/components/theme-provider";
+import { UnregisterServiceWorker } from "@/components/unregister-service-worker";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -79,6 +80,7 @@ export default function RootLayout({
           {SCROLL_BOOT}
         </Script>
         <ThemeProvider>
+          <UnregisterServiceWorker />
           <ScrollToTop />
           {children}
         </ThemeProvider>
