@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
+import { buildContactInquiryEmail, normalizeContactMessage } from "@/lib/email/contact-inquiry-email";
 import { createServiceRoleClient } from "@/lib/supabase/admin";
 
 const bodySchema = z.object({
@@ -31,6 +32,17 @@ export async function POST(request: Request) {
   }
 
   const { name, email, company, phone, industry, service, companySize, message } = parsed.data;
+  const inquiryInput = {
+    name,
+    email,
+    company,
+    phone,
+    industry,
+    service,
+    companySize,
+    message,
+  };
+  const cleanedMessage = normalizeContactMessage(inquiryInput);
 
   let stored = false;
   const admin = createServiceRoleClient();
@@ -44,7 +56,7 @@ export async function POST(request: Request) {
       inquiry_type: service || null,
       company_size: companySize || null,
       service: service || null,
-      message,
+      message: cleanedMessage,
       status: "new",
     });
     if (error) {
@@ -61,24 +73,14 @@ export async function POST(request: Request) {
   let emailed = false;
   if (apiKey && from && to) {
     const resend = new Resend(apiKey);
+    const emailContent = buildContactInquiryEmail({ ...inquiryInput, message: cleanedMessage });
     const { error } = await resend.emails.send({
       from,
       to: [to],
       replyTo: email,
-      subject: `New inquiry from ${name}`,
-      text: [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        company ? `Company: ${company}` : null,
-        phone ? `Phone: ${phone}` : null,
-        industry ? `Industry: ${industry}` : null,
-        service ? `Nature of inquiry: ${service}` : null,
-        companySize ? `Company size: ${companySize}` : null,
-        "",
-        message,
-      ]
-        .filter(Boolean)
-        .join("\n"),
+      subject: emailContent.subject,
+      html: emailContent.html,
+      text: emailContent.text,
     });
     if (error) {
       console.error("Resend error:", error);
