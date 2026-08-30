@@ -39,8 +39,13 @@ export async function POST(request: Request) {
       name,
       email,
       company: company || null,
+      phone: phone || null,
+      industry: industry || null,
+      inquiry_type: service || null,
+      company_size: companySize || null,
       service: service || null,
       message,
+      status: "new",
     });
     if (error) {
       console.error("Supabase insert error:", error.message);

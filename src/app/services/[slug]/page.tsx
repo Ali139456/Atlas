@@ -3,24 +3,26 @@ import Link from "next/link";
 import { ArrowRight, Check, ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { ServicePageIcon } from "@/components/service-page-icon";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { SiteFooterServer } from "@/components/site-footer-server";
+import { SiteHeaderServer } from "@/components/site-header-server";
 import {
-  getAllCoreServiceSlugs,
-  getCoreService,
-} from "@/lib/core-services";
-import { homeAnchors, siteCta } from "@/lib/site-content";
+  getPublicServiceBySlug,
+  getPublicServices,
+  getPublicSiteSettings,
+} from "@/lib/cms/public-content";
+import type { CoreServiceIcon } from "@/lib/core-services";
 import "../service-detail.css";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return getAllCoreServiceSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const services = await getPublicServices();
+  return services.map((service) => ({ slug: service.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const service = getCoreService(slug);
+  const service = await getPublicServiceBySlug(slug);
   if (!service) return { title: "Service not found" };
   return {
     title: service.title,
@@ -30,12 +32,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CoreServicePage({ params }: Props) {
   const { slug } = await params;
-  const service = getCoreService(slug);
+  const [service, settings] = await Promise.all([
+    getPublicServiceBySlug(slug),
+    getPublicSiteSettings(),
+  ]);
   if (!service) notFound();
+
+  const { homeAnchors, siteCta } = settings;
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeaderServer />
       <main className="site-main section-bg">
         <section className="svc-page relative section-pad overflow-hidden">
           <div className="svc-page__glow svc-page__glow--left" aria-hidden />
@@ -67,7 +74,7 @@ export default async function CoreServicePage({ params }: Props) {
                 <div className="svc-page__hero-top">
                   <span className="svc-page__hero-index">{service.index}</span>
                   <span className="svc-page__hero-icon" aria-hidden>
-                    <ServicePageIcon name={service.icon} className="h-5 w-5" />
+                    <ServicePageIcon name={service.icon as CoreServiceIcon} className="h-5 w-5" />
                   </span>
                   <p className="eyebrow-pill svc-page__eyebrow">Service</p>
                 </div>
@@ -119,7 +126,7 @@ export default async function CoreServicePage({ params }: Props) {
                           {String(index + 1).padStart(2, "0")}
                         </span>
                         <span className="svc-page__cap-icon" aria-hidden>
-                          <ServicePageIcon name={service.icon} className="h-4 w-4" />
+                          <ServicePageIcon name={service.icon as CoreServiceIcon} className="h-4 w-4" />
                         </span>
                       </div>
                       <h3 className="svc-page__cap-title">{item.title}</h3>
@@ -148,7 +155,7 @@ export default async function CoreServicePage({ params }: Props) {
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooterServer />
     </>
   );
 }

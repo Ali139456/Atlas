@@ -3,8 +3,9 @@ import { ValuePropIcon } from "@/components/value-prop-icon";
 import { hero } from "@/lib/site-content";
 import "./hero-dashboard.css";
 
-export function HeroDashboard() {
-  const { dashboard } = hero;
+type DashboardContent = typeof hero.dashboard;
+
+export function HeroDashboard({ dashboard = hero.dashboard }: { dashboard?: DashboardContent }) {
 
   return (
     <div className="hero-panel" aria-hidden>

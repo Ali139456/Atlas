@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-import { whyChooseUs } from "@/lib/site-content";
+import { whyChooseUs as defaultWhyChooseUs } from "@/lib/site-content";
 import { WhyUsMissionIcon, WhyUsPointIcon } from "@/components/why-us-icon";
 import { WhyUsVisual } from "@/components/why-us-visual";
 import "./section-why-us.css";
@@ -32,9 +32,13 @@ function WhyPoint({
   );
 }
 
-export function WhyChooseUsSection() {
-  const leftPoints = whyChooseUs.items.slice(0, 3);
-  const rightPoints = whyChooseUs.items.slice(3);
+export function WhyChooseUsSection({
+  content = defaultWhyChooseUs,
+}: {
+  content?: typeof defaultWhyChooseUs;
+}) {
+  const leftPoints = content.items.slice(0, 3);
+  const rightPoints = content.items.slice(3);
 
   return (
     <section id="why-us" className="why-us relative section-pad overflow-hidden">
@@ -43,13 +47,13 @@ export function WhyChooseUsSection() {
       <div className="site-container relative z-10">
         <div className="why-us__hero">
           <header className="why-us__hero-copy">
-            <p className="eyebrow-pill">{whyChooseUs.eyebrow}</p>
+            <p className="eyebrow-pill">{content.eyebrow}</p>
             <h2 className="display-lg why-us__title text-heading">
-              {whyChooseUs.title}{" "}
-              <span className="text-gradient-neon">{whyChooseUs.titleAccent}</span>
+              {content.title}{" "}
+              <span className="text-gradient-neon">{content.titleAccent}</span>
             </h2>
-            <p className="why-us__subtitle">{whyChooseUs.subtitle}</p>
-            {whyChooseUs.intro.map((paragraph) => (
+            <p className="why-us__subtitle">{content.subtitle}</p>
+            {content.intro.map((paragraph) => (
               <p key={paragraph} className="why-us__intro-text">
                 {paragraph}
               </p>
@@ -64,8 +68,8 @@ export function WhyChooseUsSection() {
             <Star className="h-5 w-5" strokeWidth={1.65} />
           </span>
           <div className="why-us__callout-copy">
-            <p className="why-us__callout-emphasis">{whyChooseUs.emphasis}</p>
-            <p className="why-us__callout-text">{whyChooseUs.efficiencyLead}</p>
+            <p className="why-us__callout-emphasis">{content.emphasis}</p>
+            <p className="why-us__callout-text">{content.efficiencyLead}</p>
           </div>
         </div>
 
@@ -88,8 +92,8 @@ export function WhyChooseUsSection() {
             <WhyUsMissionIcon className="h-5 w-5" />
           </span>
           <div className="why-us__callout-copy">
-            <p className="why-us__callout-emphasis">{whyChooseUs.mission.title}</p>
-            <p className="why-us__callout-text">{whyChooseUs.mission.description}</p>
+            <p className="why-us__callout-emphasis">{content.mission.title}</p>
+            <p className="why-us__callout-text">{content.mission.description}</p>
           </div>
         </div>
       </div>

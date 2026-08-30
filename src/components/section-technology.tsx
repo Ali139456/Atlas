@@ -1,31 +1,35 @@
 import { Check, ShieldCheck, X } from "lucide-react";
-import { technologySection } from "@/lib/site-content";
+import { technologySection as defaultTechnologySection } from "@/lib/site-content";
 import "./section-technology.css";
 
-export function TechnologySection() {
-  const { control, guardrails } = technologySection;
+export function TechnologySection({
+  content = defaultTechnologySection,
+}: {
+  content?: typeof defaultTechnologySection;
+}) {
+  const { control, guardrails } = content;
 
   return (
     <section id="technology" className="tech-sec relative section-pad overflow-hidden">
       <div className="tech-sec__bg-glow" aria-hidden />
       <div className="site-container relative z-10">
         <div className="tech-sec__intro">
-          <p className="eyebrow-pill">{technologySection.eyebrow}</p>
+          <p className="eyebrow-pill">{content.eyebrow}</p>
           <h2 className="display-lg tech-sec__title text-heading">
-            {technologySection.title}{" "}
-            <span className="text-gradient-neon">{technologySection.titleAccent}</span>
+            {content.title}{" "}
+            <span className="text-gradient-neon">{content.titleAccent}</span>
           </h2>
-          <p className="tech-sec__pillar-heading">{technologySection.brandPillar}</p>
-          <p className="tech-sec__lead">{technologySection.description}</p>
+          <p className="tech-sec__pillar-heading">{content.brandPillar}</p>
+          <p className="tech-sec__lead">{content.description}</p>
         </div>
 
         <div className="tech-sec__cards">
           <article className="tech-sec__language">
             <p className="tech-sec__language-label">
-              {technologySection.preferredLanguageLabel}
+              {content.preferredLanguageLabel}
             </p>
             <ul className="tech-sec__language-list">
-              {technologySection.preferredLanguage.map((item) => (
+              {content.preferredLanguage.map((item) => (
                 <li key={item}>
                   <span className="tech-sec__language-dot" aria-hidden />
                   {item}

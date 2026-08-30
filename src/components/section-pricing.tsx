@@ -3,26 +3,20 @@
 import { Check, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { homeAnchors, paymentMethods, pricingPerks, pricingPlans } from "@/lib/site-content";
+import type { PublicPricingContent } from "@/lib/cms/public-content";
 
 const PRICING_FEATURE_SLOTS = 6;
 
-function PricingCard({
-  plan,
-}: {
-  plan: (typeof pricingPlans)[number];
-}) {
+type PricingPlan = PublicPricingContent["plans"][number];
+
+function PricingCard({ plan, contactHref }: { plan: PricingPlan; contactHref: string }) {
   const featureSlots = Array.from(
     { length: PRICING_FEATURE_SLOTS },
-    (_, i) => plan.features[i] ?? null
+    (_, i) => plan.features[i] ?? null,
   );
 
   return (
-    <article
-      className={`glass-strong pricing-card ${
-        plan.highlighted ? "featured" : ""
-      }`}
-    >
+    <article className={`glass-strong pricing-card ${plan.highlighted ? "featured" : ""}`}>
       <div className="pricing-card-top">
         {plan.highlighted ? (
           <span className="pricing-card-badge rounded-full border border-[var(--border-strong)] bg-[rgba(0,240,255,0.12)] px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-[var(--neon)]">
@@ -64,7 +58,7 @@ function PricingCard({
 
       <div className="pricing-card-foot">
         <Link
-          href={homeAnchors.contact}
+          href={contactHref}
           className={`pricing-card-cta w-full text-center ${plan.highlighted ? "btn-neon" : "btn-outline"}`}
         >
           {plan.cta}
@@ -74,26 +68,29 @@ function PricingCard({
   );
 }
 
-export function PricingSection() {
+export function PricingSection({ plans, perks, paymentMethods, contactHref }: PublicPricingContent) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(() => {
-    const i = pricingPlans.findIndex((p) => p.highlighted);
+    const i = plans.findIndex((p) => p.highlighted);
     return i >= 0 ? i : 0;
   });
 
-  const scrollToIndex = useCallback((index: number, smooth = true) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const next = Math.max(0, Math.min(index, pricingPlans.length - 1));
-    const slide = track.children[next] as HTMLElement | undefined;
-    if (slide) {
-      track.scrollTo({
-        left: slide.offsetLeft,
-        behavior: smooth ? "smooth" : "auto",
-      });
-    }
-    setActive(next);
-  }, []);
+  const scrollToIndex = useCallback(
+    (index: number, smooth = true) => {
+      const track = trackRef.current;
+      if (!track) return;
+      const next = Math.max(0, Math.min(index, plans.length - 1));
+      const slide = track.children[next] as HTMLElement | undefined;
+      if (slide) {
+        track.scrollTo({
+          left: slide.offsetLeft,
+          behavior: smooth ? "smooth" : "auto",
+        });
+      }
+      setActive(next);
+    },
+    [plans.length],
+  );
 
   const goPrev = () => scrollToIndex(active - 1);
   const goNext = () => scrollToIndex(active + 1);
@@ -120,14 +117,14 @@ export function PricingSection() {
 
     track.addEventListener("scroll", onScroll, { passive: true });
     return () => track.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [plans.length]);
 
   useEffect(() => {
-    const highlighted = pricingPlans.findIndex((p) => p.highlighted);
+    const highlighted = plans.findIndex((p) => p.highlighted);
     if (highlighted >= 0) {
       requestAnimationFrame(() => scrollToIndex(highlighted, false));
     }
-  }, [scrollToIndex]);
+  }, [plans, scrollToIndex]);
 
   return (
     <section id="pricing" className="relative section-pad overflow-hidden">
@@ -158,9 +155,9 @@ export function PricingSection() {
 
             <div className="pricing-track-wrap">
               <div ref={trackRef} className="pricing-track">
-                {pricingPlans.map((plan) => (
+                {plans.map((plan) => (
                   <div key={plan.name} className="pricing-slide">
-                    <PricingCard plan={plan} />
+                    <PricingCard plan={plan} contactHref={contactHref} />
                   </div>
                 ))}
               </div>
@@ -170,7 +167,7 @@ export function PricingSection() {
               type="button"
               className="pricing-arrow pricing-arrow--next"
               onClick={goNext}
-              disabled={active === pricingPlans.length - 1}
+              disabled={active === plans.length - 1}
               aria-label="Next plan"
             >
               <ChevronRight className="h-4 w-4" strokeWidth={2} aria-hidden />
@@ -178,7 +175,7 @@ export function PricingSection() {
           </div>
 
           <div className="pricing-dots" role="tablist" aria-label="Pricing plans">
-            {pricingPlans.map((plan, i) => (
+            {plans.map((plan, i) => (
               <button
                 key={plan.name}
                 type="button"
@@ -193,7 +190,7 @@ export function PricingSection() {
         </div>
 
         <ul className="pricing-perks">
-          {pricingPerks.map((p) => (
+          {perks.map((p) => (
             <li key={p}>{p}</li>
           ))}
         </ul>

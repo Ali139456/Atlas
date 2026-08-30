@@ -8,12 +8,22 @@ import { NavDropdown } from "@/components/nav-dropdown";
 import { SiteLogo } from "@/components/site-logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
-  navCta,
-  navIndustryLinks,
-  navPrimaryLinks,
-  navServicesLinks,
+  navCta as defaultNavCta,
+  navIndustryLinks as defaultIndustryLinks,
+  navPrimaryLinks as defaultPrimaryLinks,
+  navServicesLinks as defaultServicesLinks,
+  type NavLink,
 } from "@/lib/nav-menu";
-import { site } from "@/lib/site-content";
+import { site as defaultSite } from "@/lib/site-content";
+
+type SiteHeaderProps = {
+  primaryLinks?: readonly NavLink[];
+  servicesLinks?: readonly NavLink[];
+  industryLinks?: readonly NavLink[];
+  siteCta?: { label: string; href: string };
+  brand?: string;
+  tagline?: string;
+};
 
 function NavPlainLink({
   href,
@@ -34,7 +44,14 @@ function NavPlainLink({
   );
 }
 
-export function SiteHeader() {
+export function SiteHeader({
+  primaryLinks = defaultPrimaryLinks,
+  servicesLinks = defaultServicesLinks,
+  industryLinks = defaultIndustryLinks,
+  siteCta = defaultNavCta,
+  brand = defaultSite.brand,
+  tagline = defaultSite.tagline,
+}: SiteHeaderProps = {}) {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [open, setOpen] = useState(false);
@@ -66,7 +83,7 @@ export function SiteHeader() {
   }, [open]);
 
   const [homeLink, valueLink, whyLink, techLink, howLink, contactLink] =
-    navPrimaryLinks;
+    primaryLinks;
 
   return (
     <>
@@ -75,15 +92,15 @@ export function SiteHeader() {
       >
         <div className="site-container">
           <div className="nav-inner">
-            <Link href="/" aria-label={`${site.brand} home`} className="nav-brand-chip">
+            <Link href="/" aria-label={`${brand} home`} className="nav-brand-chip">
               <SiteLogo priority className="nav-logo" />
             </Link>
 
             <nav className="nav-menu" aria-label="Main">
               <Link href={homeLink.href}>{homeLink.label}</Link>
               <Link href={valueLink.href}>{valueLink.label}</Link>
-              <NavDropdown label="Services" items={navServicesLinks} mega />
-              <NavDropdown label="Industry" items={navIndustryLinks} />
+              <NavDropdown label="Services" items={servicesLinks} mega />
+              <NavDropdown label="Industry" items={industryLinks} />
               <Link href={whyLink.href}>{whyLink.label}</Link>
               <Link href={techLink.href}>{techLink.label}</Link>
               <Link href={howLink.href}>{howLink.label}</Link>
@@ -92,8 +109,8 @@ export function SiteHeader() {
 
             <div className="nav-actions">
               <ThemeToggle />
-              <Link href={navCta.href} className="nav-cta-chip">
-                <span>{navCta.label}</span>
+              <Link href={siteCta.href} className="nav-cta-chip">
+                <span>{siteCta.label}</span>
                 <span className="nav-cta-arrow" aria-hidden>
                   <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
                 </span>
@@ -130,7 +147,7 @@ export function SiteHeader() {
           <div className="nav-overlay-glow" aria-hidden />
           <div className="nav-overlay-inner site-container">
             <div className="nav-overlay-top">
-              <Link href="/" aria-label={`${site.brand} home`} className="nav-brand-chip" onClick={close}>
+              <Link href="/" aria-label={`${brand} home`} className="nav-brand-chip" onClick={close}>
                 <SiteLogo priority className="nav-logo" />
               </Link>
               <button
@@ -145,7 +162,7 @@ export function SiteHeader() {
 
             <div className="nav-overlay-intro">
               <p className="nav-overlay-eyebrow">Explore</p>
-              <p className="nav-overlay-sub">{site.tagline}</p>
+              <p className="nav-overlay-sub">{tagline}</p>
             </div>
 
             <nav className="nav-overlay-nav" aria-label="Mobile">
@@ -153,14 +170,14 @@ export function SiteHeader() {
               <NavPlainLink href={valueLink.href} label={valueLink.label} onNavigate={close} />
               <NavDropdown
                 label="Services"
-                items={navServicesLinks}
+                items={servicesLinks}
                 variant="mobile"
                 mega
                 onNavigate={close}
               />
               <NavDropdown
                 label="Industry"
-                items={navIndustryLinks}
+                items={industryLinks}
                 variant="mobile"
                 onNavigate={close}
               />
@@ -172,8 +189,8 @@ export function SiteHeader() {
 
             <div className="nav-overlay-actions">
               <ThemeToggle />
-              <Link href={navCta.href} className="nav-overlay-btn btn-neon" onClick={close}>
-                {navCta.label}
+              <Link href={siteCta.href} className="nav-overlay-btn btn-neon" onClick={close}>
+                {siteCta.label}
               </Link>
             </div>
 

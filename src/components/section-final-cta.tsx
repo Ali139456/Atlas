@@ -1,8 +1,14 @@
 import Link from "next/link";
-import { finalCta, siteCta } from "@/lib/site-content";
+import { finalCta as defaultFinalCta, siteCta as defaultSiteCta } from "@/lib/site-content";
 import "./section-final-cta.css";
 
-export function FinalCtaSection() {
+export function FinalCtaSection({
+  content = defaultFinalCta,
+  siteCta = defaultSiteCta,
+}: {
+  content?: typeof defaultFinalCta;
+  siteCta?: typeof defaultSiteCta;
+}) {
   return (
     <section className="final-cta" aria-labelledby="final-cta-title">
       <div className="final-cta__grid" aria-hidden />
@@ -11,11 +17,11 @@ export function FinalCtaSection() {
 
       <div className="site-container final-cta__inner">
         <h2 id="final-cta-title" className="final-cta__title">
-          {finalCta.title}
+          {content.title}
         </h2>
-        <p className="final-cta__text">{finalCta.description}</p>
+        <p className="final-cta__text">{content.description}</p>
         <Link href={siteCta.href} className="final-cta__btn">
-          {finalCta.buttonLabel || siteCta.label}
+          {content.buttonLabel || siteCta.label}
         </Link>
       </div>
     </section>

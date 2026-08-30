@@ -3,10 +3,28 @@
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { FormSelect } from "@/components/form-select";
-import { contactForm, site, siteCta } from "@/lib/site-content";
+import { contactForm as defaultContactForm, site as defaultSite, siteCta as defaultSiteCta } from "@/lib/site-content";
 import "./contact-section.css";
 
-export function ContactSection() {
+type ContactSectionProps = {
+  contactForm?: typeof defaultContactForm;
+  site?: typeof defaultSite;
+  siteCta?: typeof defaultSiteCta;
+  formOptions?: {
+    industries: string[];
+    inquiryTypes: string[];
+    companySizes: string[];
+  };
+};
+
+export function ContactSection({
+  contactForm = defaultContactForm,
+  site = defaultSite,
+  siteCta = defaultSiteCta,
+  formOptions,
+}: ContactSectionProps = {}) {
+  const industries = formOptions?.industries ?? [...contactForm.industries];
+  const inquiryTypes = formOptions?.inquiryTypes ?? [...contactForm.inquiryTypes];
   const [form, setForm] = useState({
     name: "",
     company: "",
@@ -41,15 +59,7 @@ export function ContactSection() {
           industry: form.industry,
           service: form.inquiryType,
           companySize: form.companySize,
-          message: [
-            form.message.trim(),
-            form.phone ? `\nPhone: ${form.phone.trim()}` : "",
-            form.industry ? `\nIndustry: ${form.industry}` : "",
-            form.inquiryType ? `\nNature of inquiry: ${form.inquiryType}` : "",
-            form.companySize ? `\nCompany size: ${form.companySize}` : "",
-          ]
-            .filter(Boolean)
-            .join(""),
+          message: form.message.trim(),
         }),
       });
       const data = (await res.json()) as { error?: string };
@@ -207,7 +217,7 @@ export function ContactSection() {
                     value={form.industry}
                     onChange={(value) => updateField("industry", value)}
                     placeholder="Industry"
-                    options={contactForm.industries}
+                    options={industries}
                   />
                 </label>
                 <label className="contact-sec__field">
@@ -216,7 +226,7 @@ export function ContactSection() {
                     value={form.inquiryType}
                     onChange={(value) => updateField("inquiryType", value)}
                     placeholder="Nature of inquiry"
-                    options={contactForm.inquiryTypes}
+                    options={inquiryTypes}
                   />
                 </label>
               </div>

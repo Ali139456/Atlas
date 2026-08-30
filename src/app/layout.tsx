@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Outfit, Syne } from "next/font/google";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { PreviewBanner } from "@/components/preview-banner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { UnregisterServiceWorker } from "@/components/unregister-service-worker";
 import "./globals.css";
@@ -76,15 +76,19 @@ export default function RootLayout({
       className={`${outfit.variable} ${syne.variable} h-full overflow-x-clip`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          id="scroll-restoration"
+          dangerouslySetInnerHTML={{ __html: SCROLL_BOOT }}
+        />
+      </head>
       <body
         id="top"
         className="site-body flex min-h-full max-w-[100vw] flex-col antialiased"
         suppressHydrationWarning
       >
-        <Script id="scroll-restoration" strategy="beforeInteractive">
-          {SCROLL_BOOT}
-        </Script>
         <ThemeProvider>
+          <PreviewBanner />
           <UnregisterServiceWorker />
           <ScrollToTop />
           {children}

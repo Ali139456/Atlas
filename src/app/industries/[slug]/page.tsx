@@ -3,26 +3,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { SiteFooterServer } from "@/components/site-footer-server";
+import { SiteHeaderServer } from "@/components/site-header-server";
 import {
-  getAllIndustrySlugs,
-  getIndustry,
-  industries,
-} from "@/lib/industries";
-import { homeAnchors, site, siteCta } from "@/lib/site-content";
+  getPublicIndustries,
+  getPublicIndustryBySlug,
+  getPublicSiteSettings,
+} from "@/lib/cms/public-content";
 import "../../services/service-detail.css";
 import "../industry-detail.css";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return getAllIndustrySlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  const industries = await getPublicIndustries();
+  return industries.map((industry) => ({ slug: industry.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const industry = getIndustry(slug);
+  const industry = await getPublicIndustryBySlug(slug);
   if (!industry) return { title: "Industry not found" };
   return {
     title: `${industry.title} Accounting`,
@@ -32,12 +32,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function IndustryPage({ params }: Props) {
   const { slug } = await params;
-  const industry = getIndustry(slug);
+  const [industry, settings] = await Promise.all([
+    getPublicIndustryBySlug(slug),
+    getPublicSiteSettings(),
+  ]);
   if (!industry) notFound();
+
+  const { homeAnchors, site, siteCta } = settings;
+  const allIndustries = await getPublicIndustries();
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeaderServer />
       <main className="site-main section-bg">
         <section className="industry-detail-page service-detail-page relative section-pad overflow-hidden">
           <div className="blob w-[480px] h-[360px] left-1/2 -translate-x-1/2 top-0 blob--accent-soft" aria-hidden />
@@ -174,7 +180,7 @@ export default async function IndustryPage({ params }: Props) {
             </section>
 
             <nav className="industry-tabs industry-tabs--end" aria-label="Industries">
-              {industries.map((item) => (
+              {allIndustries.map((item) => (
                 <Link
                   key={item.slug}
                   href={`/industries/${item.slug}`}
@@ -202,7 +208,7 @@ export default async function IndustryPage({ params }: Props) {
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooterServer />
     </>
   );
 }

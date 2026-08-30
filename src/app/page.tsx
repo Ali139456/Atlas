@@ -7,25 +7,45 @@ import { Hero } from "@/components/hero";
 import { WhyChooseUsSection } from "@/components/section-mission";
 import { TechnologySection } from "@/components/section-technology";
 import { ValuePropositionSection } from "@/components/section-value-prop";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { SiteFooterServer } from "@/components/site-footer-server";
+import { SiteHeaderServer } from "@/components/site-header-server";
+import {
+  getPublicCoreServicesSection,
+  getPublicFormOptions,
+  getPublicHomeContent,
+  getPublicIndustriesSection,
+  getPublicSiteSettings,
+} from "@/lib/cms/public-content";
 
-export default function Home() {
+export default async function Home() {
+  const [home, settings, coreServices, industriesSection, formOptions] = await Promise.all([
+    getPublicHomeContent(),
+    getPublicSiteSettings(),
+    getPublicCoreServicesSection(),
+    getPublicIndustriesSection(),
+    getPublicFormOptions(),
+  ]);
+
   return (
     <>
-      <SiteHeader />
+      <SiteHeaderServer />
       <main className="site-main site-main--home section-bg">
-        <Hero />
-        <ValuePropositionSection />
-        <CoreServicesSection />
-        <WhyChooseUsSection />
-        <TechnologySection />
-        <IndustriesServedSection />
-        <HowItWorksSection />
-        <ContactSection />
-        <FinalCtaSection />
+        <Hero content={home.hero} />
+        <ValuePropositionSection content={home.valueProposition} />
+        <CoreServicesSection content={coreServices} />
+        <WhyChooseUsSection content={home.whyChooseUs} />
+        <TechnologySection content={home.technologySection} />
+        <IndustriesServedSection content={industriesSection} />
+        <HowItWorksSection content={home.howItWorks} />
+        <ContactSection
+          contactForm={home.contactForm}
+          site={settings.site}
+          siteCta={settings.siteCta}
+          formOptions={formOptions}
+        />
+        <FinalCtaSection content={home.finalCta} siteCta={settings.siteCta} />
       </main>
-      <SiteFooter />
+      <SiteFooterServer />
     </>
   );
 }

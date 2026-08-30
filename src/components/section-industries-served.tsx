@@ -1,9 +1,14 @@
 ﻿import Image from "next/image";
 import Link from "next/link";
-import { industriesServed } from "@/lib/site-content";
+import { industriesServed as defaultIndustriesServed } from "@/lib/site-content";
 import "./section-industries.css";
 
-export function IndustriesServedSection() {
+export function IndustriesServedSection({
+  content = defaultIndustriesServed,
+}: {
+  content?: typeof defaultIndustriesServed | Record<string, unknown>;
+} = {}) {
+  const section = content as typeof defaultIndustriesServed;
   return (
     <section
       id="industries"
@@ -14,16 +19,16 @@ export function IndustriesServedSection() {
 
       <div className="site-container relative z-10">
         <div className="industries-header">
-          <p className="eyebrow-pill">{industriesServed.eyebrow}</p>
+          <p className="eyebrow-pill">{section.eyebrow}</p>
           <h2 className="display-lg industries-title text-heading">
-            {industriesServed.title}{" "}
-            <span className="text-gradient-neon">{industriesServed.titleAccent}</span>
+            {section.title}{" "}
+            <span className="text-gradient-neon">{section.titleAccent}</span>
           </h2>
-          <p className="industries-lead">{industriesServed.description}</p>
+          <p className="industries-lead">{section.description}</p>
         </div>
 
         <div className="industries-grid industries-grid--lead">
-          {industriesServed.items.map((item) => (
+          {section.items.map((item) => (
             <Link
               key={item.slug}
               href={`/industries/${item.slug}`}
@@ -49,11 +54,11 @@ export function IndustriesServedSection() {
           ))}
         </div>
 
-        {industriesServed.moreItems.length > 0 ? (
+        {section.moreItems.length > 0 ? (
           <div className="industries-more">
-            <p className="industries-more__label">{industriesServed.moreLabel}</p>
+            <p className="industries-more__label">{section.moreLabel}</p>
             <div className="industries-more__links">
-              {industriesServed.moreItems.map((item) => (
+              {section.moreItems.map((item) => (
                 <Link
                   key={item.slug}
                   href={`/industries/${item.slug}`}

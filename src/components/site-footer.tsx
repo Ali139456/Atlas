@@ -1,15 +1,35 @@
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
-import { SocialIcon } from "@/components/social-icon";
+import type { SocialIconName } from "@/components/social-icon";
 import {
-  footerBarLinks,
-  footerLinkGroups,
-  footerSocialLinks,
-  navCta,
+  footerBarLinks as defaultFooterBarLinks,
+  footerLinkGroups as defaultFooterLinkGroups,
+  footerSocialLinks as defaultFooterSocialLinks,
+  navCta as defaultNavCta,
 } from "@/lib/nav-menu";
 import { SiteLogo } from "@/components/site-logo";
-import { site } from "@/lib/site-content";
+import { SocialIcon } from "@/components/social-icon";
+import { site as defaultSite } from "@/lib/site-content";
 import "./site-footer.css";
+
+type FooterLinkGroup = {
+  title: string;
+  links: readonly { label: string; href: string; external?: boolean }[];
+};
+
+type FooterSocial = {
+  label: string;
+  href: string;
+  icon: SocialIconName;
+};
+
+type SiteFooterProps = {
+  site?: typeof defaultSite;
+  siteCta?: { label: string; href: string };
+  footerLinkGroups?: readonly FooterLinkGroup[];
+  footerSocialLinks?: readonly FooterSocial[];
+  footerBarLinks?: readonly { label: string; href: string; external?: boolean }[];
+};
 
 function FooterLink({
   href,
@@ -39,7 +59,13 @@ function FooterLink({
   );
 }
 
-export function SiteFooter() {
+export function SiteFooter({
+  site = defaultSite,
+  siteCta = defaultNavCta,
+  footerLinkGroups = defaultFooterLinkGroups,
+  footerSocialLinks = defaultFooterSocialLinks,
+  footerBarLinks = defaultFooterBarLinks,
+}: SiteFooterProps = {}) {
   return (
     <footer className="site-footer">
       <div className="footer-glow footer-glow--left" aria-hidden />
@@ -55,8 +81,8 @@ export function SiteFooter() {
               Explore outsourced accounting from {site.brand} to streamline closes, cut cost,
               and grow without overhead.
             </p>
-            <Link href={navCta.href} className="footer-cta">
-              {navCta.label}
+            <Link href={siteCta.href} className="footer-cta">
+              {siteCta.label}
               <ArrowUpRight className="h-4 w-4" strokeWidth={2} aria-hidden />
             </Link>
             <div className="footer-socials">
