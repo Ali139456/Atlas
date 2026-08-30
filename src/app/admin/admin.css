@@ -79,6 +79,53 @@
   line-height: 1.5;
 }
 
+.admin-password-field {
+  position: relative;
+  display: block;
+}
+
+.admin-password-field input {
+  width: 100%;
+  padding-right: 2.75rem;
+}
+
+.admin-password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.65rem;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border: 0;
+  border-radius: 0.4rem;
+  background: transparent;
+  color: var(--admin-muted);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.admin-password-toggle:hover:not(:disabled) {
+  color: var(--admin-accent-soft);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.admin-password-toggle:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.admin-login-actions {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.35rem;
+}
+
+.admin-login-submit {
+  min-width: 9.5rem;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Shell layout — fixed sidebar                                               */
 /* -------------------------------------------------------------------------- */
