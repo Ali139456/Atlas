@@ -3,6 +3,10 @@
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 import { FormSelect } from "@/components/form-select";
+import {
+  contactInquiryBodySchema,
+  firstContactValidationError,
+} from "@/lib/contact-inquiry-schema";
 import { contactForm as defaultContactForm, site as defaultSite, siteCta as defaultSiteCta } from "@/lib/site-content";
 import "./contact-section.css";
 
@@ -46,23 +50,29 @@ export function ContactSection({
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
+    const payload = {
+      name: form.name.trim(),
+      email: form.email.trim(),
+      company: form.company.trim(),
+      phone: form.phone.trim(),
+      industry: form.industry,
+      service: form.inquiryType,
+      companySize: form.companySize,
+      message: form.message.trim(),
+    };
+    const validated = contactInquiryBodySchema.safeParse(payload);
+    if (!validated.success) {
+      setStatus("err");
+      setMsg(firstContactValidationError(validated.error));
+      return;
+    }
     setStatus("loading");
     setMsg("");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          email: form.email.trim(),
-          company: form.company.trim(),
-          phone: form.phone.trim(),
-          industry: form.industry,
-          service: form.inquiryType,
-          companySize: form.companySize,
-          message: form.message.trim(),
-        }),
+        body: JSON.stringify(validated.data),
       });
       const data = (await res.json()) as { error?: string };
       if (!res.ok) {
@@ -241,7 +251,8 @@ export function ContactSection({
                   value={form.message}
                   onChange={(e) => updateField("message", e.target.value)}
                   className="contact-sec__input contact-sec__textarea"
-                  placeholder="Message"
+                  placeholder="Message (at least 10 characters)"
+                  minLength={10}
                 />
               </label>
 

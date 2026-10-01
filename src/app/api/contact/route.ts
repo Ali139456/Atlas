@@ -1,19 +1,11 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { z } from "zod";
+import {
+  contactInquiryBodySchema,
+  firstContactValidationError,
+} from "@/lib/contact-inquiry-schema";
 import { buildContactInquiryEmail, normalizeContactMessage } from "@/lib/email/contact-inquiry-email";
 import { createServiceRoleClient } from "@/lib/supabase/admin";
-
-const bodySchema = z.object({
-  name: z.string().min(2).max(120),
-  email: z.string().email().max(254),
-  company: z.string().max(200).optional().or(z.literal("")),
-  phone: z.string().max(40).optional().or(z.literal("")),
-  industry: z.string().max(120).optional().or(z.literal("")),
-  service: z.string().max(120).optional().or(z.literal("")),
-  companySize: z.string().max(40).optional().or(z.literal("")),
-  message: z.string().min(10).max(5000),
-});
 
 export async function POST(request: Request) {
   let json: unknown;
@@ -23,10 +15,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const parsed = bodySchema.safeParse(json);
+  const parsed = contactInquiryBodySchema.safeParse(json);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: "Validation failed", details: parsed.error.flatten() },
+      {
+        error: firstContactValidationError(parsed.error),
+        details: parsed.error.flatten(),
+      },
       { status: 422 },
     );
   }
