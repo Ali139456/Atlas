@@ -423,10 +423,17 @@ export async function getPublicFormOptions() {
   const grouped = (key: string) =>
     options.filter((o) => o.field_key === key).map((o) => o.label);
 
+  const industryOptions = grouped("industry");
+  const inquiryOptions = grouped("inquiry_type");
+  const companySizeOptions = grouped("company_size");
+
   return {
-    industries: grouped("industry"),
-    inquiryTypes: grouped("inquiry_type"),
-    companySizes: grouped("company_size"),
+    industries:
+      industryOptions.length > 0 ? industryOptions : [...contactForm.industries],
+    inquiryTypes:
+      inquiryOptions.length > 0 ? inquiryOptions : [...contactForm.inquiryTypes],
+    companySizes:
+      companySizeOptions.length > 0 ? companySizeOptions : [...contactForm.companySizes],
   };
 }
 

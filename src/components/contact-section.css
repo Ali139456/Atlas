@@ -162,12 +162,14 @@
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   box-shadow: var(--contact-panel-shadow, 0 22px 50px rgba(0, 0, 0, 0.35));
+  overflow: visible;
 }
 
 .contact-sec__form {
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
+  overflow: visible;
 }
 
 .contact-sec__row {
@@ -178,6 +180,7 @@
 .contact-sec__field {
   display: block;
   min-width: 0;
+  overflow: visible;
 }
 
 .contact-sec__input {

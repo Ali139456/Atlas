@@ -23,8 +23,10 @@ export function ContactSection({
   siteCta = defaultSiteCta,
   formOptions,
 }: ContactSectionProps = {}) {
-  const industries = formOptions?.industries ?? [...contactForm.industries];
-  const inquiryTypes = formOptions?.inquiryTypes ?? [...contactForm.inquiryTypes];
+  const industries =
+    formOptions?.industries?.length ? formOptions.industries : [...contactForm.industries];
+  const inquiryTypes =
+    formOptions?.inquiryTypes?.length ? formOptions.inquiryTypes : [...contactForm.inquiryTypes];
   const [form, setForm] = useState({
     name: "",
     company: "",
